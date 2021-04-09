@@ -1,6 +1,8 @@
 module.exports.profile=function(req,res){
-    res.end('<h1>User Profile</h1>');
+    return res.render('profile',{
+        title:'Codeial'
+    });
 }
 module.exports.home=function(req,res){
-    return res.end('<h1>User</h1>');
+    return res.render('user');
 }
