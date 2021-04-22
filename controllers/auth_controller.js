@@ -12,21 +12,35 @@ module.exports.signInPage=function(req,res){
     });
 }
 module.exports.sign_up=function(req,res){
-    User.create({
-        user_name:req.body.user_name,
-        email:req.body.email,
-        password:req.body.password
-    },function(err,newUser){
+    if(req.body.password!=req.body.confirm_password)
+    {
+        console.log("Password doesn't match");
+        return res.redirect('/sign-up-page');
+    }
+    User.findOne({email:req.body.email},function(err,user){
         if(err){
-            console.log('Error in creating account');
-            return res.redirect('/');
+            console.log('Error in finding the user');
+            return;
         }
-        else
-        {
-            console.log('Created successfully');
-            return res.redirect('/');
+        if(!user){
+            User.create(req.body,function(err,newUser){
+                if(err){
+                    console.log('Error in creating account');
+                    return res.redirect('/');
+                }
+                else
+                {
+                    console.log('Created successfully');
+                    return res.redirect('/sign-in-page');
+                }
+            })
+        }
+        else{
+            console.log('Email exists!!');
+            return res.redirect('/sign-in-page');
         }
     })
+    
 }
     
 
