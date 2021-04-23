@@ -7,6 +7,8 @@ router.get('/',userController.home);
 
 router.get('/sign-up-page',userController.signUpPage);
 router.get('/sign-in-page',userController.signInPage);
+router.get('/sign-out',userController.signOut);
+
 
 router.post('/sign-up',userController.sign_up) ;
 router.post('/sign-in',userController.sign_in);

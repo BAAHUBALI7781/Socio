@@ -1,9 +1,21 @@
 const User=require('../models/user');
 
 module.exports.profile=function(req,res){
-    return res.render('profile',{
-        title:'Codeial User Profile'
-    });
+    if(req.cookies.user_id)
+    {
+        User.findById(req.cookies.user_id,function(err,user){
+            if(user){
+                return res.render('profile',{
+                    title:"User Profile",
+                    user:user
+                })
+            }
+            else
+                return res.redirect('sign-in-page');
+        })
+    }
+    else
+        return res.redirect('sign-in-page');
 }
 module.exports.home=function(req,res){
     return res.render('user');
@@ -53,5 +65,33 @@ module.exports.sign_up=function(req,res){
     
 
 module.exports.sign_in=function(req,res){
-    // User.create()
+    console.log(req.body.email);
+    User.findOne({email:req.body.email},function(err,user){
+        if(err)
+        {
+            console.log('Error while finding the user');
+            return;
+        }
+        if(!user)
+        {
+            console.log("User not Registered");
+            return res.redirect('sign-up-page');
+        }
+        else
+        {
+            if(user.password!=req.body.password){
+                return res.rediect('sign-in-page');
+            }
+
+            res.cookie('user_id',user.id);
+            return res.redirect('profile');
+        }
+    })
+
+}
+
+
+module.exports.signOut=function(req,res){
+    delete req.cookies.user_id;
+    return res.redirect('sign-in-page');
 }
