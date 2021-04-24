@@ -10,11 +10,19 @@ module.exports.home=function(req,res){
 }
 
 module.exports.signUpPage=function(req,res){
+    if(req.isAuthenticated())
+    {
+        return res.redirect('/user/profile');
+    }
     return res.render('signup',{
         title:'Codeial Sign-Up Page'
     });
 }
 module.exports.signInPage=function(req,res){
+    if(req.isAuthenticated())
+    {
+        return res.redirect('/user/profile');
+    }
     return res.render('signin',{
         title:'Codeial Sign-In Page'
     });
@@ -53,5 +61,10 @@ module.exports.sign_up=function(req,res){
     
 
 module.exports.sign_in=function(req,res){
-    // User.create()
+    return res.redirect('/');
+}
+
+module.exports.sign_out=function(req,res){
+    req.logout();
+    return res.redirect('/');
 }
