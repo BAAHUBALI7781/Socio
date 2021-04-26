@@ -2,11 +2,12 @@
 <h1>Codeial Home Page</h1>
 <section id="feed">
     <h3>Posts</h3>
+    <% if(locals.user){%>
     <form action="/post/new-post" id="new-post" method="POST">
         <textarea name="content" cols="30" rows="3" placeholder="Type Here..."></textarea>
         <input type="submit" value="Post">
     </form>
-
+    <%}%>
     <div id="posts-list-container">
         <ul>
             <% for(var post of posts){ %>
