@@ -1,3 +1,4 @@
+
 const User=require('../models/user');
 
 module.exports.profile=function(req,res){
@@ -68,3 +69,4 @@ module.exports.sign_out=function(req,res){
     req.logout();
     return res.redirect('/');
 }
+

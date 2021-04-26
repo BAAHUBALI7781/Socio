@@ -18,6 +18,7 @@ router.post('/sign-in',passport.authenticate(
     {failureRedirect:'/user/sign-in-page'}
 ),userController.sign_in);
 
+
 module.exports=router;
 
 

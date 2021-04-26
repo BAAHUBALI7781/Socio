@@ -1,11 +1,24 @@
+const Post = require("../models/post");
 
 
 module.exports.home=function(req,res){
-    console.log(req.cookies);
-    return res.render('home',{
-        title:'Codeial'
+    
+    
+
+    // Post.find({},function(err,Posts){
+    //     return res.render('home',{
+    //         title:'Codeial Home Page',
+    //         posts:Posts
+    //     });
+    // })
+    //Populate the whole user
+    Post.find({}).populate('user').exec(function(err,Posts){
+            // console.log();
+            return res.render('home',{
+                title:'Codeial Home Page',
+                posts:Posts
+            })
+        
     });
-}   
-module.exports.practise=function(req,res){
-    return res.end('<h1>Practise is up</h1>');
-}   
+
+}
