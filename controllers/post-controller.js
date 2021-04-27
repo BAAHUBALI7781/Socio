@@ -14,4 +14,26 @@ module.exports.new_post=function(req,res){
         }
         return res.redirect('back');
     });
+
+}
+
+module.exports.destroy=function(req,res){
+    Post.findById(req.params.id,function(err,post){
+        if(err){
+            console.log('Error');
+            return;
+        }
+        // .id means converting object id to string
+        if(post.user==req.user.id){
+            post.remove();
+            Comment.deleteMany({post:req.params.id},function(err){
+                return res.redirect('/');
+            });
+
+        }
+        else
+        {
+            return res.redirect('/');
+        }
+    })
 }

@@ -12,8 +12,15 @@
         <ul>
             <% for(var post of posts){ %>
                 <li>
-                    <b><p><%=post.content%></p></b>
-                    <%console.log(post.user.username)%>
+
+                    <b>
+                        <p>
+                            <% if(locals.user && (locals.user.id==post.user.id)){%>
+                                <small><a href="/post/destroy/<%=post.id%>">X</a></small>
+                            <%}%>
+                            <%=post.content%>
+                        </p>
+                    </b>
                     <small><p>By <%=post.user.user_name%></p></small>
                     <div class="post-comments">
                         <% if(locals.user){ %>
@@ -31,7 +38,6 @@
                                 <li>
                                     <p>
                                         <%=comment.content%>
-                                        
                                     </p>
                                     <small><span><%=comment.user.user_name%></span></small>
                                 </li>    
