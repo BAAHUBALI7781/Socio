@@ -1,3 +1,4 @@
+const Comment = require("../models/comments");
 const Post = require("../models/post");
 
 module.exports.new_post=function(req,res){

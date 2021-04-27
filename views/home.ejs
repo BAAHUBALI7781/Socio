@@ -4,7 +4,7 @@
     <h3>Posts</h3>
     <% if(locals.user){%>
     <form action="/post/new-post" id="new-post" method="POST">
-        <textarea name="content" cols="30" rows="3" placeholder="Type Here..."></textarea>
+        <textarea name="content" cols="30" rows="3" placeholder="Type Here..." required></textarea>
         <input type="submit" value="Post">
     </form>
     <%}%>
@@ -12,9 +12,33 @@
         <ul>
             <% for(var post of posts){ %>
                 <li>
-                    <b><span><%=post.content%> by </span></b>
+                    <b><p><%=post.content%></p></b>
                     <%console.log(post.user.username)%>
-                    <span><%=post.user.user_name%></span>
+                    <small><p>By <%=post.user.user_name%></p></small>
+                    <div class="post-comments">
+                        <% if(locals.user){ %>
+                            <form action='/comment/add-comment' method="POST">
+                                <input type="text" name="content" placeholder="comment..." required>
+                                <input type="hidden" name="post"value="<%=post._id%>">
+                                <button type="submit">Add</button>
+                            </form>
+                        <%}%>
+                        
+                    </div>
+                    <div class="comments-list">
+                        <ul id="post-comments-<%=post._id%>">
+                            <% for(var comment of post.comments){ %>
+                                <li>
+                                    <p>
+                                        <%=comment.content%>
+                                        
+                                    </p>
+                                    <small><span><%=comment.user.user_name%></span></small>
+                                </li>    
+                            <%}%>
+                        </ul>
+                    </div>
+                    
                 </li>
             <%}%>
         </ul>
