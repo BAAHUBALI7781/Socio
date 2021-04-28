@@ -12,3 +12,12 @@
     </div>
     
 </section>
+
+<section id="user-friends">
+    <h4>Friends</h4>
+    <% for(user of users){%>
+        <p>
+            <a href="user/profile/<%=user.id%>"><%=user.user_name%></a>
+        </p>
+    <%}%>
+</section>
