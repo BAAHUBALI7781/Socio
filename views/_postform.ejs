@@ -1,0 +1,6 @@
+<% if(locals.user){%>
+    <form action="/post/new-post" id="new-post" method="POST">
+        <textarea name="content" cols="30" rows="3" placeholder="Type Here..." required></textarea>
+        <input type="submit" value="Post">
+    </form>
+<%}%>

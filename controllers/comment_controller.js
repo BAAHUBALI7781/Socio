@@ -1,6 +1,5 @@
 const Comment = require("../models/comments");
 const Post = require("../models/post");
-const { post } = require("../routes/comments");
 
 
 module.exports.add_comment=function(req,res){
