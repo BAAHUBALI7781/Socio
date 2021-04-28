@@ -1,5 +1,5 @@
 
-<h1>Codeial Home Page</h1>
+<h1>Socio Home Page</h1>
 <section id="feed">
     <h3>Posts</h3>
     <% if(locals.user){%>
@@ -37,6 +37,9 @@
                             <% for(var comment of post.comments){ %>
                                 <li>
                                     <p>
+                                        <%if(locals.user && (comment.user.id==locals.user.id || post.user.id==locals.user.id)){%>
+                                            <small><a href="/comment/destroy/<%=comment.id%>">X</a></small>
+                                        <%}%>
                                         <%=comment.content%>
                                     </p>
                                     <small><span><%=comment.user.user_name%></span></small>

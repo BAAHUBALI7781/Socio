@@ -1,5 +1,6 @@
 const Comment = require("../models/comments");
 const Post = require("../models/post");
+const { post } = require("../routes/comments");
 
 
 module.exports.add_comment=function(req,res){
@@ -22,6 +23,27 @@ module.exports.add_comment=function(req,res){
             });
 
         }
-    })
+    });
 }
   
+module.exports.destroy=function(req,res){
+    console.log("Entered");
+    Comment.findById(req.params.id,function(err,comment){
+        if(err){
+            console.log('Error in finding comment');
+            return;
+        }
+        if(comment.user==req.user.id){
+            let postId=comment.post;
+            comment.remove();
+            Post.findByIdAndUpdate(postId,{$pull:{comments:req.params.id}},function(err,post){
+                return res.redirect('/');
+            });
+        }
+        else
+            return res.redirect('/');
+    })
+        
+
+    
+}
