@@ -1,0 +1,28 @@
+#container{
+    display:flex;
+    justify-content: space-between;
+    height:100%;
+    #feed{
+        width:80%;
+        padding:10px;
+    }
+    #user-friends{
+        width:20%;
+        padding:10px;
+        background-color: rgb(228, 222, 222);
+        height: 97.3%;
+        h4{
+            font-size:1.2rem;
+            text-align: center;
+        }
+        p{
+            font-size:1.1rem;
+            text-align: center;
+            a{
+                text-decoration: none;
+                color:rgb(17, 17, 48);
+            }
+        }
+    }    
+
+}

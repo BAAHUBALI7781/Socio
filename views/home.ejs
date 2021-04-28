@@ -1,23 +1,27 @@
 
-<h1>Socio Home Page</h1>
-<section id="feed">
-    <h3>Posts</h3>
-    <%- include('_postform'); -%>
-    <div id="posts-list-container">
-        <ul>
-            <% for(post of posts){ %>
-                <%- include('_post'); -%>
-            <%}%>
-        </ul>
-    </div>
-    
-</section>
+<link rel="stylesheet" href="/css/home.css">
 
-<section id="user-friends">
-    <h4>Friends</h4>
-    <% for(user of users){%>
-        <p>
-            <a href="user/profile/<%=user.id%>"><%=user.user_name%></a>
-        </p>
-    <%}%>
-</section>
+<div id="container">
+    <section id="feed">
+        <h3>Posts</h3>
+        <%- include('_postform'); -%>
+        <div id="posts-list-container">
+            <ul>
+                <% for(post of posts){ %>
+                    <%- include('_post'); -%>
+                <%}%>
+            </ul>
+        </div>
+        
+    </section>
+    
+    <section id="user-friends">
+        <h4>Friends</h4>
+        <% for(user of users){%>
+            <p>
+                <a href="user/profile/<%=user.id%>"><%=user.user_name%></a>
+            </p>
+        <%}%>
+        
+    </section>
+</div>

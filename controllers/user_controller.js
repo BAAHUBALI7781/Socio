@@ -74,3 +74,15 @@ module.exports.sign_out=function(req,res){
     return res.redirect('/');
 }
 
+module.exports.update_profile=function(req,res){
+    console.log("Changed");
+    if(req.user.id==req.params.id){
+        User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
+            console.log("Done");
+            return res.redirect('back');
+        });
+    }
+    else{
+        return res.status(401).send('Unauthorized');
+    }
+}

@@ -1,0 +1,21 @@
+#container {
+  display: flex;
+  justify-content: space-between;
+  height: 100%; }
+  #container #feed {
+    width: 80%;
+    padding: 10px; }
+  #container #user-friends {
+    width: 20%;
+    padding: 10px;
+    background-color: #e4dede;
+    height: 97.3%; }
+    #container #user-friends h4 {
+      font-size: 1.2rem;
+      text-align: center; }
+    #container #user-friends p {
+      font-size: 1.1rem;
+      text-align: center; }
+      #container #user-friends p a {
+        text-decoration: none;
+        color: #111130; }

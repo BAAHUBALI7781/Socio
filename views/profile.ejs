@@ -4,3 +4,12 @@
 
 <p><%=profile_user.user_name%></p>
 <p><%=profile_user.email%></p>
+
+<% if(profile_user.id==user.id){%>
+    <h3>Edit details</h3>
+    <form action="/user/update-profile/<%=profile_user.id%>" method="POST">
+        <input type="text" name="user_name" placeholder="Type new name" value="<%=profile_user.user_name%>" required>
+        <input type="email" name="email" placeholder="Type new email" value="<%=profile_user.email%>" required>
+        <button type="submit">Submit</button>
+    </form>
+<%}%>
