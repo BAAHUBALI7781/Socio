@@ -48,6 +48,4 @@ module.exports.destroy=function(req,res){
         
     })
         
-
-    
 }
