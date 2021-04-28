@@ -2,4 +2,4 @@ body {
   margin: 0;
   /* text-align: center; */ }
   body #main-head {
-    height: 100vh; }
+    min-height: 100vh; }

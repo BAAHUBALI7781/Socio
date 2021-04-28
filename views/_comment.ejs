@@ -1,9 +1,17 @@
-<li>
-    <p>
-        <%if(locals.user && (comment.user.id==locals.user.id || post.user.id==locals.user.id)){%>
-            <small><a href="/comment/destroy/<%=comment.id%>">X</a></small>
-        <%}%>
-        <%=comment.content%>
-    </p>
-    <small><span><%=comment.user.user_name%></span></small>
+<li class="comment-list">
+    <div id="comment">
+        <small id="comment_creator_detail">
+            <span id="comment-creator"><%=comment.user.user_name%></span>
+            <%if(locals.user && (comment.user.id==locals.user.id || post.user.id==locals.user.id)){%>
+                <a href="/comment/destroy/<%=comment.id%>">X</a>
+            <%}%>
+            
+        </small>
+        <p>
+            <%=comment.content%>
+        </p>
+        
+    </div>
 </li>    
+
+
