@@ -20,7 +20,7 @@ module.exports.signUpPage=function(req,res){
         return res.redirect('/user/profile');
     }
     return res.render('signup',{
-        title:'Codeial Sign-Up Page'
+        title:'Socio Sign-Up Page'
     });
 }
 module.exports.signInPage=function(req,res){
@@ -29,29 +29,29 @@ module.exports.signInPage=function(req,res){
         return res.redirect('/user/profile');
     }
     return res.render('signin',{
-        title:'Codeial Sign-In Page'
+        title:'Socio Sign-In Page'
     });
 }
 module.exports.sign_up=function(req,res){
     if(req.body.password!=req.body.confirm_password)
     {
-        console.log("Password doesn't match");
+        req.flash('error','Passwords does not match')
         return res.redirect('sign-up-page');
     }
     User.findOne({email:req.body.email},function(err,user){
         if(err){
-            console.log('Error in finding the user');
+            req.flash('error','Some error occured');
             return;
         }
         if(!user){
             User.create(req.body,function(err,newUser){
                 if(err){
-                    console.log('Error in creating account');
+                    req.flash('error','Error in creating account');
                     return res.redirect('/');
                 }
                 else
                 {
-                    console.log('Created successfully');
+                    req.flash('success','Account created succesfully');
                     return res.redirect('sign-in-page');
                 }
             })
@@ -66,11 +66,13 @@ module.exports.sign_up=function(req,res){
     
 
 module.exports.sign_in=function(req,res){
+    req.flash('success','Logged in Successfully');
     return res.redirect('/');
 }
 
 module.exports.sign_out=function(req,res){
     req.logout();
+    req.flash('success','Logged out Successfully');
     return res.redirect('/');
 }
 
@@ -78,7 +80,7 @@ module.exports.update_profile=function(req,res){
     console.log("Changed");
     if(req.user.id==req.params.id){
         User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
-            console.log("Done");
+            req.flash('success','Updated Succesfully');
             return res.redirect('back');
         });
     }

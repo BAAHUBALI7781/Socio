@@ -7,15 +7,17 @@ const LocalStrategy=require('passport-local').Strategy;
 
 passport.use(new LocalStrategy({
     usernameField:'email',
-},function(email,password,done){
+    passReqToCallback:true
+},function(req,email,password,done){
     User.findOne({email:email},function(err,user){
         if(err)
         {
+            req.flash('error',)
             console.log("Error while finding user");
             return done(err);
         }
         else if(!user || (password!=user.password)){
-            console.log("Incorrect email/password");
+            req.flash('error','Invalid Username/Password');
             return done(null,false);
         }
         else
