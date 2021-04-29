@@ -1,11 +1,11 @@
 # Socio
 ### A social networking site under development
 
-#### Requirements:
+#### Requirements(for now):
 * NodeJS
 * MongoDB
 
-#### Setup:
+#### Setup(for now):
 * npm install - 
   To install the dependencies
  
