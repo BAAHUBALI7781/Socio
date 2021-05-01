@@ -6,14 +6,27 @@ module.exports.add_comment=async function(req,res){
     try{
         post=await Post.findById(req.body.post);
         if(post){
-            comment=await Comment.create({
+            
+            let comment=await Comment.create({
+                
                 content:req.body.content,
                 user:req.user._id,
                 post:req.body.post,
                 
             });
+            await comment.populate('user','user_name').execPopulate();
             post.comments.push(comment);
             post.save();
+            if(req.xhr){
+                return res.status(200).json({
+                    data:{
+                        comment:comment
+                    },
+                    message:'Comment Added'
+
+                });
+                
+            }
             req.flash('success','Added Comment');
             return res.redirect('/');
         }
