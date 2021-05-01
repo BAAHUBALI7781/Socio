@@ -13,7 +13,7 @@
       margin-top: 30px; }
     #container #feed ul {
       padding-left: 0; }
-    #container #feed li {
+    #container #feed .seperate_post {
       list-style: none;
       font-size: 1.2rem;
       background-color: #f8f7f7;
@@ -21,10 +21,10 @@
       margin-bottom: 15px;
       border-radius: 10px;
       text-align: justify; }
-      #container #feed li a {
+      #container #feed .seperate_post a {
         text-decoration: none;
         color: red; }
-      #container #feed li .post_content {
+      #container #feed .seperate_post .post_content {
         margin-top: 0; }
     #container #feed #post_form {
       display: flex;
@@ -75,14 +75,17 @@
         border-end-end-radius: 7px; }
       #container #feed #comment_form button:hover {
         background-color: #0970dd; }
-    #container #feed .comment-list {
-      padding: 0px;
-      margin: 10px; }
+    #container #feed #post-comment {
+      padding: 2%; }
+      #container #feed #post-comment li {
+        list-style: none;
+        margin-top: 10px; }
     #container #feed #comment {
       margin-left: 10%;
       width: 90%;
       background-color: white;
       padding: 7px;
+      margin-bottom: 0;
       border-radius: 10px;
       font-size: 1rem; }
       #container #feed #comment #comment-creator {

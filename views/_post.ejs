@@ -1,4 +1,4 @@
-<li id="post-<%=post.id%>">
+<li class="seperate_post" id="post-<%=post.id%>">
     <div id="post_head">
         <small><p><%=post.user.user_name%></p></small>
         <% if(locals.user && (locals.user.id==post.user.id)){%>
@@ -23,7 +23,7 @@
         
     </div>
     <div class="comments-list">
-        <ul id="post-comments">
+        <ul id="post-comment">
             <% for(comment of post.comments){ %>
                 <%- include('_comment'); -%>
             <%}%>

@@ -11,6 +11,7 @@
                     // console.log(data.data.comment);
                     let newComment=showCommentDOM(data.data.comment);
                     $('.comments-list>ul').prepend(newComment);
+                    notify('Added a comment');
                 },error:function(err){
                     console.log("Error");
                 }
@@ -35,6 +36,17 @@
         </div>
     </li>  
         `)
+    }
+
+    let notify=function(printText){
+        new Noty({
+            theme:'relax',
+            text:printText,
+            type:'success',
+            layout:'topRight',
+            timeout:1500
+
+        }).show();
     }
     createComment();
 }

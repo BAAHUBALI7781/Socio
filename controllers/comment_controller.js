@@ -39,7 +39,6 @@ module.exports.add_comment=async function(req,res){
 }
   
 module.exports.destroy=async function(req,res){
-
     try{
         let comment=await Comment.findById(req.params.id);
         let post=await Post.findById(comment.post);
