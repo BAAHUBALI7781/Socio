@@ -81,6 +81,16 @@
 
             }).show();
         }
+
+        let populate_all_delete=function(){
+            $('#posts-list-container>ul>li').each(function(){
+                let element=$(this);
+                deletePost($(' .delete-post-button'),element);
+                
+            })
+        }
     
+    populate_all_delete();    
     createPost();
+
 }
