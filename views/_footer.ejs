@@ -7,9 +7,12 @@
             <a href="/">Home</a>
 
         </li>
-        <li>
-            <a href="/user/profile/<%=user.id%>">Profile</a>
-        </li>
+        <% if(locals.user){%>
+            <li>
+                <a href="/user/profile/<%=user.id%>">Profile</a>
+            </li>
+        <%}%>
+        
     </div>
     <div class="copyright">
         <i class="far fa-copyright"></i>
