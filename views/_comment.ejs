@@ -1,9 +1,9 @@
-<li id="comment-list-<%=comment.id%>">
+<li id="comment-<%=comment.id%>">
     <div id="comment">
         <small id="comment_creator_detail">
             <span id="comment-creator"><%=comment.user.user_name%></span>
             <%if(locals.user && (comment.user.id==locals.user.id || post.user.id==locals.user.id)){%>
-                <a href="/comment/destroy/<%=comment.id%>">X</a>
+                <a class="delete-comment-button" href="/comment/destroy/<%=comment.id%>">X</a>
             <%}%>
             
         </small>

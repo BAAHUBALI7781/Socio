@@ -67,7 +67,7 @@
             align-items: center;
             justify-content: space-between;
         }
-        #comment_form{
+        .comment-form{
             display:flex;
             justify-content: center;
             input{
@@ -92,7 +92,7 @@
                 background-color: #0970dd;
             }
         }
-        #post-comment{
+        .post-comment{
             padding:2%;
             li{
                 list-style: none;

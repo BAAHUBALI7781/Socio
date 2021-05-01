@@ -24,7 +24,7 @@
     let newPostDom=function(post){
         console.log(post.user);
         return $(`
-        <li id="post-${post._id}">
+        <li class="seperate_post" id="post-${post._id}">
         <div id="post_head">
             <small><p>${post.user.user_name}</p></small>
             <small><a class="delete-post-button" href="/post/destroy/${post._id}">Delete</a></small>
@@ -86,7 +86,9 @@
             $('#posts-list-container>ul>li').each(function(){
                 let element=$(this);
                 deletePost($(' .delete-post-button'),element);
-                
+                let postId = element.prop('id').split("-")[1]
+                new PostComments(postId);
+
             })
         }
     

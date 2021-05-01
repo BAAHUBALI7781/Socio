@@ -54,10 +54,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between; }
-    #container #feed #comment_form {
+    #container #feed .comment-form {
       display: flex;
       justify-content: center; }
-      #container #feed #comment_form input {
+      #container #feed .comment-form input {
         width: 90%;
         height: 30px;
         padding: 4px;
@@ -66,18 +66,18 @@
         border-end-start-radius: 10px;
         outline: none;
         border: transparent; }
-      #container #feed #comment_form button {
+      #container #feed .comment-form button {
         width: 10%;
         color: #fff;
         background-color: #007bff;
         border-color: #007bff;
         border-start-end-radius: 7px;
         border-end-end-radius: 7px; }
-      #container #feed #comment_form button:hover {
+      #container #feed .comment-form button:hover {
         background-color: #0970dd; }
-    #container #feed #post-comment {
+    #container #feed .post-comment {
       padding: 2%; }
-      #container #feed #post-comment li {
+      #container #feed .post-comment li {
         list-style: none;
         margin-top: 10px; }
     #container #feed #comment {
