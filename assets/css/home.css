@@ -54,10 +54,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between; }
-    #container #feed .comment-form {
+    #container #feed .comment_form {
       display: flex;
       justify-content: center; }
-      #container #feed .comment-form input {
+      #container #feed .comment_form input {
         width: 90%;
         height: 30px;
         padding: 4px;
@@ -66,14 +66,14 @@
         border-end-start-radius: 10px;
         outline: none;
         border: transparent; }
-      #container #feed .comment-form button {
+      #container #feed .comment_form button {
         width: 10%;
         color: #fff;
         background-color: #007bff;
         border-color: #007bff;
         border-start-end-radius: 7px;
         border-end-end-radius: 7px; }
-      #container #feed .comment-form button:hover {
+      #container #feed .comment_form button:hover {
         background-color: #0970dd; }
     #container #feed .post-comment {
       padding: 2%; }
