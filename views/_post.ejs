@@ -14,7 +14,7 @@
     
     <div class="post-comments">
         <% if(locals.user){ %>
-            <form id="post-<%=post._id%>-comments-form" action='/comment/add-comment' class="comment-form" method="POST">
+            <form id="post-<%=post._id%>-comments-form" action='/comment/add-comment' class="comment_form" method="POST">
                 <input type="text" name="content" placeholder="Add comment..." required>
                 <input type="hidden" name="post"value="<%=post._id%>">
                 <button type="submit">Add</button>

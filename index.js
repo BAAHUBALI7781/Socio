@@ -1,5 +1,6 @@
 const express=require('express');
 const cookieParser=require('cookie-parser');
+
 const port=8080;
 const app=express();
 // To create layouts
@@ -7,15 +8,18 @@ const expressLayouts=require('express-ejs-layouts');
 const db=require('./config/mongoose');
 //Create a session cookie
 const session=require('express-session');
+
+// including passport
 const passport=require('passport');
 const passportLocal=require('./config/passport-local');
 const MongoStore=require('connect-mongo');
 // SASS
 const sassMiddleware=require('node-sass-middleware');
+// Noty messages middleware
 const flash=require('connect-flash');
 const customFlash=require('./config/middleware');
 
-
+// Setting up SCSS
 app.use(sassMiddleware({
     src:'./assets/scss',
     dest:'./assets/css',
@@ -27,11 +31,12 @@ app.use(sassMiddleware({
 // Get the req body as an object
 app.use(express.urlencoded());
 
-
 app.use(cookieParser());
 
 // Use the assets 
 app.use(express.static('./assets'));
+// Make the uploads path available to the browser
+app.use('/uploads',express.static(__dirname+'/uploads'));
 app.use(expressLayouts);
 
 app.set('layout extractStyles',true);
@@ -43,7 +48,7 @@ app.set('views','./views');
 
 // Use the session cookie
 app.use(session({
-    name:'codeial',
+    name:'socio',
     secret:"something",
     saveUninitialized:false,
     resave:false,
