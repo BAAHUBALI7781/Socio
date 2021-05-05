@@ -5,7 +5,7 @@ const User=require('../models/user');
 
 let opts={
     jwtFromRequest : ExtractJWT.fromAuthHeaderAsBearerToken(),
-    secretOrKey : 'codeial'
+    secretOrKey : 'socio'
 }
 passport.use(new JWTStrategy(opts,function(jwtPayload,done){
     User.findById(jwtPayload._id,function(err,user){
