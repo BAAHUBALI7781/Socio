@@ -13,6 +13,7 @@ const session=require('express-session');
 const passport=require('passport');
 const passportLocal=require('./config/passport-local');
 const passportJWT=require('./config/passport-jwt');
+const passportGoogle=require('./config/passport-google-oauth2');
 const MongoStore=require('connect-mongo');
 // SASS
 const sassMiddleware=require('node-sass-middleware');
