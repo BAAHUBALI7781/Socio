@@ -117,3 +117,9 @@ module.exports.update_profile=async function(req,res){
         return res.status(401).send('Unauthorized');
     }  
 }
+
+module.exports.forget_email_page=function(req,res){
+    return res.render('forget_email',{
+        title:'Forgot Password'
+    });
+}
