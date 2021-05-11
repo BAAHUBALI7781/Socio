@@ -1,34 +1,45 @@
 body {
-  background-color: lightblue; }
+  background-color: white;
+  text-align: center; }
 
 .container {
-  width: 50%;
+  width: 25%;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   margin: 50px auto;
   padding: 30px;
-  border: 1px solid grey;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background-color: white; }
+  .container input, .container button {
+    width: 70%;
+    padding: 10px;
+    border-radius: 1%;
+    outline: none;
+    border: 1px solid lightgrey;
+    margin: 5px auto;
+    color: white; }
+  .container .google-sign {
+    width: 30%;
+    background-color: white;
+    outline: none;
+    border: 1px solid lightgrey;
+    border-radius: 3px; }
+    .container .google-sign i, .container .google-sign a {
+      color: blue; }
+    .container .google-sign a {
+      text-decoration: none;
+      font-size: 1rem; }
+  .container .google-sign:hover i, .container .google-sign:hover a {
+    color: white; }
+  .container button {
+    width: 77%;
+    background-color: #2121f7;
+    font-size: 1rem;
+    font-weight: 600; }
+  .container button:hover {
+    background-color: #1a1aac;
+    color: white; }
 
-input {
-  width: 70%;
-  padding: 10px;
-  border-radius: 1%;
-  outline: none;
-  border: 1px solid black;
-  margin: 5px auto; }
-
-button {
-  padding: 5px;
-  width: 20%;
-  margin: 5px auto;
-  background-color: maroon;
-  color: white; }
-
-button:hover {
-  background-color: white;
-  color: maroon; }
-
-h1 {
-  margin-bottom: -20px; }
+@media screen and (max-width: 800px) {
+  .container {
+    width: 50%; } }

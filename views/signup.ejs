@@ -2,8 +2,17 @@
 
 
 <form action="/user/sign-up" method="POST">
-    <h1>Sign Up Page</h1>
+
+
     <div class="container">
+      
+            <button class="google-sign">
+                <i class="fab fa-google"></i>
+                <a href="/user/auth/google">Google</a>
+            </button>
+        
+        <br>
+        <p>OR</p>
         <input type='text' name='user_name' id="user_name" placeholder="Name" required>
         <input type='email' name='email' id="email" placeholder="Email" required>
         <input type='password' name='password' id="password" placeholder="Password" required>
@@ -14,6 +23,3 @@
     
     
 </form>
-<p>
-    <a href="/user/auth/google">Google Signup</a>
-</p>
