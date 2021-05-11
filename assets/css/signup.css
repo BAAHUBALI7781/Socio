@@ -25,7 +25,7 @@ body {
     border: 1px solid lightgrey;
     border-radius: 3px; }
     .container .google-sign i, .container .google-sign a {
-      color: blue; }
+      color: #111130; }
     .container .google-sign a {
       text-decoration: none;
       font-size: 1rem; }
@@ -33,11 +33,11 @@ body {
     color: white; }
   .container button {
     width: 77%;
-    background-color: #2121f7;
+    background-color: #111130;
     font-size: 1rem;
     font-weight: 600; }
   .container button:hover {
-    background-color: #1a1aac;
+    background-color: #1b1b35;
     color: white; }
 
 @media screen and (max-width: 800px) {

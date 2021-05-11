@@ -27,7 +27,7 @@ body{
         border:1px solid lightgrey;
         border-radius:3px ;
         i,a{
-            color:blue;
+            color:rgb(17, 17, 48);
         }
         a{
             text-decoration: none;
@@ -41,12 +41,12 @@ body{
     }
     button{
         width:77%;
-        background-color: rgb(33, 33, 247);
+        background-color: rgb(17, 17, 48);
         font-size: 1rem;
         font-weight: 600;
     }
     button:hover{
-        background-color: rgb(26, 26, 172);
+        background-color: rgb(27, 27, 53);
         color:white;
     }
 }
