@@ -2,19 +2,24 @@
 
 
 <form action="/user/sign-in" method="POST">
-    <h1>Sign In Page</h1>
+    
     <div class="container">
+        <button class="google-sign">
+            <i class="fab fa-google"></i>
+            <a href="/user/auth/google">Google</a>
+        </button>
+
+        <p>OR</p>
+        
         <input type='email' name='email' id="email" placeholder="Email" required>
         <input type='password' name='password' id="password" placeholder="Password" required>
+
+        <p class="forgot">
+            <a href="/user/forget-password">Forgot Password?</a>
+        </p>
         <button type="submit">Sign In</button>
     </div>
     
     
 </form>
-<p>
-    <a href="/user/auth/google">Google Signin</a>
-</p>
 
-<p>
-    <a href="/user/forget-password">Forgot Password?</a>
-</p>

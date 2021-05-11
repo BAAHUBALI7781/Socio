@@ -39,6 +39,12 @@ body {
   .container button:hover {
     background-color: #1b1b35;
     color: white; }
+  .container .forgot {
+    text-align: left;
+    margin-left: 12%; }
+    .container .forgot a {
+      text-decoration: none;
+      color: #111130; }
 
 @media screen and (max-width: 800px) {
   .container {
