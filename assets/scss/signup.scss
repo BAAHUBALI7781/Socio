@@ -18,7 +18,7 @@ body{
         outline: none;
         border:1px solid lightgrey;
         margin: 5px auto;
-        color:white;
+        color:rgb(17, 17, 48);
     }
     .google-sign{
         width:30%;
@@ -43,6 +43,7 @@ body{
         width:77%;
         background-color: rgb(17, 17, 48);
         font-size: 1rem;
+        color:white;
         font-weight: 600;
     }
     button:hover{
