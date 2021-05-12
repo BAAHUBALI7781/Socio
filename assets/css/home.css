@@ -54,9 +54,21 @@
       display: flex;
       align-items: center;
       justify-content: space-between; }
+    #container #feed .like_section {
+      padding: 0px 5px 5px 15px; }
+      #container #feed .like_section .total_likes {
+        margin-left: 10px; }
+      #container #feed .like_section a {
+        text-decoration: none;
+        color: blue;
+        font-size: 0.95rem; }
+    #container #feed #comment_likes {
+      float: right;
+      padding: 4px; }
     #container #feed .comment_form {
       display: flex;
-      justify-content: center; }
+      justify-content: center;
+      margin-top: 10px; }
       #container #feed .comment_form input {
         width: 90%;
         height: 30px;

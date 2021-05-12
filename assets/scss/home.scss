@@ -67,9 +67,25 @@
             align-items: center;
             justify-content: space-between;
         }
+        .like_section{
+            padding:0px 5px 5px 15px;
+            .total_likes{
+                margin-left:10px;
+            }
+            a{
+                text-decoration: none;
+                color:blue;
+                font-size: 0.95rem;
+            }
+        }
+        #comment_likes{
+            float:right;
+            padding:4px;
+        }
         .comment_form{
             display:flex;
             justify-content: center;
+            margin-top: 10px;
             input{
                 width:90%;
                 height:30px;
