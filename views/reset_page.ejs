@@ -1,9 +1,16 @@
+<link rel="stylesheet" href="/css/signup.css">
+<link rel="stylesheet" href="/css/message.css">
+
 <% if(token.isValid==true){%>
-<h3>Change your password</h3>
+<h2>Change your password</h2>
+
 <form action="/user/confirm-change/<%=token.accessToken%>" method="POST">
-    <input type="password" name="pass" placeholder="New Password">
-    <input type="password" name="confirm_pass" placeholder="Confirm Password">
-    <button type="submit">Change Password</button>
+    <div class="container">
+        <input type="password" name="pass" placeholder="New Password">
+        <input type="password" name="confirm_pass" placeholder="Confirm Password">
+        <button type="submit">Change Password</button>
+    </div>
+    
 </form>
 <%}else{%>
     <h2>Token Expired!!</h2>
