@@ -12,8 +12,11 @@
         </p>
     </b>
     <div class="like_section">
-        <a href>Like</a>
-        <a class="total_likes" href>0 Likes</a>
+        <% if(locals.user){ %>
+            <a  href="/like/toggle/?id=<%=post._id%>&type=Post" class="toggle-like-button" data-likes="<%=post.likes.length%>"><%=post.likes.length%> Like</a>
+        <%}else{%>
+            <a><%=post.likes.length%> Likes</a>
+        <% } %>
     </div>
     
     <div class="post-comments">

@@ -1,4 +1,4 @@
-<li id="comment-<%=comment.id%>">
+<li id="comment-<%=comment._id%>">
     <div id="comment">
         <small id="comment_creator_detail">
             <span id="comment-creator"><%=comment.user.user_name%></span>
@@ -13,8 +13,11 @@
         
     </div>
     <div id="comment_likes" class="like_section">
-        <a href>Like</a>
-        <a class="total_likes" href>0 Likes</a>
+        <% if(locals.user){ %>
+            <a href="/like/toggle/?id=<%=comment._id%>&type=Comment" class="toggle-like-button" data-likes="<%=comment.likes.length%>"><%=comment.likes.length%> Like</a>
+        <%}else{%>
+            <a href=""><%=comment.likes.length%> Likes</a>
+        <% } %>
     </div>
 </li>    
 

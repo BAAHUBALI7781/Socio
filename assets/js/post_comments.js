@@ -1,11 +1,10 @@
 
-
 class PostComments{
     constructor(postId){
         this.postId = postId;
         this.postContainer = $(`#post-${postId}`);
         this.newCommentForm = $(`#post-${postId}-comments-form`);
-        console.log(postId);
+
         this.createComment(postId);
 
         let self = this;
@@ -28,9 +27,10 @@ class PostComments{
                 success: function(data){
                     let newComment = pSelf.newCommentDom(data.data.comment);
                     // console.log(newComment);
-                    $(`#post-comments-${postId}`).prepend(newComment);
                     pSelf.deleteComment($(' .delete-comment-button', newComment));
-
+                    new ToggleLike($(' .toggle-like-button',newComment));
+                    $(`#post-comments-${postId}`).prepend(newComment);
+                    
                     new Noty({
                         theme: 'relax',
                         text: "Comment added!",
@@ -62,7 +62,9 @@ class PostComments{
                     <p>
                         ${comment.content}
                     </p>
-            
+                    <div id="comment_likes" class="like_section">
+                        <a href="/like/toggle/?id=${comment._id}&type=Comment" class="toggle-like-button" data-likes="0" href>0 Like</a>
+                    </div>
                 </div>
             </li> 
         `);
