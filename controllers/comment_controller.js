@@ -7,7 +7,7 @@ const Like=require('../models/likes');
 
 module.exports.add_comment=async function(req,res){
     try{
-        post=await Post.findById(req.body.post);
+        let post=await Post.findById(req.body.post);
         if(post){
             
             let comment=await Comment.create({
@@ -19,9 +19,9 @@ module.exports.add_comment=async function(req,res){
             });
             post.comments.push(comment);
             post.save();
-            await comment.populate('user','user_name email').execPopulate();
-            // commentMailer.newComment(comment);
-
+            comment=await comment.populate('user','user_name email').execPopulate();
+            
+            // Queuing mails
             queue.create('emails',comment).save(function(err){
                 if(err)
                 {
@@ -56,7 +56,7 @@ module.exports.destroy=async function(req,res){
     try{
         let comment=await Comment.findById(req.params.id);
         let post=await Post.findById(comment.post);
-        if(comment.user==req.user.id || post.user==req.user.id){
+        if(comment.user.id==req.user.id || post.user==req.user.id){
             let postId=comment.post;
             await Like.deleteMany({likeable:comment._id,onModel:'Comment'});
             

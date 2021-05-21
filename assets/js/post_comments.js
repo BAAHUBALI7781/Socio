@@ -57,14 +57,15 @@ class PostComments{
                 <div id="comment">
                     <small id="comment_creator_detail">
                         <span id="comment-creator">${comment.user.user_name}</span>
-                            <a class="delete-comment-button" href="/comment/destroy/${comment._id}">X</a>   
+                        <a class="delete-comment-button" href="/comment/destroy/${comment._id}">X</a>   
                     </small>
                     <p>
                         ${comment.content}
                     </p>
-                    <div id="comment_likes" class="like_section">
-                        <a href="/like/toggle/?id=${comment._id}&type=Comment" class="toggle-like-button" data-likes="0" href>0 Like</a>
-                    </div>
+                   
+                </div>
+                <div id="comment_likes" class="like_section">
+                    <a href="/like/toggle/?id=${comment._id}&type=Comment" class="toggle-like-button" data-likes="0" href>0 Like</a>
                 </div>
             </li> 
         `);

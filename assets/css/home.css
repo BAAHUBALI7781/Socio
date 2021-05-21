@@ -64,7 +64,7 @@
         font-size: 0.95rem; }
     #container #feed #comment_likes {
       float: right;
-      padding: 4px; }
+      padding-right: 4px; }
     #container #feed .comment_form {
       display: flex;
       justify-content: center;
@@ -91,7 +91,7 @@
       padding: 2%; }
       #container #feed .post-comment li {
         list-style: none;
-        margin-top: 10px; }
+        margin-top: 30px; }
     #container #feed #comment {
       margin-left: 10%;
       width: 90%;

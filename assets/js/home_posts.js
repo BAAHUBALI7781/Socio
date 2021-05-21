@@ -12,6 +12,7 @@
                     let newPost=newPostDom(data.data.post);
                     $('#posts-list-container>ul').prepend(newPost);
                     deletePost($(' .delete-post-button',newPost));
+                    new PostComments(data.data.post._id);
                     new ToggleLike($(' .toggle-like-button',newPost));
                     notify('Post Created');
                 },error:function(err){
