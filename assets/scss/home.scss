@@ -53,13 +53,13 @@
             button{
                 color: #fff;
                 width:10%;
-                background-color: #007bff;
-                border-color: #007bff;
+                background-color: rgb(17, 17, 48);
+                border-color: rgb(17, 17, 48);
                 border-start-end-radius: 7px;
                 border-end-end-radius: 7px;
             }
             button:hover{
-                background-color: #0970dd;
+                background-color: rgb(32, 32, 68);
             }
         }
         #post_head{
@@ -74,7 +74,7 @@
             }
             a{
                 text-decoration: none;
-                color:blue;
+                color:rgb(17, 17, 48);
                 font-size: 0.95rem;
             }
         }
@@ -99,13 +99,13 @@
             button{
                 width:10%;
                 color: #fff;
-                background-color: #007bff;
-                border-color: #007bff;
+                background-color: rgb(17, 17, 48);
+                border-color: rgb(17, 17, 48);
                 border-start-end-radius: 7px;
                 border-end-end-radius: 7px;
             }
             button:hover{
-                background-color: #0970dd;
+                background-color: rgb(32, 32, 68);
             }
         }
         .post-comment{
@@ -126,7 +126,7 @@
             
             #comment-creator{
                 font-size: 1.1rem;
-                color: #007bff;
+                color: rgb(17, 17, 48);
             }
             p{
                 margin: 0;

@@ -44,12 +44,12 @@
       #container #feed #post_form button {
         color: #fff;
         width: 10%;
-        background-color: #007bff;
-        border-color: #007bff;
+        background-color: #111130;
+        border-color: #111130;
         border-start-end-radius: 7px;
         border-end-end-radius: 7px; }
       #container #feed #post_form button:hover {
-        background-color: #0970dd; }
+        background-color: #202044; }
     #container #feed #post_head {
       display: flex;
       align-items: center;
@@ -60,7 +60,7 @@
         margin-left: 10px; }
       #container #feed .like_section a {
         text-decoration: none;
-        color: blue;
+        color: #111130;
         font-size: 0.95rem; }
     #container #feed #comment_likes {
       float: right;
@@ -81,12 +81,12 @@
       #container #feed .comment_form button {
         width: 10%;
         color: #fff;
-        background-color: #007bff;
-        border-color: #007bff;
+        background-color: #111130;
+        border-color: #111130;
         border-start-end-radius: 7px;
         border-end-end-radius: 7px; }
       #container #feed .comment_form button:hover {
-        background-color: #0970dd; }
+        background-color: #202044; }
     #container #feed .post-comment {
       padding: 2%; }
       #container #feed .post-comment li {
@@ -102,7 +102,7 @@
       font-size: 1rem; }
       #container #feed #comment #comment-creator {
         font-size: 1.1rem;
-        color: #007bff; }
+        color: #111130; }
       #container #feed #comment p {
         margin: 0; }
       #container #feed #comment #comment_creator_detail {

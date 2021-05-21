@@ -1,0 +1,64 @@
+#chat-box{
+    
+    width:20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    bottom:75px;
+    right:5px;
+    height:200px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: white;
+    .message-list-container{
+        ul{
+            list-style: none;
+            padding-left: 0;
+            li{
+                margin:6px;
+                width:60%;
+                border-radius: 4px;
+                color:white;
+                padding:3px;
+            }
+            .receive-message{
+                background-color:rgb(17, 17, 48);
+                text-align: left;
+            }
+            .send-message{
+                background-color:red;
+                float: right;
+            }
+        }
+    }
+    #message-form{
+        height: 20%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+
+        #message-input{
+            width: 70%;
+            border:1px solid grey;
+            outline:none;
+            padding:3px;
+        }
+
+        #send-message{
+            width: 30%;
+            padding:3px;
+            font-size: 1rem;
+            color: white;
+            border: none;
+            background-color: rgb(17, 17, 48);
+        }
+        #send-message:hover{
+            background-color: rgb(32, 32, 68);
+        }
+    }
+}
+@media screen and (min-width:800px){
+    #chat-box{
+        bottom:12vh;
+    }
+}
