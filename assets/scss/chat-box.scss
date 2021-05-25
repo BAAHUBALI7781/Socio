@@ -1,3 +1,6 @@
+::-webkit-scrollbar {
+    display: none;
+}
 #chat-box{
     
     width:20%;
@@ -7,13 +10,18 @@
     position: fixed;
     bottom:75px;
     right:5px;
-    height:200px;
+    max-height:220px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: white;
-    .message-list-container{
+    #message-list-container{
+        height:160px;
+        margin-bottom:5px;
+        overflow:scroll;
         ul{
             list-style: none;
             padding-left: 0;
+            height:100%;
+            
             li{
                 margin:6px;
                 width:60%;
@@ -25,7 +33,7 @@
                 background-color:rgb(17, 17, 48);
                 text-align: left;
             }
-            .send-message{
+            .message-send{
                 background-color:red;
                 float: right;
             }

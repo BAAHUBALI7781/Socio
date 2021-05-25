@@ -11,9 +11,46 @@ module.exports.profile=function(req,res){
         });
     })
     
+
 }
-module.exports.home=function(req,res){
-    return res.render('user');
+module.exports.update_profile=async function(req,res){
+    
+    if(req.user.id==req.params.id){
+        try{
+            user=await User.findById(req.params.id);
+            User.uploadedAvatar(req,res,function(err){
+                if(err){
+                    console.log('Multer Error',err);
+                }
+                else{
+                    user.user_name=req.body.user_name;
+                    user.email=req.body.email;
+                    if(req.file){
+                        if(user.avatar){
+                            if(fs.existsSync(path.join(__dirname,'..',user.avatar))){
+                                fs.unlinkSync(path.join(__dirname,'..',user.avatar));
+                            }
+                            
+                        }
+                        user.avatar=User.avatarPath+'/'+req.file.filename;
+                    }
+                    user.save();
+                    req.flash('success','Updated Succesfully');
+                    return res.redirect('back');
+                }
+            })
+            
+            
+        }catch(err){
+                req.flash('error',err);
+                return res.redirect("back");
+        }
+            
+    }
+    else{
+        req.flash('error','Unauthorized')
+        return res.status(401).send('Unauthorized');
+    }  
 }
 
 module.exports.signUpPage=function(req,res){
@@ -76,46 +113,6 @@ module.exports.sign_out=function(req,res){
     req.logout();
     req.flash('success','Logged out Successfully');
     return res.redirect('/');
-}
-
-module.exports.update_profile=async function(req,res){
-    
-    if(req.user.id==req.params.id){
-        try{
-            user=await User.findById(req.params.id);
-            User.uploadedAvatar(req,res,function(err){
-                if(err){
-                    console.log('Multer Error',err);
-                }
-                else{
-                    user.user_name=req.body.user_name;
-                    user.email=req.body.email;
-                    if(req.file){
-                        if(user.avatar){
-                            if(fs.existsSync(path.join(__dirname,'..',user.avatar))){
-                                fs.unlinkSync(path.join(__dirname,'..',user.avatar));
-                            }
-                            
-                        }
-                        user.avatar=User.avatarPath+'/'+req.file.filename;
-                    }
-                    user.save();
-                    req.flash('success','Updated Succesfully');
-                    return res.redirect('back');
-                }
-            })
-            
-            
-        }catch(err){
-                req.flash('error',err);
-                return res.redirect("back");
-        }
-            
-    }
-    else{
-        req.flash('error','Unauthorized')
-        return res.status(401).send('Unauthorized');
-    }  
 }
 
 module.exports.forget_email_page=function(req,res){

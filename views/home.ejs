@@ -13,16 +13,17 @@
         </div>
         
     </section>
-    
+    <!-- <h4><%= locals.user %></h4> -->
     <section id="user-friends">
         <h4>Friends</h4>
-        <% for(user of users){%>
+        <% for(userx of users){%>
             <p>
-                <a href="user/profile/<%=user.id%>"><%=user.user_name%></a>
+                <a href="user/profile/<%=user.id%>"><%=userx.user_name%></a>
             </p>
         <%}%>
-       
+    
     </section>
+    
     <%- include('_chat-box') -%>
 </div>
 
@@ -30,9 +31,18 @@
 <script src="/js/home_posts.js"></script>
 
 <script src="/js/toggle_like.js"></script>
+
 <script>
     $('.toggle-like-button').each(function(){
         let self=this;
         let toggleLike=new ToggleLike(self);
     });
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+<script src="/js/chat_engine.js"></script>
+<% if (locals.user){ %>
+<script>
+    new ChatEngine('user-chat-box', '<%= locals.user.email %>')
+</script>
+<% } %>
