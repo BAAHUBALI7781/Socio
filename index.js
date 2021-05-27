@@ -1,6 +1,6 @@
 const express=require('express');
 const cookieParser=require('cookie-parser');
-
+const env=require('./config/environment');
 const port=8080;
 const app=express();
 // To create layouts
@@ -27,10 +27,11 @@ const chatSockets=require('./config/chat_socket').chatSocket(chatServer);
 chatServer.listen(8000);
 console.log("Chat server is listening on port 5000");
 
+const path=require('path');
 // Setting up SCSS
 app.use(sassMiddleware({
-    src:'./assets/scss',
-    dest:'./assets/css',
+    src:path.join(__dirname,env.asset_path,'scss'),
+    dest:path.join(__dirname,env.asset_path,'css'),
     debug:true,
     outputStyle:'extended',
     prefix:'/css'
@@ -42,7 +43,7 @@ app.use(express.urlencoded());
 app.use(cookieParser());
 
 // Use the assets 
-app.use(express.static('./assets'));
+app.use(express.static(env.asset_path));
 // Make the uploads path available to the browser
 app.use('/uploads',express.static(__dirname+'/uploads'));
 app.use(expressLayouts);
@@ -57,7 +58,7 @@ app.set('views','./views');
 // Use the session cookie
 app.use(session({
     name:'socio',
-    secret:"something",
+    secret:env.session_cookie,
     saveUninitialized:false,
     resave:false,
     cookie:{
