@@ -10,7 +10,7 @@ const development={
         secure: false,
         auth: {
             user: 'socio.510818090',
-            pass: 'argo7781'
+            pass: 'Hello@12345'
         }
     },
     google_clientID:"45497913421-qgvtooat8lsblc9dpahl11crgnij1s8h.apps.googleusercontent.com",
