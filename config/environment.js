@@ -39,4 +39,4 @@ const production={
     jwt_secret: process.env.SOCIO_JWT_SECRET
 }
 
-module.exports=eval(process.env.SOCIO_ENVIRONMENT)== undefined?development:eval(process.env.SOCIO_ENVIRONMENT);
+module.exports=eval(process.env.SOCIO_ENVIRONMENT) == undefined ? development:eval(process.env.SOCIO_ENVIRONMENT);

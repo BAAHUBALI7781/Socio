@@ -29,13 +29,16 @@ console.log("Chat server is listening on port 5000");
 
 const path=require('path');
 // Setting up SCSS
-app.use(sassMiddleware({
-    src:path.join(__dirname,env.asset_path,'scss'),
-    dest:path.join(__dirname,env.asset_path,'css'),
-    debug:true,
-    outputStyle:'extended',
-    prefix:'/css'
-}));
+
+if(env.name=='development'){
+    app.use(sassMiddleware({
+        src:path.join(__dirname,env.asset_path,'scss'),
+        dest:path.join(__dirname,env.asset_path,'css'),
+        debug:true,
+        outputStyle:'extended',
+        prefix:'/css'
+    }));
+}
 
 // Get the req body as an object
 app.use(express.urlencoded());

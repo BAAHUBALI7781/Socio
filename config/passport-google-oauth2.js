@@ -19,13 +19,14 @@ passport.use(new googleStrategy({
                     return done(null,user);
                 }
                 else{
+                    // console.log(crypto.randomBytes(20]);
                     User.create({
-                        name:profile.displayName,
+                        user_name:profile.displayName,
                         email:profile.emails[0].value,
-                        password:crypto.randomBytes[20].toString('hex')
+                        password:crypto.randomBytes(20).toString('hex')
                     },function(err,user){
                         if(err){
-                            console.log('Error');
+                            console.log('Error',err);
                             return;
                         }
                         return done(null,user);
