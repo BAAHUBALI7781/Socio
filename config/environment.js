@@ -2,7 +2,7 @@ const development={
     name:'development',
     asset_path:'./assets',
     session_cookie:'something',
-    db:'codeial_development',
+    db:'socio_development',
     smtp:{
         service: 'gmail',
         host: 'smtp.gmail.com',
@@ -19,7 +19,24 @@ const development={
     jwt_secret:'Socio'
 }
 const production={
-    name:'production'
+    name:'production',
+    asset_path: process.env.SOCIO_ASSET_PATH,
+    session_cookie: process.env.SOCIO_SESSION_COOKIE,
+    db: process.env.SOCIO_DATABASE,
+    smtp:{
+        service: 'gmail',
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false,
+        auth: {
+            user: process.env.SOCIO_GOOGLE_USER,
+            pass: process.env.SOCIO_GOOGLE_PASS
+        }
+    },
+    google_clientID: process.env.SOCIO_GOOGLE_CLIENTID,
+    google_clientSecret: process.env.SOCIO_GOOGLE_CLIENTSECRET,
+    google_callbackURL: process.env.SOCIO_GOOGLE_CALLBACK,
+    jwt_secret: process.env.SOCIO_JWT_SECRET
 }
 
-module.exports=development;
+module.exports=eval(process.env.SOCIO_ENVIRONMENT)== undefined?development:eval(process.env.SOCIO_ENVIRONMENT);
