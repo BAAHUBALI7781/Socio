@@ -46,6 +46,7 @@ app.use(express.urlencoded());
 
 app.use(cookieParser());
 
+// Using morgan
 app.use(logger(env.morgan.mode,env.morgan.options));
 // Use the assets 
 app.use(express.static(env.asset_path));
