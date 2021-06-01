@@ -9,6 +9,7 @@ class ToggleLike{
         $(this.toggler).click(function(e){
             e.preventDefault();
             let self=this;
+            console.log(self);
             $.ajax({
                 type:'POST',
                 url:$(self).attr('href'),
