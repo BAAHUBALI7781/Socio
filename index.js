@@ -4,6 +4,7 @@ const env=require('./config/environment');
 const logger=require('morgan');
 const port=8080;
 const app=express();
+require('./config/view-helpers')(app);
 // To create layouts
 const expressLayouts=require('express-ejs-layouts');
 const db=require('./config/mongoose');
@@ -48,6 +49,7 @@ app.use(cookieParser());
 
 // Using morgan
 app.use(logger(env.morgan.mode,env.morgan.options));
+
 // Use the assets 
 app.use(express.static(env.asset_path));
 // Make the uploads path available to the browser

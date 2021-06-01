@@ -1,4 +1,4 @@
-console.log("chat engine");
+
 class ChatEngine{
     constructor(chatBoxId, userEmail){
         this.chatBox = $(`#${chatBoxId}`);
