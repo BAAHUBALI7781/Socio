@@ -43,7 +43,7 @@ if(env.name=='development'){
 }
 
 // Get the req body as an object
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended:false}));
 
 app.use(cookieParser());
 
