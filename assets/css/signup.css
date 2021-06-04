@@ -47,6 +47,13 @@ body {
       text-decoration: none;
       color: #111130; }
 
-@media screen and (max-width: 800px) {
-  .container {
-    width: 50%; } }
+    @media screen and (max-width:900px){
+        .container{
+            width:50%;
+        }
+    }
+    @media screen and (max-width:700px){
+        .container{
+            width:70%;
+        }
+    }
