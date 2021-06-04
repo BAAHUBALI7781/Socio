@@ -31,7 +31,7 @@
         text-align: left; }
       #chat-box #message-list-container ul .message-send {
         background-color: red;
-        padding: 3px; }
+        margin-left:30%; }
   #chat-box #message-form {
     height: 20%;
     width: 100%;
