@@ -13,14 +13,27 @@
         </div>
         
     </section>
-    <!-- <h4><%= locals.user %></h4> -->
     <section id="user-friends">
-        <h4>Friends</h4>
-        <% for(userx of users){%>
-            <p>
-                <a href="user/profile/<%=userx.id%>"><%=userx.user_name%></a>
-            </p>
+        <% if(locals.user){%>
+            <section id="friends">
+                <h4>Friends</h4>
+            
+                <% for(friendx of currUser.friends){%>
+                    <p>
+                        <a href="user/profile/<%=friendx.id%>"><%=friendx.user_name%></a>
+                    </p>
+                <%}%>
+            </section>
         <%}%>
+        <section id="users">
+            <h4>Users</h4>
+            <% for(userx of users){%>
+                <p>
+                    <a href="user/profile/<%=userx.id%>"><%=userx.user_name%></a>
+                </p>
+        <%}%>
+        </section>
+        
     
     </section>
     
