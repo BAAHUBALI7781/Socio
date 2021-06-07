@@ -17,9 +17,11 @@ module.exports.home = async function(req, res){
             }
         }).populate('comments')
         .populate('likes');
-
-        let currUser = await User.findById(req.user._id)
-        .populate('friends');
+        let currUser;
+        if(req.user){
+            currUser = await User.findById(req.user._id)
+            .populate('friends');
+        }
         
         let users=await User.find({});
         return res.render('home', {
