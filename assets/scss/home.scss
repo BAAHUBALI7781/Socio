@@ -140,6 +140,8 @@
         
     }
     #user-friends{
+        display: flex;
+        flex-direction: column;
         width:20%;
         padding:10px;
         background-color: rgb(228, 222, 222);

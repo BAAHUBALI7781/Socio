@@ -10,7 +10,7 @@ module.exports.home = async function(req, res){
         .populate({
             path: 'comments',
             populate: {
-                path: 'user'
+                path: 'user',
             },
             populate: {
                 path: 'likes'
@@ -18,15 +18,16 @@ module.exports.home = async function(req, res){
         }).populate('comments')
         .populate('likes');
 
-    
-        let users = await User.find({});
-
+        let currUser = await User.findById(req.user._id)
+        .populate('friends');
+        
+        let users=await User.find({});
         return res.render('home', {
-            title: "Codeial | Home",
+            title: "Socio | Home",
             posts:  posts,
-            users: users
+            users: users,
+            currUser:currUser
         });
-
     }catch(err){
         console.log('Error', err);
         return;

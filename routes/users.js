@@ -3,10 +3,11 @@ const passport=require('passport');
 const router=express.Router();
 const userController=require('../controllers/user_controller');
 const resetController=require('../controllers/reset_password_controller');
+const friendController=require('../controllers/friendship_controller');
 
 router.get('/profile/:id',userController.profile);
 router.post('/update-profile/:id',passport.checkAuthentication,userController.update_profile);
-// router.get('/',userController.home);
+router.post('/add-friend/:id',friendController.add_friend);
 
 router.get('/sign-up-page',userController.signUpPage);
 router.get('/sign-in-page',userController.signInPage);
