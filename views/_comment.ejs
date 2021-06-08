@@ -2,8 +2,8 @@
 <li id="comment-<%=comment._id%>">
     <div id="comment">
         <small id="comment_creator_detail">
-            <%=console.log(comment)%></p>
-            <span id="comment-creator"><%=comment.user.user_name%></span>
+            <!-- <%=console.log(comment)%></p> -->
+            <span id="comment-creator"><%=comment.user%></span>
             <%if(locals.user && (comment.user.id==locals.user.id || post.user.id==locals.user.id)){%>
                 <a class="delete-comment-button" href="/comment/destroy/<%=comment.id%>">X</a>
             <%}%>

@@ -6,13 +6,24 @@ const path=require('path');
 module.exports.profile=function(req,res){
     User.findById(req.params.id,function(err,user){
         return res.render('profile',{
-            title:'Codeial User Profile',
+            title:'Socio User Profile',
             profile_user:user,
         });
     })
     
 
 }
+module.exports.profile2=function(req,res){
+    User.findById(req.params.id,function(err,user){
+        return res.render('profile2',{
+            title:'Socio User Profile',
+            profile_user:user,
+        });
+    })
+    
+
+}
+
 module.exports.update_profile=async function(req,res){
     
     if(req.user.id==req.params.id){

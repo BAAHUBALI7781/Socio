@@ -51,7 +51,6 @@ class PostComments{
 
 
     newCommentDom(comment){
-        console.log(comment);
         return $(`
             <li id="comment-${comment._id}">
                 <div id="comment">
