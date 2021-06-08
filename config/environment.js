@@ -25,8 +25,8 @@ const development={
             pass: 'Hello@12345'
         }
     },
-    google_clientID:"45497913421-qgvtooat8lsblc9dpahl11crgnij1s8h.apps.googleusercontent.com",
-    google_clientSecret:"97iz_nBJArWBnxvfSRRdY8tl",
+    google_clientID:"45497913421-0iodb43ql7b71jislmkr387qj9jja4vq.apps.googleusercontent.com",
+    google_clientSecret:"h5a29lJMayiff5dQXDd03tac",
     google_callbackURL:"http://localhost:8080/user/auth/google/callback",
     jwt_secret:'Socio',
     morgan:{
