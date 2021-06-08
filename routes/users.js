@@ -6,8 +6,10 @@ const resetController=require('../controllers/reset_password_controller');
 const friendController=require('../controllers/friendship_controller');
 
 router.get('/profile/:id',userController.profile);
+router.get('/profile2/:id',userController.profile2);
 router.post('/update-profile/:id',passport.checkAuthentication,userController.update_profile);
 router.post('/add-friend/:id',friendController.add_friend);
+router.post('/remove-friend/:id',friendController.remove_friend);
 
 router.get('/sign-up-page',userController.signUpPage);
 router.get('/sign-in-page',userController.signInPage);

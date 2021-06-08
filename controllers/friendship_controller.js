@@ -29,3 +29,9 @@ module.exports.add_friend=async function(req,res){
     }
     
 }
+module.exports.remove_friend=function(req,res){
+    let index=req.user.friends.indexOf(req.params.id);
+    req.user.friends.splice(index,1);
+    req.user.save();
+    return res.redirect('/');
+}
