@@ -17,6 +17,13 @@ module.exports.home = async function(req, res){
             }
         }).populate('comments')
         .populate('likes');
+        for(postx of posts)
+        {
+            for(commentx of postx.comments)
+            {
+                commentx.populate('user user_name').execPopulate();
+            }
+        }
         let currUser;
         if(req.user){
             currUser = await User.findById(req.user._id)
