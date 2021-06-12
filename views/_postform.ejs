@@ -1,6 +1,7 @@
 <% if(locals.user){%>
-    <form id="post_form" action="/post/new-post" id="new-post" method="POST">
+    <form id="post_form" action="/post/new-post" enctype="multipart/form-data" method="POST">
         <textarea name="content" cols="30" rows="3" placeholder="Write something to post..." required></textarea>
+        <input type="file" name="avatar" placeholder="Post image">
         <button type="submit" class="btn btn-primary">Post</button>
 
     </form>
