@@ -1,16 +1,42 @@
 const Comment = require("../models/comments");
 const Like = require("../models/likes");
 const Post = require("../models/post");
+const multer=require('multer');
 
 module.exports.new_post=async function(req,res){
     
     try{
-        let post=await Post.create({
-            content:req.body.content,
-            user:req.user._id,
+        let post;
+        await Post.uploadedAvatar(req,res,async function(err){
+            if(err){
+                console.log("Error in multer",err);
 
-            
+            }
+            else
+            {
+                let image;
+                if(req.file){
+                    image=Post.postPath+'/'+req.file.filename
+                }
+                post=await Post.create({
+                    content:req.body.content,
+                    user:req.user._id,
+                    avatar:image
+                },function(err,newPost){
+                    if(err){
+                        conosle.log("Error in creating post");
+                        return res.redirect('/');
+                    }
+                    else
+                    {
+                        console.log("****POST created***");
+                        req.flash('success','Post Created');
+                        return res.redirect('back');
+                    }
+                });
+            }
         });
+        
         if(req.xhr){
             post= await post.populate('user','user_name').execPopulate();
             return res.status(200).json({
@@ -20,8 +46,6 @@ module.exports.new_post=async function(req,res){
                 message:'Post created',
             });       
         }
-        req.flash('success','Post Created');
-        return res.redirect('back');
 
     }
     catch(err){
