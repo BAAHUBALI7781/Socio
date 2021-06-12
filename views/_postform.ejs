@@ -1,8 +1,12 @@
 <% if(locals.user){%>
     <form id="post_form" action="/post/new-post" enctype="multipart/form-data" method="POST">
         <textarea name="content" cols="30" rows="3" placeholder="Write something to post..." required></textarea>
-        <input type="file" name="avatar" placeholder="Post image">
-        <button type="submit" class="btn btn-primary">Post</button>
-
+        <div id="post-form-button">
+            <label for="file-upload" class="custom-file-upload">
+                Add image
+            </label>
+            <input id="file-upload" type="file" name="avatar" placeholder="Post image">
+            <button id="form-submit" type="submit" class="btn btn-primary">Post!</button>
+        </div>
     </form>
 <%}%>
