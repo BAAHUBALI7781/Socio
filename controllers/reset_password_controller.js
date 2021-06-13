@@ -30,7 +30,7 @@ module.exports.send_mail=function(req,res){
                 {
                     // console.log(`http://localhost:8080/user/reset/?${newToken.accessToken}`);
 
-                    reset_password.forgot_password(`http://localhost:8080/user/reset_password_page/${newToken.accessToken}`,req.body.email);
+                    reset_password.forgot_password(`http://www.socio.codes/user/reset_password_page/${newToken.accessToken}`,req.body.email);
                     return res.render("mail_sent",{
                         mail:req.body.email,
                         title:'Reset Password'
