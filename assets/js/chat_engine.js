@@ -53,7 +53,7 @@ class ChatEngine{
     });
 }
 }
-function updateScroll(){
-    var element = document.getElementById("message-list-container");
-    element.scrollTop = element.scrollHeight;
-}
+// function updateScroll(){
+//     var element = document.getElementById("message-list-container");
+//     element.scrollTop = element.scrollHeight;
+// }
