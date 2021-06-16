@@ -7,8 +7,11 @@
         <div id="links">
             <%if(locals.user){%>
                 <li>
+                    <a href="/socio-chat">Chat Room | </a>
+                </li>
+                <li>
                     <a href="/user/profile/<%=locals.user.id%>">
-                        <%=user.user_name%></li>
+                        <%=user.user_name%> | </li>
                     </a>
                 <li>
                     <a href="/user/sign-out">Sign Out</a>

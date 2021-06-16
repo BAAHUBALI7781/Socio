@@ -3,12 +3,19 @@
 <% if(locals.user){ %>
     <div id="chat-box">
         <div id="message-list-container">
-            <ul class="message-list">        
-            </ul>
+            
         </div>
         <div id="message-form">
-            <input id="message-input" class="clearfix" type="text" placeholder="Type message">
+            <input id="message-input" class="clearfix" type="text" placeholder="Type message...">
             <button id="send-message" class="clearfix">Send</button>
         </div>
     </div>
 <%}%>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+<script src="<%= assetPath('js/chat_engine.js') %>"></script>
+<% if (locals.user){ %>
+<script>
+    new ChatEngine('user-chat-box', '<%= locals.user.email %>','<%= locals.user.user_name %>');
+</script>
+<% } %>

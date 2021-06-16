@@ -43,3 +43,8 @@ module.exports.home = async function(req, res){
     }
    
 }
+module.exports.socio_room=function(req,res){
+    res.render('_chat-box.ejs',{
+        title:'Socio Chat Room'
+    });
+}

@@ -1,9 +1,10 @@
 
 class ChatEngine{
-    constructor(chatBoxId, userEmail){
+    constructor(chatBoxId, userEmail, userName){
+        console.log(userName);
         this.chatBox = $(`#${chatBoxId}`);
         this.userEmail = userEmail;
-
+        this.userName=userName;
         this.socket = io.connect('http://18.212.35.2:5000',{transports:['websocket', 'polling', 'flashsocket']});
 
         if (this.userEmail){
@@ -17,6 +18,7 @@ class ChatEngine{
         });
         self.socket.emit('join_room',{
             user_email:self.userEmail,
+            user_name:self.userName,
             room_id:'Socio chatroom'
         });
         self.socket.on('user_join',function(data){
@@ -25,35 +27,51 @@ class ChatEngine{
 
         $('#send-message').click(function(){
             let msg=$('#message-input').val();
-            console.log(msg);
             if(msg!='')
             {
                 self.socket.emit('send',{
+                    username:self.userName,
                     message:msg,
                     user_email:self.userEmail,
-                    room_id:'Socio chatroom'
+                    room_id:'Socio chatroom',
+                    
                 });
             }
         });
         self.socket.on('receive',function(data){
-            console.log('Message : ',data.message);
-            let newMessage=$('<li>');
-            let messageType='receive-message';
-
-            if(data.user_email==self.userEmail){
-                messageType='message-send';
+            var date=new Date();
+            data.time=date.toLocaleString('en-GB').slice(0,-3).substring(11);
+          
+            let newdiv=document.createElement('div');
+            newdiv.classList.add('seperate-message');
+            if(data.user_email==self.userEmail)
+            {
+                newdiv.innerHTML=`
+                    <div class="details" id="user_detail">
+                        <span>${data.username} | </span>
+                        <span>${data.time}</span>
+                    </div>
+                    <div class="message">
+                        <span>${data.message}</span>
+                    </div>
+            `
             }
-            newMessage.append($('<span>',{
-                'html':data.message
-            }));
-            newMessage.addClass(messageType);
-            $('.message-list').append(newMessage);
-            updateScroll();            
-
+            else{
+                newdiv.innerHTML=`
+                    <div class="details">
+                        <span>${data.username} | </span>
+                        <span>${data.time}</span>
+                    </div>
+                    <div class="message">
+                        <span>${data.message}</span>
+                    </div>
+            `
+            }
+            $('#message-list-container').append(newdiv);
+            console.log(newdiv);
+            const messageContainer=document.getElementById('message-list-container');
+            messageContainer.scrollTop=messageContainer.scrollHeight;  
+     
     });
 }
 }
-// function updateScroll(){
-//     var element = document.getElementById("message-list-container");
-//     element.scrollTop = element.scrollHeight;
-// }

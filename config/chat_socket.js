@@ -1,3 +1,5 @@
+const moment=require('moment');
+
 module.exports.chatSocket = function(chatServer){
     let io = require('socket.io')(chatServer);
     
@@ -12,6 +14,7 @@ module.exports.chatSocket = function(chatServer){
             io.in(data.room_id).emit('user_join',data);
         });
         socket.on('send',function(data){
+            console.log(data);
             io.in(data.room_id).emit('receive',data);
         })
         
