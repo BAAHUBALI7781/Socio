@@ -29,7 +29,6 @@ module.exports.home = async function(req, res){
         }).populate('comments')
         .populate('likes');
         await pop(posts);
-        console.log(posts[0].comments[0]);
         let currUser;
         if(req.user){
             currUser = await User.findById(req.user._id)
