@@ -14,12 +14,12 @@ header{
 
     #links{
         display: flex;
-        width:40%;
+        width:60%;
         justify-content: flex-end;
+        margin-right: 10px;
     }
     li{
         list-style: none;
-        margin-left:4%;
         a{
             color:white;
             font-size: 1.1rem;
