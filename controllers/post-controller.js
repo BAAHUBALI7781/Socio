@@ -7,7 +7,7 @@ module.exports.new_post=async function(req,res){
     
     try{
         let post;
-        await Post.uploadedAvatar(req,res,async function(err){
+        await Post.uploadedAvatar(req,res,function(err){
             if(err){
                 console.log("Error in multer",err);
 
@@ -16,36 +16,40 @@ module.exports.new_post=async function(req,res){
             {
                 let image;
                 if(req.file){
-                    image=Post.postPath+'/'+req.file.filename
+                    
+                    image=Post.postPath+'/'+req.file.filename;
+                    console.log("***Image*** ",image);
                 }
-                post=await Post.create({
+                
+                Post.create({
                     content:req.body.content,
                     user:req.user._id,
                     avatar:image
-                },function(err,newPost){
+                },async function(err,newPost){
                     if(err){
-                        conosle.log("Error in creating post");
+                        console.log("Error in creating post");
                         return res.redirect('/');
                     }
-                    else
-                    {
-                        console.log("****POST created***");
-                        req.flash('success','Post Created');
-                        return res.redirect('back');
+                    
+                    if(req.xhr){
+                        console.log("Inside xhr");
+                        await newPost.populate('user','user_name').execPopulate();
+                        return res.status(200).json({
+                            data:{
+                                post:newPost,
+                            },
+                            message:'Post created',
+                        });       
                     }
+                    console.log("****POST created***");
+                    req.flash('success','Post Created');
+                    return res.redirect('back');
+                    
                 });
             }
         });
         
-        if(req.xhr){
-            post= await post.populate('user','user_name').execPopulate();
-            return res.status(200).json({
-                data:{
-                    post:post,
-                },
-                message:'Post created',
-            });       
-        }
+        
 
     }
     catch(err){

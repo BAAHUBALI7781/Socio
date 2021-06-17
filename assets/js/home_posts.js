@@ -4,11 +4,16 @@
 
         postForm.submit(function(e){
             e.preventDefault();
+            var dataForm = new FormData(postForm[0]);
+            console.log("FormData",dataForm);
             $.ajax({
                 type:'post',
                 url:'/post/new-post',
-                data:postForm.serialize(),
+                data:dataForm,
+                processData: false,
+                contentType: false, 
                 success:function(data){
+                    console.log(data);
                     let newPost=newPostDom(data.data.post);
                     $('#posts-list-container>ul').prepend(newPost);
                     deletePost($(' .delete-post-button',newPost));
@@ -24,43 +29,84 @@
 
     }
     let newPostDom=function(post){
-        console.log(post.user);
-        return $(`
-        <li class="seperate_post" id="post-${post._id}">
-        <div id="post_head">
-            <small><p>${post.user.user_name}</p></small>
-            <small><a class="delete-post-button" href="/post/destroy/${post._id}">Delete</a></small>
-            
-        </div>
-        
-        <b>
-            <p class="post_content">
-                ${post.content}
-            </p>
-        </b>
-        <div class="like_section">
-            <a href="/like/toggle/?id=${post._id}&type=Post" class="toggle-like-button" data-likes="0">
-                0 Like
-            </a>    
-        </div>
-        
-        <div class="post-comments">
-                <form class="comment_form" id="post-${post._id}-comments-form" action='/comment/add-comment' method="POST">
-                    <input type="text" name="content" placeholder="Add comment..." required>
-                    <input type="hidden" name="post" value="${post._id}">
-                    <button type="submit">Add</button>
-                </form>
-            
-        </div>
-        <div class="comments-list">
-            <ul id="post-comments-${post.id}">
+        if(post.avatar){
+            return $(`
+                <li class="seperate_post" id="post-${post._id}">
+                <div id="post_head">
+                    <small><p>${post.user.user_name}</p></small>
+                    <small><a class="delete-post-button" href="/post/destroy/${post._id}">Delete</a></small>
+                    
+                </div>
                 
-            </ul>
-        </div>
-        
-    </li>
+                <b>
+                    <p class="post_content">
+                        ${post.content}
+                    </p>
+                        <div class="post-image-container">
+                            <img class="post-image" src="${post.avatar}" alt="Post Image">    
+                        </div>
+                </b>
+                <div class="like_section">
+                    <a href="/like/toggle/?id=${post._id}&type=Post" class="toggle-like-button" data-likes="0">
+                        0 Like
+                    </a>    
+                </div>
+                
+                <div class="post-comments">
+                        <form class="comment_form" id="post-${post._id}-comments-form" action='/comment/add-comment' method="POST">
+                            <input type="text" name="content" placeholder="Add comment..." required>
+                            <input type="hidden" name="post" value="${post._id}">
+                            <button type="submit">Add</button>
+                        </form>
+                    
+                </div>
+                <div class="comments-list">
+                    <ul id="post-comments-${post.id}">
+                        
+                    </ul>
+                </div>
+                
+            </li>
+        `)}
+        else{
+            return $(`
+                <li class="seperate_post" id="post-${post._id}">
+                <div id="post_head">
+                    <small><p>${post.user.user_name}</p></small>
+                    <small><a class="delete-post-button" href="/post/destroy/${post._id}">Delete</a></small>
+                    
+                </div>
+                
+                <b>
+                    <p class="post_content">
+                        ${post.content}
+                    </p>
+                </b>
+                <div class="like_section">
+                    <a href="/like/toggle/?id=${post._id}&type=Post" class="toggle-like-button" data-likes="0">
+                        0 Like
+                    </a>    
+                </div>
+                
+                <div class="post-comments">
+                        <form class="comment_form" id="post-${post._id}-comments-form" action='/comment/add-comment' method="POST">
+                            <input type="text" name="content" placeholder="Add comment..." required>
+                            <input type="hidden" name="post" value="${post._id}">
+                            <button type="submit">Add</button>
+                        </form>
+                    
+                </div>
+                <div class="comments-list">
+                    <ul id="post-comments-${post.id}">
+                        
+                    </ul>
+                </div>
+                
+            </li>
         `)
+        }
     }
+        
     
         let deletePost=function(deleteLink){
             $(deleteLink).click(function(e){

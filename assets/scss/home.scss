@@ -200,29 +200,31 @@
 
 }
 
-@media screen and (max-width:700px){
+@media screen and (max-width:800px){
     #container{
         #feed{
-            #post_form{
-                textarea{
-                    width:85%;
-                }
-                button{
-                    width:15%;
+            .seperate_post{
+                .post-image-container{
+                    .post-image{
+                        width: 320px;
+                        height:350px;
+                        object-fit:contain;
+                    }
                 }
             }
         }
     }
 }
-@media screen and (max-width:500px){
+@media screen and (max-width:600px){
     #container{
         #feed{
-            #post_form{
-                textarea{
-                    width:78%;
-                }
-                button{
-                    width:22%;
+            .seperate_post{
+                .post-image-container{
+                    .post-image{
+                        width: 240px;
+                        height:280px;
+                        object-fit:contain;
+                    }
                 }
             }
         }

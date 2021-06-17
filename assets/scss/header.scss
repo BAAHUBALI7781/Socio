@@ -28,3 +28,10 @@ header{
     }
 
 }
+@media screen and (max-width:600px){
+    header{
+        #links{
+            width:70%;
+        }
+    }
+}

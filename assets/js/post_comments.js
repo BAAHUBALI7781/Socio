@@ -25,8 +25,9 @@ class PostComments{
                 url: '/comment/add-comment',
                 data: $(self).serialize(),
                 success: function(data){
+                    console.log(data.data.comment);
                     let newComment = pSelf.newCommentDom(data.data.comment);
-                    // console.log(newComment);
+                    
                     pSelf.deleteComment($(' .delete-comment-button', newComment));
                     new ToggleLike($(' .toggle-like-button',newComment));
                     $(`#post-comments-${postId}`).prepend(newComment);

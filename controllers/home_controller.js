@@ -1,6 +1,17 @@
+const { populate } = require("../models/post");
 const Post = require("../models/post");
 const User = require('../models/user');
 
+let pop=async function(posts)
+{
+    for(postx of posts)
+        {
+            for(commentx of postx.comments)
+            {
+                await commentx.populate('user user_name').execPopulate();
+            }
+        }
+}
 module.exports.home = async function(req, res){
 
     try{
@@ -17,13 +28,8 @@ module.exports.home = async function(req, res){
             }
         }).populate('comments')
         .populate('likes');
-        for(postx of posts)
-        {
-            for(commentx of postx.comments)
-            {
-                commentx.populate('user user_name').execPopulate();
-            }
-        }
+        await pop(posts);
+        console.log(posts[0].comments[0]);
         let currUser;
         if(req.user){
             currUser = await User.findById(req.user._id)
