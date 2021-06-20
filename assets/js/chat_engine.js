@@ -39,8 +39,8 @@ class ChatEngine{
             }
         });
         self.socket.on('receive',function(data){
-            var date=new Date();
-            data.time=date.toLocaleString('en-GB').slice(0,-3).substring(11);
+            console.log("In client");
+            
           
             let newdiv=document.createElement('div');
             newdiv.classList.add('seperate-message');
@@ -48,8 +48,11 @@ class ChatEngine{
             {
                 newdiv.innerHTML=`
                     <div class="details" id="user_detail">
-                        <span>${data.username} | </span>
-                        <span>${data.time}</span>
+                        <span>${data.username} </span>
+                        <div>
+                            <span>${data.date} | </span>
+                            <span>${data.time}</span>
+                        </div>
                     </div>
                     <div class="message">
                         <span>${data.message}</span>
@@ -59,8 +62,11 @@ class ChatEngine{
             else{
                 newdiv.innerHTML=`
                     <div class="details">
-                        <span>${data.username} | </span>
-                        <span>${data.time}</span>
+                        <span>${data.username}</span>
+                        <div>
+                            <span>${data.date} | </span>
+                            <span>${data.time}</span>
+                        </div>
                     </div>
                     <div class="message">
                         <span>${data.message}</span>
