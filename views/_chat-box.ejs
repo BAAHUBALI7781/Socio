@@ -1,9 +1,41 @@
 <link rel="stylesheet" href="<%= assetPath('css/chat-box.css') %>">
 
+<h2 style="color:#1e1e3a;text-align: center;">This chat box is for general and technical queries. Dont share your personal messages here.</h3>
 <% if(locals.user){ %>
     <div id="chat-box">
         <div id="message-list-container">
-            
+            <% for(data of messages) {%>
+                <% if(data.user_email==locals.user.email){ %>
+                    <div class="seperate-message">
+                        <div class="details"  id="user_detail">
+                            <span> <%= data.username %> </span>
+                            <div>
+                                <span> <%= data.date %> | </span>
+                                <span> <%= data.time %> </span>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <span> <%= data.message %> </span>
+                        </div>
+                    </div>
+                <%}else{%>
+                    <div class="seperate-message">
+                        <div class="details">
+                            <span><%= data.username %> </span>
+                            <div>
+                                <span><%= data.date %> | </span>
+                                <span><%= data.time %> </span>
+                            </div>
+                        </div>
+                        <div class="message">
+                            <span><%= data.message %> </span>
+                        </div>
+                    </div>
+                <%}%>
+                
+                
+
+            <%}%>
         </div>
         <div id="message-form">
             <input id="message-input" class="clearfix" type="text" placeholder="Type message...">
