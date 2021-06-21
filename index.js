@@ -73,7 +73,7 @@ app.use(session({
         maxAge:(1000*60*100)
     },
     store:MongoStore.create({
-        mongoUrl: process.env.SOCIO_DATABASE ||'mongodb://localhost/socio-development',
+        mongoUrl: env.db ||'mongodb://localhost/socio-development',
         autoRemove:'disabled',
     },function(err){
         console.log(err || 'connect-mongdb setup');
