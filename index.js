@@ -64,6 +64,12 @@ app.set('view engine','ejs');
 app.set('views','./views');
 
 // Use the session cookie
+let dataBase;
+if(env=='production'){
+    dataBase=env.db;
+}else{
+    dataBase=`mongodb://localhost/${env.db}`;
+}
 app.use(session({
     name:'socio',
     secret:env.session_cookie,
@@ -73,7 +79,8 @@ app.use(session({
         maxAge:(1000*60*100)
     },
     store:MongoStore.create({
-        mongoUrl: env.db ||'mongodb://localhost/socio-development',
+        
+        mongoUrl: dataBase,
         autoRemove:'disabled',
     },function(err){
         console.log(err || 'connect-mongdb setup');
