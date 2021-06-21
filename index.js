@@ -2,7 +2,7 @@ const express=require('express');
 const cookieParser=require('cookie-parser');
 const env=require('./config/environment');
 const logger=require('morgan');
-const port=8080;
+const port=process.env.PORT || 8080;
 const app=express();
 require('./config/view-helpers')(app);
 // To create layouts
@@ -73,7 +73,7 @@ app.use(session({
         maxAge:(1000*60*100)
     },
     store:MongoStore.create({
-        mongoUrl:`mongodb://localhost/${env.db}`,
+        mongoUrl: process.env.SOCIO_DATABASE ||'mongodb://localhost/socio-development',
         autoRemove:'disabled',
     },function(err){
         console.log(err || 'connect-mongdb setup');

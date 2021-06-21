@@ -1,6 +1,6 @@
 const mongoose=require('mongoose');
 const env=require('./environment');
-mongoose.connect(`mongodb://localhost/${env.db}`);
+mongoose.connect(process.env.SOCIO_DATABASE ||'mongodb://localhost/socio-development');
 
 const db=mongoose.connection;
 
