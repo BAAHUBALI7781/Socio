@@ -10,11 +10,7 @@
   ```bash
     npm install
   ```
-  Compress the asset files
-  ```bash
-    gulp build
-  ```  
-  Start the server
+  Run the server in development mode
  ```bash
-    npm start
+    npm run dev
   ```  
