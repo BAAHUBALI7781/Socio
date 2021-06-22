@@ -2,7 +2,7 @@ const express=require('express');
 const cookieParser=require('cookie-parser');
 const env=require('./config/environment');
 const logger=require('morgan');
-const port=process.env.PORT || 8080;
+const port=8080;
 const app=express();
 require('./config/view-helpers')(app);
 // To create layouts
@@ -63,13 +63,7 @@ app.set('layout extractScripts',true);
 app.set('view engine','ejs');
 app.set('views','./views');
 
-// Use the session cookie
-let dataBase;
-if(env=='production'){
-    dataBase=env.db;
-}else{
-    dataBase=`mongodb://localhost/${env.db}`;
-}
+
 app.use(session({
     name:'socio',
     secret:env.session_cookie,
@@ -80,7 +74,7 @@ app.use(session({
     },
     store:MongoStore.create({
         
-        mongoUrl: dataBase,
+        mongoUrl: `mongodb://localhost/${env.db}`,
         autoRemove:'disabled',
     },function(err){
         console.log(err || 'connect-mongdb setup');
