@@ -5,7 +5,7 @@ class ChatEngine{
         this.chatBox = $(`#${chatBoxId}`);
         this.userEmail = userEmail;
         this.userName=userName;
-        this.socket = io.connect('http://18.212.35.2:5000',{transports:['websocket', 'polling', 'flashsocket']});
+        this.socket = io.connect('http://35.174.176.118/:5000',{transports:['websocket', 'polling', 'flashsocket']});
 
         if (this.userEmail){
             this.connectionHandler();
