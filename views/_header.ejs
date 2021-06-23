@@ -7,19 +7,20 @@
         <div id="links">
             <%if(locals.user){%>
                 <li>
-                    <a href="/socio-chat">Chat Room &nbsp;&nbsp;|&nbsp;&nbsp;</a>
+                    <a href="/socio-chat">Chat Room</a>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;
                 </li>
                 <li>
                     <a href="/user/profile/<%=locals.user.id%>">
-                        <%=user.user_name%> &nbsp;&nbsp;|&nbsp;&nbsp;</li>
-                    </a>
+                        <%=user.user_name%> 
+                    </a>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;
+                </li>
                 <li>
                     <a href="/user/sign-out">Sign Out</a>
                 </li>
     
             <%}else{%>
                 <li>
-                    <a href="/user/sign-in-page">Sign In &nbsp;&nbsp;|&nbsp;&nbsp;</a>
+                    <a href="/user/sign-in-page">Sign In</a> &nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;
                 </li>
                 <li>
                     <a href="/user/sign-up-page">Sign Up</a>

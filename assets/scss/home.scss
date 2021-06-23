@@ -5,7 +5,7 @@
     #links{
         width:20%;
         padding:10px;
-        background-color: rgb(228, 222, 222);
+        background-color: #111130;
     }
     #feed{
         width:60%;
@@ -179,18 +179,19 @@
         flex-direction: column;
         width:20%;
         padding:10px;
-        background-color: rgb(228, 222, 222);
+        background-color: #111130;
         
         h4{
             font-size:1.2rem;
             text-align: center;
+            color:white;
         }
         p{
             font-size:1.1rem;
             text-align: center;
             a{
                 text-decoration: none;
-                color:rgb(17, 17, 48);
+                color:white;
             }
             a:hover{
                 color:red;
