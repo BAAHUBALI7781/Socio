@@ -1,11 +1,10 @@
-
 class ChatEngine{
     constructor(chatBoxId, userEmail, userName){
         console.log(userName);
         this.chatBox = $(`#${chatBoxId}`);
         this.userEmail = userEmail;
         this.userName=userName;
-        this.socket = io.connect('http://35.174.176.118/:5000',{transports:['websocket', 'polling', 'flashsocket']});
+        this.socket = io.connect('http://35.174.176.118:5000',{transports:['websocket', 'polling', 'flashsocket']});
 
         if (this.userEmail){
             this.connectionHandler();
@@ -17,12 +16,30 @@ class ChatEngine{
             console.log('Connection established using sockets...!');
         });
         self.socket.emit('join_room',{
-            user_email:self.userEmail,
-            user_name:self.userName,
+            username:'Socio Chat Bot',
+            message:`${self.userName} is online...`,
+            user_email:'socio.510818090@gmail.com',
             room_id:'Socio chatroom'
         });
         self.socket.on('user_join',function(data){
-            console.log("A new user joined",data);
+            console.log(data);
+            let newdiv=document.createElement('div');
+            newdiv.classList.add('seperate-message');
+            newdiv.innerHTML=`
+                    <div class="details">
+                        <span>${data.username}</span>
+                        <div>
+                            <span>${data.date} | </span>
+                            <span>${data.time}</span>
+                        </div>
+                    </div>
+                    <div class="message">
+                        <span>${data.message}</span>
+                    </div>
+            `;
+            $('#message-list-container').append(newdiv);
+            const messageContainer=document.getElementById('message-list-container');
+            messageContainer.scrollTop=messageContainer.scrollHeight; 
         });
 
         $('#send-message').click(function(){
@@ -39,9 +56,6 @@ class ChatEngine{
             }
         });
         self.socket.on('receive',function(data){
-            console.log("In client");
-            
-          
             let newdiv=document.createElement('div');
             newdiv.classList.add('seperate-message');
             if(data.user_email==self.userEmail)

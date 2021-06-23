@@ -8,8 +8,12 @@ module.exports.chatSocket = function(chatServer){
         socket.on('disconnect', function(){
             console.log("Socket disconnected");
         });
-        socket.on('join_room',function(data){
-            console.log("Joining room!",data);
+        socket.on('join_room',async function(data){
+            var date=new Date();
+            data.date=date.toLocaleString('en-GB').substring(0,10);
+            data.time=date.toLocaleString('en-GB').slice(0,-3).substring(11);
+            console.log("***",data.date, data.time)
+            const newMessage=await Chat.create(data);
             socket.join(data.room_id);
             io.in(data.room_id).emit('user_join',data);
         });
