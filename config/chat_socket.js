@@ -1,8 +1,7 @@
-
 const Chat = require('../models/chat');
 module.exports.chatSocket = function(chatServer){
     let io = require('socket.io')(chatServer);
-    
+
     io.sockets.on('connection', function(socket){
         console.log('new connection received', socket.id);
         socket.on('disconnect', function(){
@@ -10,21 +9,36 @@ module.exports.chatSocket = function(chatServer){
         });
         socket.on('join_room',async function(data){
             var date=new Date();
-            data.date=date.toLocaleString('en-GB').substring(0,10);
-            data.time=date.toLocaleString('en-GB').slice(0,-3).substring(11);
-            console.log("***",data.date, data.time)
+            const obj=convert(date);
+            data.date=obj.rdate;
+            data.time=onj.rtime;
             const newMessage=await Chat.create(data);
             socket.join(data.room_id);
             io.in(data.room_id).emit('user_join',data);
         });
         socket.on('send',async function(data){
             var date=new Date();
-            data.date=date.toLocaleString('en-GB').substring(0,10);
-            data.time=date.toLocaleString('en-GB').slice(0,-3).substring(11);
+            const obj=convert(date);
+            data.date=obj.rdate;
+            data.time=onj.rtime;
             const newMessage=await Chat.create(data);
             io.in(data.room_id).emit('receive',data);
         })
-        
-    });
 
+    });
+}
+function convert(date){
+    date.setHours(date.getHours() + 5);
+    date.setMinutes(date.getMinutes() + 30);
+    var day=date.getDate();
+    var month=date.getMonth()+1;
+    var year=date.getFullYear();
+    var hour=date.getHours();
+    var min=date.getMinutes();
+    rdate=day+'/'+month+'/'+year;
+    rtime=hour+':'+min;
+    return {
+        rdate:rdate,
+        rtime:rtime
+    }
 }
