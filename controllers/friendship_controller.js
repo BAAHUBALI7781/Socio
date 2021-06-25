@@ -1,37 +1,42 @@
 const User = require('../models/user');
 const Friendship = require("../models/friends");
 
-module.exports.add_friend=async function(req,res){
-    console.log(req.params.id);
+module.exports.togg_friend=async function(req,res){
+    // console.log(req.body);
     try{
-        let user=await User.findById(req.user);
-        let friends=user.friends;
-        let isFriendship=await friends.find(id=> id==req.params.id);
-        if(isFriendship!=undefined){
-            console.log("Friend already added");
-            return res.redirect('back');
+        let toggle;
+        let friendship=await Friendship.findOne({from:req.user, to:req.query.id});
+        console.log("Friendship ",friendship);
+        if(friendship!=null){
+            toggle=0;
+            let index=req.user.friends.indexOf(req.query.id);
+            req.user.friends.splice(index,1);
+            req.user.save();
+            Friendship.findByIdAndDelete(friendship._id);
+        }
+        else{
+            toggle=1;
+            let friend=await Friendship.create({
+                from:req.user,
+                to:req.query.id
+            });
+            req.user.friends.push(req.query.id);
+            req.user.save();
+        }
+        if(req.xhr){
+            return res.status(200).json({
+                data:{
+                    toggle:toggle
+                }
+            })
         }
         else
         {
-            req.user.friends.push(req.params.id);
-            console.log(req.user.friends);
-            let frienship=await Friendship.create({
-                to:req.params.id,
-                from:req.user
-            });
-            req.user.save();
-            res.redirect('back');
+            return res.redirect('back');
         }
-    }
-    catch(err){
+    }catch(err){
         console.log("Error",err);
         return;
     }
     
-}
-module.exports.remove_friend=function(req,res){
-    let index=req.user.friends.indexOf(req.params.id);
-    req.user.friends.splice(index,1);
-    req.user.save();
-    return res.redirect('/');
 }

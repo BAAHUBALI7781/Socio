@@ -15,6 +15,20 @@ body{
             object-fit: cover;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
+        .toggle-friend-button{
+                text-decoration: none;
+                border: 1px solid rgb(17, 17, 48);
+                padding:3px;
+                font-size: 1rem;
+                background-color: rgb(17, 17, 48);
+                color:white;
+            
+        }
+        .toggle-friend-button:hover{
+            color:black;
+            background-color: white;
+        }
+
     }
     .edit_details{
         border:1px solid lightgray;
