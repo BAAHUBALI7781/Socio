@@ -7,17 +7,7 @@ module.exports.profile=function(req,res){
     User.findById(req.params.id,function(err,user){
         return res.render('profile',{
             title:'Socio User Profile',
-            profile_user:user,
-        });
-    })
-    
-
-}
-module.exports.profile2=function(req,res){
-    User.findById(req.params.id,function(err,user){
-        return res.render('profile2',{
-            title:'Socio User Profile',
-            profile_user:user,
+            profile_user:user
         });
     })
     
