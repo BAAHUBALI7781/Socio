@@ -8,8 +8,6 @@ const accessLogStream=rfs.createStream('access.log',{
     interval:'1d',
     path:log_directory
 });
-
-
 const development={
     name:'development',
     asset_path:'./assets',
@@ -24,7 +22,7 @@ const development={
             user: 'socio.510818090',
             pass: 'Hello@12345'
         }
-    },
+    }, 
     google_clientID:"45497913421-0iodb43ql7b71jislmkr387qj9jja4vq.apps.googleusercontent.com",
     google_clientSecret:"h5a29lJMayiff5dQXDd03tac",
     google_callbackURL:"http://localhost:8080/user/auth/google/callback",
@@ -59,4 +57,4 @@ const production={
     }
 }
 
-module.exports=eval(process.env.SOCIO_ENVIRONMENT) == undefined ? development:eval(process.env.SOCIO_ENVIRONMENT);
+module.exports=eval(process.env.NODE_ENV) == undefined ? development:eval(process.env.NODE_ENV);
