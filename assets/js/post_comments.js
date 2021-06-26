@@ -27,10 +27,10 @@ class PostComments{
                 success: function(data){
                     console.log(data.data.comment);
                     let newComment = pSelf.newCommentDom(data.data.comment);
-                    
+                    $(`#post-comments-${postId}`).prepend(newComment);
                     pSelf.deleteComment($(' .delete-comment-button', newComment));
                     new ToggleLike($(' .toggle-like-button',newComment));
-                    $(`#post-comments-${postId}`).prepend(newComment);
+                    
                     
                     new Noty({
                         theme: 'relax',
