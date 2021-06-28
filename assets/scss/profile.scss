@@ -1,116 +1,128 @@
-body{
-    text-align: center;
+.profile-page{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height:80vh;
     .profile-details{
-        margin:20px auto;
-        padding:20px;
-        border:1px solid rgb(245, 239, 239);
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        width:25%;
-        box-sizing: border-box;
-        margin-bottom: 50px;
-        p{
-            margin-bottom: 0;
+        width:30%;
+        text-align: center;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+        min-height:300px;
+        .toggle-friend-button{
+            border:1px solid rgb(17, 17, 48);
+            background-color: rgb(17, 17, 48);
+            color:white;
+            text-decoration: none;
+            padding:6px;
+            margin-top:0;
         }
-        .my_img{
-            object-fit: cover;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        
+        .dummy{
+            height:30px;
+            transition: all 0.8s ease 0s;
+        }
+        img{
+            margin-top:20px;
+            border-radius: 50%;
+            width:180px;
+            height:180px;
+            box-sizing: border-box;
+            transition: all 0.3s ease 0s;
+        }
+        p{
+            color:rgb(17, 17, 48);
+            font-size: 1.5rem;
+            transition: all 1s ease 0s;
+        }
+        .links{
+            display:flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding:10px;
+            margin-top:20px;
+            transition: all 0.8s ease 0s;
+            .iconify,i{
+                color:rgb(17, 17, 48);
+                font-size: 1.6rem;
+            }
+            a{
+                margin-left:15px;
+            }
+        }
+    }
+    .profile-details:hover{
+        .links,.dummy{
+            background-color:rgb(17, 17, 48);
+        }
+        .iconify,i{
+            color:white;
+        }
+        p{
+            text-decoration: underline;
+        }
+        img{
+            width:150px;
+            height:150px;
+            border:3px solid rgb(17, 17, 48);
+            padding:5px;
+
         }
         .toggle-friend-button{
-                text-decoration: none;
-                border: 1px solid rgb(17, 17, 48);
-                padding:3px;
-                font-size: 1rem;
-                background-color: rgb(17, 17, 48);
-                color:white;
-            
-        }
-        .toggle-friend-button:hover{
-            color:black;
+            color:rgb(17, 17, 48);
             background-color: white;
         }
-
     }
-    .edit_details{
-        border:1px solid lightgray;
-        padding:10px;
-        width:30%;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        margin:auto;
-        box-sizing: border-box;
-        .update-form{
+    .edit-details{
+        width:40%;
+        margin:1.5% 0% 0% 5%;
+        form{
             display: flex;
             flex-direction: column;
-            // width:40%;
-            margin:auto;
-            .name-field{
-                display: flex;
-                flex-direction: column;
-                justify-content:center;
-                align-items: center;
-                
-                input[type=text],input[type=email]{
-                    width:75%;
-                    padding: 12px 20px;
-                    margin: 8px 5px;
-                    display: inline-block;
-                    border: 1px solid #ccc;
-                    border-radius: 4px;
-                    box-sizing: border-box;
+            padding:5px;
+            h2{
+                color:rgb(17, 17, 48);
+            }
+            div{
+                margin:10px;
+                input{
+                    margin-left:5px;
+                    border:transparent;
+                    width:60%;
+                    font-size:0.9rem;
+                    color:rgb(17, 17, 48);
+                }
+                input:focus{
                     outline:none;
+                    border-bottom: 1px solid rgb(17, 17, 48);
                 }
+                input[type="file"]{
+                    border:transparent;
+                }
+                .iconify,label{
+                    color:rgb(17, 17, 48);
+                    font-size: 1.1rem;
+                }
+            }
+            button{
+                width:15%;
+                padding:3px;
+                font-size:1.1rem;
+                margin-left:35%;
+                margin-top:5px;
+                background-color:white;
+                color:rgb(17, 17, 48);
+                border:1px solid rgb(17, 17, 48);
+                border-radius: 3px;
 
             }
-            .file-input{
-                width:100%;
-                margin:5% 25%;
-                
+            button:hover{
+                color:white;
+                background-color: rgb(17, 17, 48);
             }
-            .submit{
-                width:100px;
-                color: #fff;
-                background-color: #007bff;
-                border-color: #007bff;
-                margin:auto;
-                padding:10px;
-                // margin-top:10%;
-
+            ::placeholder{
+                font-size: 0.9rem;
             }
-            .submit:hover{
-                background-color: #0c79ee;
-            }
-            
         }
+        
     }
-}
-@media screen and (max-width:900px){
-    body{
-        .profile-details{
-            width:50%;
-        }
-        .edit_details{
-            width:50%;
-            .update-form{
-                // width:80%;
-                .name-field{
-                    width:100%;
-                    flex-direction: column;
-                    input[type=text],input[type=email]{
-                        width:60%;
-                    }
-                    
-                }
-                .file-input{
-                    width:100%;
-                    margin:10% 25%;
-                    
-                }
-                .submit{
-                    margin-top:0;
-                    width:30%;
-                }
-            }
-        }
-    }
-    
-
 }

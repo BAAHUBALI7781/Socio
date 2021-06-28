@@ -26,6 +26,14 @@ module.exports.update_profile=async function(req,res){
                 else{
                     user.user_name=req.body.user_name;
                     user.email=req.body.email;
+                    user.portfolio=req.body.portfolio;
+                    user.linked=req.body.linked;
+                    user.github=req.body.github;
+                    user.leetcode=req.body.leetcode;
+                    user.gfg=req.body.gfg;
+                    user.codeforces=req.body.codeforces;
+                    user.codechef=req.body.codechef;
+
                     if(req.file){
                         if(user.avatar){
                             if(fs.existsSync(path.join(__dirname,'..',user.avatar))){

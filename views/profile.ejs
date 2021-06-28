@@ -1,34 +1,100 @@
 <link rel="stylesheet" href="<%=assetPath('css/profile.css')%>">
-<div class="profile-details">
-    <img src="<%=profile_user.avatar%>" alt="No profile pic" width='100px' height='100px' class="my_img">
-    <p><%=profile_user.user_name%></p>
-    <p><%=profile_user.email%></p>
-    <br>
-    <% if(locals.user && profile_user.id!=user.id){%>
-        <% if(locals.user.friends.includes(profile_user.id)){%>
-            <a href="/user/togg-friend/?id=<%=profile_user.id%>" class="toggle-friend-button">Remove Friend</a>        
+<div class="profile-page">
+    
+    <div class="profile-details">
+        <div class="dummy"></div>
+        <% if(profile_user.avatar){%>
+            <img src="<%=profile_user.avatar%>" alt="No profile pic" class="my_img">
         <%}else{%>
-            <a href="/user/togg-friend/?id=<%=profile_user.id%>" class="toggle-friend-button">Add Friend</a>        
+            <img src="<%=assetPath('images/profile.png')%>" alt="No profile pic" class="my_img">        
         <%}%>
+        <p><%=profile_user.user_name%></p>
+        <% if(locals.user && profile_user.id!=user.id){%>
+            <% if(locals.user.friends.includes(profile_user.id)){%>
+                <a href="/user/togg-friend/?id=<%=profile_user.id%>" class="toggle-friend-button">Remove Friend</a>        
+            <%}else{%>
+                <a href="/user/togg-friend/?id=<%=profile_user.id%>" class="toggle-friend-button">Add Friend</a>        
+            <%}%>
+        <%}%>
+        <div class="links">
+            <% if(profile_user.portfolio){%>
+                <a href="<%=profile_user.portfolio%>"><span class="iconify" data-icon="bytesize:portfolio" data-inline="false"></span></a>
+            <%}%>
+             <% if(profile_user.linked){%>
+                <a href="https://www.linkedin.com/in/<%=profile_user.linked%>"><i class="fab fa-linkedin"></i></a>
+            <%}%>
+            <% if(profile_user.github){%>
+                <a href="https://www.github.com/<%=profile_user.github%>"><i class="fab fa-github"></i></a>
+            <%}%>
+            <% if(profile_user.leetcode){%>
+                <a href="https://www.leetcode.com/<%=profile_user.leetcode%>"><span class="iconify" data-icon="simple-icons:leetcode" data-inline="false"></span>
+                </a>
+            <%}%>
+            <% if(profile_user.codeforces){%>
+                <a href="https://www.codeforces.com/profile/<%=profile_user.codeforces%>"><span class="iconify" data-icon="simple-icons:codeforces" data-inline="false"></span></a>
+            <%}%>
+            <% if(profile_user.codechef){%>
+                <a href="https://www.codechef.com/users/<%=profile_user.codechef%>"><span class="iconify" data-icon="simple-icons:codechef" data-inline="false"></span></a>
+            <%}%>
+        </div>
+        
+        
+
+    </div>
+    
+    <% if(locals.user && profile_user.id==user.id){%>
+        <div class="edit-details">
+            
+            <form class="update-form" action="/user/update-profile/<%=profile_user.id%>" method="POST" enctype="multipart/form-data">
+                <h2>Edit details</h2>
+                <div>
+                    <label for="user_name"><i class="fas fa-signature"></i></label>
+                    <input type="text" id="user_name" name="user_name" placeholder="Type new name" value="<%=profile_user.user_name%>" required>    
+                </div>
+                <div>
+                    <label for="email"><i class="fas fa-envelope"></i></label>
+                    <input type="email" id="email" name="email" placeholder="Type new email" value="<%=profile_user.email%>" required> 
+                </div>
+                <div>
+                    <label for="image"><i class="fas fa-user"></i></label>
+                    <input class="file-input" id="image" type="file" name="avatar" placeholder="Profile Picture">    
+                </div>
+                <h2>Links</h2>
+                <div>
+                    <span class="iconify" data-icon="bytesize:portfolio" data-inline="false"></span>
+                    <input type="url" id="pf" name="portfolio" placeholder="Portfolio Website" value="<%=profile_user.portfolio%>">
+                </div>
+                <div>
+                    <label for="li"><i class="fab fa-linkedin"></i> linkedin.com/in/</label>
+                    <input type="text" id="li" name="linked" placeholder="Linked In Handle" value="<%=profile_user.linked%>">
+                </div>
+                
+                <div>
+                    <label for="git"><i class="fab fa-github"></i> github.com/</label>
+                    <input type="string" id="git" name="github" placeholder="Github Handle" value="<%=profile_user.github%>">
+                </div>
+                <div>
+                    <span class="iconify" data-icon="simple-icons:leetcode" data-inline="false"></span><label> leetcode.com/</label>
+                    <input type="string" id="leet" name="leetcode" placeholder="Leetcode Handle" value="<%=profile_user.leetcode%>">
+                </div>
+                <div>
+                    <span class="iconify" data-icon="simple-icons:codeforces" data-inline="false"></span><label> codeforces.com/profile/</label>
+                    <input type="string" name="codeforces" placeholder="Codeforces Handle" value="<%=profile_user.codeforces%>">
+                </div>
+                <div>
+                    <span class="iconify" data-icon="simple-icons:codechef" data-inline="false"></span><label> codechef.com/users/</label>
+                    <input type="string" name="codechef" placeholder="Codechef Handle" value="<%=profile_user.codechef%>">
+                </div>
+                
+
+                <button class="submit" type="submit">Update</button>
+            </form>    
+        </div>
+        
+    
     <%}%>
 </div>
 
-<% if(locals.user && profile_user.id==user.id){%>
-    <div class="edit_details">
-        <h2>Edit details</h2>
-        <form class="update-form" action="/user/update-profile/<%=profile_user.id%>" method="POST" enctype="multipart/form-data">
-            <div class="name-field">
-                <input type="text" name="user_name" placeholder="Type new name" value="<%=profile_user.user_name%>" required>
-                <input type="email" name="email" placeholder="Type new email" value="<%=profile_user.email%>" required>
-            </div>
-            
-            <input class="file-input" type="file" name="avatar" placeholder="Profile Picture">
-            <button class="submit" type="submit">Submit</button>
-        </form>    
-    </div>
-    
-
-<%}%>
 
 <script src="<%= assetPath('js/friendship.js') %>"></script>
 
