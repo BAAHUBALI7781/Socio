@@ -16,7 +16,9 @@
     <section id="user-friends">
         <% if(locals.user){%>
             <section id="friends">
-                <h4>Friends</h4>
+                <% if(currUser.friends.length){%>
+                    <h4>Friends</h4>
+                <%}%>
             
                 <% for(friendx of currUser.friends){%>
                     <p>

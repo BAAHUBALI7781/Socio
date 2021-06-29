@@ -24,8 +24,8 @@
                     console.log("Error occured");
                 }
             });
-            $('#post_form_text').val('');
-            e.target.element.file-upload.value='';           
+            $('#post_form_text').val(''); 
+            $('#file-upload').val('');           
         });
     }
     let newPostDom=function(post){
