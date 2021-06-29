@@ -23,10 +23,10 @@
                 },error:function(err){
                     console.log("Error occured");
                 }
-            })
+            });
+            $('#post_form_text').val('');
+            e.target.element.file-upload.value='';           
         });
-
-
     }
     let newPostDom=function(post){
         if(post.avatar){
@@ -51,7 +51,7 @@
                         0 Like
                     </a>    
                 </div>
-                
+                <hr>
                 <div class="post-comments">
                         <form class="comment_form" id="post-${post._id}-comments-form" action='/comment/add-comment' method="POST">
                             <input type="text" name="content" placeholder="Add comment..." required>

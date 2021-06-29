@@ -2,12 +2,13 @@
     display:flex;
     align-items: center;
     justify-content: center;
-    height:80vh;
+    flex-wrap:wrap;
     .profile-details{
         width:30%;
         text-align: center;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
         min-height:300px;
+        margin:4% 0% 0% 2%;
         .toggle-friend-button{
             border:1px solid rgb(17, 17, 48);
             background-color: rgb(17, 17, 48);
@@ -87,7 +88,7 @@
                 input{
                     margin-left:5px;
                     border:transparent;
-                    width:60%;
+                    width:35%;
                     font-size:0.9rem;
                     color:rgb(17, 17, 48);
                 }
@@ -107,8 +108,8 @@
                 width:15%;
                 padding:3px;
                 font-size:1.1rem;
-                margin-left:35%;
-                margin-top:5px;
+                margin-left: 20%;
+                margin-bottom:2%;
                 background-color:white;
                 color:rgb(17, 17, 48);
                 border:1px solid rgb(17, 17, 48);
@@ -124,5 +125,31 @@
             }
         }
         
+    }
+}
+@media screen and (max-width:1170px){
+    .profile-page{
+        .profile-details{
+            width:40%;
+            margin-top:4%;
+        }
+        .edit-details{
+            width: 55%;
+        }
+    }
+}
+@media screen and (max-width:850px){
+    .profile-page{
+        .profile-details{
+            width:60%;
+            margin-top:4%;
+        }
+        .edit-details{
+            width: 80%;
+            margin:6% 0% 0% 35%;
+            input{
+                width:50%;
+            }
+        }
     }
 }

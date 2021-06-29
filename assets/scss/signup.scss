@@ -3,7 +3,7 @@ body{
     text-align: center;
 }
 .container{
-    width:25%;
+    width:35%;
     display:flex;
     flex-direction: column;
     margin:50px auto;
@@ -12,7 +12,7 @@ body{
     background-color: white;
     
     input,button{
-        width:70%;
+        width:75%;
         padding:10px;
         border-radius: 1%;
         outline: none;
@@ -40,7 +40,7 @@ body{
        } 
     }
     button{
-        width:77%;
+        width:75%;
         background-color: rgb(17, 17, 48);
         font-size: 1rem;
         color:white;
@@ -60,13 +60,23 @@ body{
     }
 }
 
-@media screen and (max-width:900px){
+@media screen and (max-width:1000px){
     .container{
         width:50%;
+        input,button{
+            width:90%;
+        }
+
     }
 }
 @media screen and (max-width:700px){
     .container{
-        width:70%;
+        width:90%;
+        input,button{
+            width:100%;
+        }
+        .google-sign{
+            width:50%;
+        }
     }
 }
