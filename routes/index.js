@@ -8,6 +8,7 @@ const userController=require('../controllers/user_controller');
 
 
 router.get('/',homeController.home);
+router.get('/friend-post',homeController.friend);
 router.get('/socio-chat',homeController.socio_room);
 
 router.use('/user',require('./users'));

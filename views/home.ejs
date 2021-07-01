@@ -1,19 +1,7 @@
 
 <link rel="stylesheet" href="<%= assetPath('css/home.css') %>">
 <div id="container">
-    <section id="links"></section>
-    <section id="feed">
-        <%- include('_postform'); -%>
-        <div id="posts-list-container">
-            <ul>
-                <% for(post of posts){ %>
-                    <%- include('_post'); -%>
-                <%}%>
-            </ul>
-        </div>
-        
-    </section>
-    <section id="user-friends">
+    <section class="user-friends">
         <% if(locals.user){%>
             <section id="friends">
                 <% if(currUser.friends.length){%>
@@ -27,6 +15,20 @@
                 <%}%>
             </section>
         <%}%>
+    </section>
+    <section id="feed">
+        <%- include('_postform'); -%>
+        <div id="posts-list-container">
+            <ul>
+                <% for(post of posts){ %>
+                    <%- include('_post'); -%>
+                <%}%>
+            </ul>
+        </div>
+        
+    </section>
+    <section class="user-friends">
+
         <section id="users">
             <h4>Users</h4>
             <% for(userx of users){%>

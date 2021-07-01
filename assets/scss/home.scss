@@ -174,11 +174,12 @@
         }
         
     }
-    #user-friends{
+    .user-friends{
         display: flex;
         flex-direction: column;
         width:20%;
         padding:10px;
+        padding-top:30px;
         background-color: #111130;
         
         h4{

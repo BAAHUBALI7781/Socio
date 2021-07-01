@@ -1,32 +1,43 @@
-<header>
+<link rel="stylesheet" href="<%= assetPath('css/header.css') %>">
+
+<nav class="navbar navbar-expand-lg navbar-dark ml-auto" style="background-color: rgb(17, 17, 48);">
     <h2>
-        <a href="/">
-        Socio
-        </a>
-    </h2>
-        <div id="links">
-            <%if(locals.user){%>
-                <li>
-                    <a href="/socio-chat">Chat Room</a>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;
-                </li>
-                <li>
-                    <a href="/user/profile/<%=locals.user.id%>">
-                        <%=user.user_name%> 
-                    </a>&nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;
-                </li>
-                <li>
-                    <a href="/user/sign-out">Sign Out</a>
-                </li>
-    
-            <%}else{%>
-                <li>
-                    <a href="/user/sign-in-page">Sign In</a> &nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;
-                </li>
-                <li>
-                    <a href="/user/sign-up-page">Sign Up</a>
-                </li>
-            <%}%>
-        </div>
+        <a class="text-light" href="/">Socio</a>
+    </h2> 
+    <div class="navbar-collapse" id="navbarNav">
+       <% if(locals.user){ %>
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link text-light" href="/">All Posts<span class="text-light">&nbsp;&nbsp;&nbsp;&nbsp;|</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link text-light" href="/friend-post">Friends' Posts</a>
+            </li>
+            
+        </ul>
         
-    
-</header>
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item active">
+                <a class="nav-link text-light" href="/socio-chat">Chatroom<span class="text-light">&nbsp;&nbsp;&nbsp;&nbsp;|</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/user/profile/<%=locals.user.id%>"><%=user.user_name%><span class="text-light">&nbsp;&nbsp;&nbsp;&nbsp;|</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="/user/sign-out">Sign Out</a>
+            </li>
+        </ul>
+            
+        <%}else{%>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/user/sign-in-page">Sign In<span class="text-light">&nbsp;&nbsp;&nbsp;&nbsp;|</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/user/sign-up-page">Sign Up</a>
+                </li>
+            </ul>
+            
+        <%}%>    
+    </div>
+  </nav>

@@ -56,3 +56,39 @@ module.exports.socio_room=async function(req,res){
         messages:chats
     });
 }
+
+module.exports.friend=async function(req,res){
+    try{
+        let friends=req.user.friends;
+        let posts = await Post.find({user:{$in:friends}})
+        .sort('-createdAt')
+        .populate('user')
+        .populate({
+            path: 'comments',
+            populate: {
+                path: 'user',
+            },
+            populate: {
+                path: 'likes'
+            }
+        }).populate('comments')
+        .populate('likes');
+        await pop(posts);
+        let currUser;
+        if(req.user){
+            currUser = await User.findById(req.user._id)
+            .populate('friends');
+        }
+        
+        let users=await User.find({});
+        return res.render('home', {
+            title: "Socio | Friends' Posts",
+            posts:  posts,
+            users: users,
+            currUser:currUser
+        });
+    }catch(err){
+        console.log('Error', err);
+        return;
+    }
+}
