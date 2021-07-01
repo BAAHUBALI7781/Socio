@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="<%= assetPath('css/chat-box.css') %>">
 
-<h2 style="color:#1e1e3a;text-align: center;">This chat box is for general and technical queries. Dont share your personal messages here.</h3>
+<h3 style="color:#1e1e3a;text-align: center; margin-top:10px;">This is a <%= room %> chat box. You can share any query or interesting fields about the domain.</h3>
 <% if(locals.user){ %>
     <div id="chat-box">
         <div id="message-list-container">
@@ -48,6 +48,6 @@
 <script src="<%= assetPath('js/chat_engine.js') %>"></script>
 <% if (locals.user){ %>
 <script>
-    new ChatEngine('user-chat-box', '<%= locals.user.email %>','<%= locals.user.user_name %>');
+    new ChatEngine('user-chat-box', '<%=room%>' , '<%= locals.user.email %>','<%= locals.user.user_name %>');
 </script>
 <% } %>

@@ -1,11 +1,12 @@
 class ChatEngine{
-    constructor(chatBoxId, userEmail, userName){
+    constructor(chatBoxId, room, userEmail, userName){
         console.log(userName);
         this.chatBox = $(`#${chatBoxId}`);
+        this.chatRoom=room;
         this.userEmail = userEmail;
         this.userName=userName;
-        this.socket = io.connect('http://35.174.176.118:5000',{transports:['websocket', 'polling', 'flashsocket']});
-
+        this.socket = io.connect('http://localhost:5000',{transports:['websocket', 'polling', 'flashsocket']});
+        
         if (this.userEmail){
             this.connectionHandler();
         }
@@ -19,7 +20,7 @@ class ChatEngine{
             username:'Socio Chat Bot',
             message:`${self.userName} is online...`,
             user_email:'socio.510818090@gmail.com',
-            room_id:'Socio chatroom'
+            room_id:`${self.chatRoom}`
         });
         self.socket.on('user_join',function(data){
             console.log(data);
@@ -50,7 +51,7 @@ class ChatEngine{
                     username:self.userName,
                     message:msg,
                     user_email:self.userEmail,
-                    room_id:'Socio chatroom',
+                    room_id:`${self.chatRoom}`,
                     
                 });
             }

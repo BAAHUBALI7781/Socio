@@ -1,4 +1,4 @@
-const Chat = require('../models/chat');
+const {WebD,ML,IP,CP} = require('../models/chat');
 
 function convert(date){
     date.setHours(date.getHours() + 5);
@@ -28,7 +28,17 @@ module.exports.chatSocket = function(chatServer){
             const obj=await convert(date);
             data.date=obj.rdate;
             data.time=obj.rtime;
-            const newMessage=await Chat.create(data);
+            let newMessage;
+            if(data.room_id=='Web-Development')
+            {
+                newMessage=await WebD.create(data);
+            }else if(data.room_id=='Machine-Learning'){
+                newMessage=await ML.create(data);
+            }else if(data.room_id=='Competitive-Programming'){
+                newMessage=await CP.create(data);
+            }else if(data.room_id=='Interview-Preparation'){
+                newMessage=await IP.create(data);
+            }
             console.log(newMessage);
             socket.join(data.room_id);
             io.in(data.room_id).emit('user_join',data);
@@ -38,7 +48,16 @@ module.exports.chatSocket = function(chatServer){
             const obj=convert(date);
             data.date=obj.rdate;
             data.time=obj.rtime;
-            const newMessage=await Chat.create(data);
+            if(data.room_id=='Web-Development')
+            {
+                const newMessage=await WebD.create(data);
+            }else if(data.room_id=='Machine-Learning'){
+                const newMessage=await ML.create(data);
+            }else if(data.room_id=='Competitive-Programming'){
+                const newMessage=await CP.create(data);
+            }else if(data.room_id=='Interview-Preparation'){
+                const newMessage=await IP.create(data);
+            }
             io.in(data.room_id).emit('receive',data);
         })
 

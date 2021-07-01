@@ -50,10 +50,8 @@ module.exports.home = async function(req, res){
    
 }
 module.exports.socio_room=async function(req,res){
-    const chats=await Chat.find({});
-    res.render('_chat-box.ejs',{
-        title:'Socio Chat Room',
-        messages:chats
+    res.render('_chatbox-intro.ejs',{
+        title:`Socio Chat Room`
     });
 }
 

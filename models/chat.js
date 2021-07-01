@@ -25,5 +25,11 @@ const chatSchema=new mongoose.Schema({
     timestamps:true
 });
 
-const Chat=mongoose.model('Chat',chatSchema);
-module.exports=Chat;
+const ML=mongoose.model('ML',chatSchema);
+const WebD=mongoose.model('WebD',chatSchema);
+const CP=mongoose.model('CP',chatSchema);
+const IP=mongoose.model('IP',chatSchema);
+
+module.exports={
+    ML,WebD,CP,IP
+};
