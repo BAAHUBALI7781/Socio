@@ -5,7 +5,7 @@ class ChatEngine{
         this.chatRoom=room;
         this.userEmail = userEmail;
         this.userName=userName;
-        this.socket = io.connect('http://localhost:5000',{transports:['websocket', 'polling', 'flashsocket']});
+        this.socket = io.connect('http://35.174.176.118:5000',{transports:['websocket', 'polling', 'flashsocket']});
         
         if (this.userEmail){
             this.connectionHandler();
@@ -45,17 +45,21 @@ class ChatEngine{
 
         $('#send-message').click(function(){
             let msg=$('#message-input').val();
+            let link=$('#message-link').val();
             if(msg!='')
             {
                 self.socket.emit('send',{
                     username:self.userName,
                     message:msg,
+                    link:link,
                     user_email:self.userEmail,
                     room_id:`${self.chatRoom}`,
                     
                 });
             }
             $('#message-input').val('');
+            $('#message-link').val('');
+            
         });
         self.socket.on('receive',function(data){
             let newdiv=document.createElement('div');
@@ -72,6 +76,8 @@ class ChatEngine{
                     </div>
                     <div class="message">
                         <span>${data.message}</span>
+                        <p><a href="${data.link} target="_blank">${data.link}</a></p>
+                        
                     </div>
             `
             }
@@ -86,6 +92,7 @@ class ChatEngine{
                     </div>
                     <div class="message">
                         <span>${data.message}</span>
+                        <p><a href="${data.link} target="_blank"><${data.link}></a></p>
                     </div>
             `
             }

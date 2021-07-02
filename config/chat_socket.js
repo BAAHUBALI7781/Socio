@@ -48,6 +48,7 @@ module.exports.chatSocket = function(chatServer){
             const obj=convert(date);
             data.date=obj.rdate;
             data.time=obj.rtime;
+            console.log(data);
             if(data.room_id=='Web-Development')
             {
                 const newMessage=await WebD.create(data);

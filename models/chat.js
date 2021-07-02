@@ -9,6 +9,9 @@ const chatSchema=new mongoose.Schema({
         type:'String',
         required:true
     },
+    link:{
+        type:'String'
+    },
     user_email:{
         type:'String',
         required:true

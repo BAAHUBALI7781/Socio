@@ -16,6 +16,9 @@
                         </div>
                         <div class="message">
                             <span> <%= data.message %> </span>
+                            <% if(data.link){ %>
+                                <p>Goto : <a href="<%=data.link%>" target="_blank"><%=data.link%></a></p>
+                            <%}%>
                         </div>
                     </div>
                 <%}else{%>
@@ -29,16 +32,18 @@
                         </div>
                         <div class="message">
                             <span><%= data.message %> </span>
+                            <% if(data.link){ %>
+                                <p>Goto : <a href="<%=data.link%>" target="_blank"><%=data.link%></a></p>
+                            <%}%>
                         </div>
                     </div>
                 <%}%>
                 
-                
-
             <%}%>
         </div>
         <div id="message-form">
-            <input id="message-input" class="clearfix" type="text" placeholder="Type message...">
+            <input id="message-input" name="message" class="clearfix" type="text" placeholder="Type message..." required>
+            <input type="url" id="message-link" name="link" class="clearfix" placeholder="Add URL if any..." pattern="https://.*" required>
             <button id="send-message" class="clearfix">Send</button>
         </div>
     </div>
