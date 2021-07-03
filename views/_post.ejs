@@ -19,18 +19,32 @@
     </b>
 
     <div class="like_section">
+        <%console.log("** user",locals.user._id)%>
         <% if(locals.user){ %>
-            <a  href="/like/toggle/?but=like&id=<%=post._id%>&type=Post" class="toggle-like-button" data-like="<%=post.like.length%>"><i class="like far fa-thumbs-up"></i> <%=post.like.length%></a>
+            <% if(post.like.includes(locals.user._id)){%>
+                <a  href="/like/toggle/?but=like&id=<%=post._id%>&type=Post" class="toggle-like-button red" data-like="<%=post.like.length%>"><i class="like far fa-thumbs-up"></i> <%=post.like.length%></a>
+            <%}else{%>
+                <a  href="/like/toggle/?but=like&id=<%=post._id%>&type=Post" class="toggle-like-button" data-like="<%=post.like.length%>"><i class="like far fa-thumbs-up"></i> <%=post.like.length%></a>
+            <%}%>
         <%}else{%>
             <a><i class="like far fa-thumbs-up"></i> <%=post.like.length%></a>
         <% } %>
         <% if(locals.user){ %>
-            <a  href="/like/toggle/?but=heart&id=<%=post._id%>&type=Post" class="toggle-like-button" data-heart="<%=post.heart.length%>"><i class="like far fa-heart"></i> <%=post.heart.length%></a>
+            <% if(post.heart.includes(locals.user._id)){%>
+                <a  href="/like/toggle/?but=heart&id=<%=post._id%>&type=Post" class="toggle-like-button red" data-heart="<%=post.heart.length%>"><i class="like far fa-heart"></i> <%=post.heart.length%></a>
+            <%}else{%>
+                <a  href="/like/toggle/?but=heart&id=<%=post._id%>&type=Post" class="toggle-like-button" data-heart="<%=post.heart.length%>"><i class="like far fa-heart"></i> <%=post.heart.length%></a>
+            <%}%>
         <%}else{%>
             <a><i class="like far fa-heart"></i> <%=post.heart.length%></a>
         <% } %>
         <% if(locals.user){ %>
-            <a  href="/like/toggle/?but=laugh&id=<%=post._id%>&type=Post" class="toggle-like-button" data-laugh="<%=post.laugh.length%>"><i class="like far fa-laugh-squint"></i> <%=post.laugh.length%></a>
+            <% if(post.laugh.includes(locals.user._id)){%>
+                <a  href="/like/toggle/?but=laugh&id=<%=post._id%>&type=Post" class="toggle-like-button red" data-laugh="<%=post.laugh.length%>"><i class="like far fa-laugh-squint"></i> <%=post.laugh.length%></a>
+            <%}else{%>
+                <a  href="/like/toggle/?but=laugh&id=<%=post._id%>&type=Post" class="toggle-like-button" data-laugh="<%=post.laugh.length%>"><i class="like far fa-laugh-squint"></i> <%=post.laugh.length%></a>
+            <%}%>
+            
         <%}else{%>
             <a><i class="like far fa-laugh-squint"></i> <%=post.laugh.length%></a>
         <% } %>

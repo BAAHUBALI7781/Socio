@@ -19,10 +19,12 @@ class ToggleLike{
                 let likes=parseInt($(self).attr(attribute));
                 if(data.data.deleted==true){
                     likes-=1;
+                    $(self).css('color','rgb(17, 17, 48)');
                 }
                 else
                 {
                     likes+=1;
+                    $(self).css('color','red');
                 }
                 // console.log(likes);
                 $(self).attr(attribute, likes);

@@ -22,15 +22,15 @@ const postScehma = new mongoose.Schema({
     }],
     like:[{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'Like'
+        ref:'User'
     }],
     heart:[{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'Like'
+        ref:'User'
     }],
     laugh:[{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'Like'
+        ref:'User'
     }],
 
 

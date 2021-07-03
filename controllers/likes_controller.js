@@ -24,17 +24,17 @@ module.exports.toggleLike=async function(req,res){
         });
         if(findLike){
             if(category=='like'){
-                likeable.like.pull(findLike._id);
+                likeable.like.pull(req.user);
                 likeable.save();
                 findLike.remove();
                 deleted=true;
             }else if(category=='heart'){
-                likeable.heart.pull(findLike._id);
+                likeable.heart.pull(req.user);
                 likeable.save();
                 findLike.remove();
                 deleted=true;
             }else if(category=='laugh'){
-                likeable.laugh.pull(findLike._id);
+                likeable.laugh.pull(req.user);
                 likeable.save();
                 findLike.remove();
                 deleted=true;
@@ -49,11 +49,11 @@ module.exports.toggleLike=async function(req,res){
                 category:category
             });
             if(category=='like'){
-                likeable.like.push(newLike._id);
+                likeable.like.push(req.user);
             }else if(category=='heart'){
-                likeable.heart.push(newLike._id);
+                likeable.heart.push(req.user);
             }else if(category=='laugh'){
-                likeable.laugh.push(newLike._id);
+                likeable.laugh.push(req.user);
             }
             
             likeable.save();
