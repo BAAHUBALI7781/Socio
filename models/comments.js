@@ -14,10 +14,19 @@ const commentSchema=new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'Post'
     },
-    likes:[{
+    like:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Like'
-    }]
+    }],
+    heart:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Like'
+    }],
+    laugh:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Like'
+    }],
+    
 
 
 },{

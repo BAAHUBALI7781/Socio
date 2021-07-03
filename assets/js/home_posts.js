@@ -48,7 +48,7 @@
                 </b>
                 <div class="like_section">
                     <a href="/like/toggle/?id=${post._id}&type=Post" class="toggle-like-button" data-likes="0">
-                        0 Like
+                        <i class="like far fa-thumbs-up"></i> 0
                     </a>    
                 </div>
                 <hr>
@@ -83,9 +83,16 @@
                     </p>
                 </b>
                 <div class="like_section">
-                    <a href="/like/toggle/?id=${post._id}&type=Post" class="toggle-like-button" data-likes="0">
-                        0 Like
-                    </a>    
+                    <a href="/like/toggle/?but=like&id=${post._id}&type=Post" class="toggle-like-button" data-like="0">
+                        <i class="like far fa-thumbs-up"></i> 0
+                    </a>  
+                    <a href="/like/toggle/?but=heart&id=${post._id}&type=Post" class="toggle-like-button" data-heart="0">
+                        <i class="like far fa-heart"></i> 0
+                    </a>
+                    <a href="/like/toggle/?but=laugh&id=${post._id}&type=Post" class="toggle-like-button" data-laugh="0">
+                        <i class="far fa-laugh-squint"></i> 0
+                    </a>  
+
                 </div>
                 
                 <div class="post-comments">

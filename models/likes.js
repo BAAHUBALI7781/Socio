@@ -13,6 +13,11 @@ const likeSchema=new mongoose.Schema({
         type:String,
         required:true,
         enum:['Post','Comment']
+    },
+    category:{
+        type:String,
+        required:true,
+        enum:['like','heart','laugh']
     }
 },{
     timestamps:true

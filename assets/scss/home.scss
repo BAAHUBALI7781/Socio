@@ -111,11 +111,20 @@
                 text-decoration: none;
                 color:rgb(17, 17, 48);
                 font-size: 0.95rem;
+                i:hover{
+                    color:red;
+                }
+            }
+            .red{
+                color:red;
             }
         }
         #comment_likes{
             float:right;
             padding-right:4px;
+            .red{
+                color:red;
+            }
         }
         .comment_form{
             display:flex;

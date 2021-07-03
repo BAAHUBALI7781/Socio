@@ -20,10 +20,19 @@ const postScehma = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'Comment'    
     }],
-    likes:[{
+    like:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Like'
-    }]
+    }],
+    heart:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Like'
+    }],
+    laugh:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Like'
+    }],
+
 
 },{
     timestamps:true

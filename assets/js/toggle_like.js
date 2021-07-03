@@ -9,21 +9,29 @@ class ToggleLike{
         $(this.toggler).click(function(e){
             e.preventDefault();
             let self=this;
-            console.log(self);
+            console.log($(self).attr('href'));
             $.ajax({
                 type:'POST',
                 url:$(self).attr('href'),
             })
             .done(function(data){
-                let likes=parseInt($(self).attr('data-likes'));
+                let attribute=`data-${data.data.cat}`;
+                let likes=parseInt($(self).attr(attribute));
                 if(data.data.deleted==true){
                     likes-=1;
                 }
                 else
+                {
                     likes+=1;
+                }
                 // console.log(likes);
-                $(self).attr('data-likes', likes);
-                $(self).html(`${likes} Likes`);
+                $(self).attr(attribute, likes);
+                if(data.data.cat=='like')
+                    $(self).html(`<i class="like far fa-thumbs-up"></i> ${likes}`);
+                if(data.data.cat=='heart')
+                    $(self).html(`<i class="like far fa-heart"></i> ${likes}`);
+                if(data.data.cat=='laugh')
+                    $(self).html(`<i class="far fa-laugh-squint"></i> ${likes}`);
             })
             .fail(function(err){
                 console.log("Error in liking post/comment");

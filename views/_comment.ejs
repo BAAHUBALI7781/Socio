@@ -15,9 +15,19 @@
     </div>
     <div id="comment_likes" class="like_section">
         <% if(locals.user){ %>
-            <a href="/like/toggle/?id=<%=comment._id%>&type=Comment" class="toggle-like-button" data-likes="<%=comment.likes.length%>"><%=comment.likes.length%> Like</a>
+            <a href="/like/toggle/?but=like&id=<%=comment._id%>&type=Comment" class="toggle-like-button" data-like="<%=comment.like.length%>"><i class="like far fa-thumbs-up"></i> <%=comment.like.length%></a>
         <%}else{%>
-            <a><%=comment.likes.length%> Likes</a>
+            <a><i class="like far fa-thumbs-up"></i> <%=comment.like.length%></a>
+        <% } %>
+        <% if(locals.user){ %>
+            <a href="/like/toggle/?but=heart&id=<%=comment._id%>&type=Comment" class="toggle-like-button" data-heart="<%=comment.heart.length%>"><i class="like far fa-heart"></i> <%=comment.heart.length%></a>
+        <%}else{%>
+            <a><i class="like like far fa-heart"></i> <%=comment.heart.length%></a>
+        <% } %>
+        <% if(locals.user){ %>
+            <a href="/like/toggle/?but=laugh&id=<%=comment._id%>&type=Comment" class="toggle-like-button" data-laugh="<%=comment.laugh.length%>"><i class="like far fa-laugh-squint"></i> <%=comment.laugh.length%></a>
+        <%}else{%>
+            <a><i class="like like far fa-laugh-squint"></i> <%=comment.laugh.length%></a>
         <% } %>
     </div>
 </li>    

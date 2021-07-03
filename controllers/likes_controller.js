@@ -7,32 +7,55 @@ module.exports.toggleLike=async function(req,res){
         // likes/toggle?id=hhd&type=Post
         let deleted=false;
         let likeable;
+        let category=req.query.but;
+        
         if(req.query.type=='Post'){
-            likeable=await Post.findById(req.query.id).populate('likes');
+            likeable=await Post.findById(req.query.id).populate(`${category}`);
         }
         else{
-            likeable=await Comment.findById(req.query.id).populate('likes');
+            likeable=await Comment.findById(req.query.id).populate(`likes`);
         }
-
         // check if like already exists
-        let like=await Like.findOne({
+        let findLike=await Like.findOne({
             user:req.user._id,
             likeable:req.query.id,
-            onModel:req.query.type
+            onModel:req.query.type,
+            category:category
         });
-        if(like){
-            likeable.likes.pull(like._id);
-            likeable.save();
-            like.remove();
-            deleted=true;
+        if(findLike){
+            if(category=='like'){
+                likeable.like.pull(findLike._id);
+                likeable.save();
+                findLike.remove();
+                deleted=true;
+            }else if(category=='heart'){
+                likeable.heart.pull(findLike._id);
+                likeable.save();
+                findLike.remove();
+                deleted=true;
+            }else if(category=='laugh'){
+                likeable.laugh.pull(findLike._id);
+                likeable.save();
+                findLike.remove();
+                deleted=true;
+            }
+            
         }
         else{
             let newLike=await Like.create({
                 user:req.user._id,
                 likeable:req.query.id,
-                onModel:req.query.type
+                onModel:req.query.type,
+                category:category
             });
-            likeable.likes.push(newLike._id);
+            if(category=='like'){
+                likeable.like.push(newLike._id);
+            }else if(category=='heart'){
+                likeable.heart.push(newLike._id);
+            }else if(category=='laugh'){
+                likeable.laugh.push(newLike._id);
+            }
+            
             likeable.save();
         }
         if(req.xhr){
@@ -40,6 +63,7 @@ module.exports.toggleLike=async function(req,res){
                 message:'Request Successful',
                 data:{
                     deleted:deleted,
+                    cat:category
                 }
             });
         }
