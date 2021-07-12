@@ -12,6 +12,9 @@ const chatSchema=new mongoose.Schema({
     link:{
         type:'String'
     },
+    reply:{
+        type:'String'
+    },
     user_email:{
         type:'String',
         required:true

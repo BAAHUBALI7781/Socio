@@ -1,3 +1,4 @@
+
 class ChatEngine{
     constructor(chatBoxId, room, userEmail, userName){
         console.log(userName);
@@ -46,6 +47,14 @@ class ChatEngine{
         $('#send-message').click(function(){
             let msg=$('#message-input').val();
             let link=$('#message-link').val();
+            let reply=$('#reply-link').val();
+            console.log(reply);
+            if(reply!='')
+            {
+                console.log(typeof msg);
+                msg=msg.slice(20);
+                console.log(msg);
+            }
             if(msg!='')
             {
                 self.socket.emit('send',{
@@ -54,52 +63,127 @@ class ChatEngine{
                     link:link,
                     user_email:self.userEmail,
                     room_id:`${self.chatRoom}`,
-                    
+                    reply:reply
                 });
             }
             $('#message-input').val('');
             $('#message-link').val('');
+            $('#reply-link').val('');
             
         });
         self.socket.on('receive',function(data){
             let newdiv=document.createElement('div');
             newdiv.classList.add('seperate-message');
+            newdiv.setAttribute("id", `${data.id.slice(20)}`);
+            console.log(data);
             if(data.user_email==self.userEmail)
             {
-                newdiv.innerHTML=`
+                if(data.reply!='')  
+                {
+                    newdiv.innerHTML=`
                     <div class="details" id="user_detail">
                         <span>${data.username} </span>
+                        <span>Msg. Id : ${data.id.slice(20)}</span>
                         <div>
                             <span>${data.date} | </span>
-                            <span>${data.time}</span>
+                            <span>${data.time}  </span>
                         </div>
                     </div>
-                    <div class="message">
-                        <span>${data.message}</span>
-                        <p><a href="${data.link} target="_blank">${data.link}</a></p>
+                    <div class="message" >
+                        <div class="message-detail">
+                            <div>Replying to <a href="#${data.reply}">#${data.reply}</a></div>  
+                            <span>${data.message} </span>
+                            <p><a href="${data.link}" target="_blank">${data.link}</a></p>
                         
+                        </div>
+                        <div class="message-setting">
+                            <a class="message-reply" href="${data.id.slice(20)}"><i class="fas fa-reply"></i></a>
+                        </div>
                     </div>
-            `
+                `   
+                }
+                else{
+                    newdiv.innerHTML=`
+                    <div class="details" id="user_detail">
+                            <span>${data.username} </span>
+                            <span>Msg. Id : ${data.id.slice(20)}</span>
+                            <div>
+                                <span>${data.date} | </span>
+                                <span>${data.time}  </span>
+                            </div>
+                        </div>
+                    <div class="message">
+                        <div class="message-detail">     
+                                              
+                            <span>${data.message} </span>
+                            <p><a href="${data.link}" target="_blank">${data.link}</a></p>
+                         
+                        </div>
+                        <div class="message-setting">
+                            <a class="message-reply" href="${data.id.slice(20)}"><i class="fas fa-reply"></i></a>
+                        </div>
+                    </div>
+                `   
+                }
+                
             }
             else{
-                newdiv.innerHTML=`
+                if(data.reply!='')  
+                {
+                    newdiv.innerHTML=`
                     <div class="details">
-                        <span>${data.username}</span>
-                        <div>
-                            <span>${data.date} | </span>
-                            <span>${data.time}</span>
+                            <span>${data.username} </span>
+                            <span>Msg. Id : ${data._id.slice(20)}</span>
+                            <div>
+                                <span>${data.date} | </span>
+                                <span>${data.time}  </span>
+                            </div>
+                        </div>
+                    <div class="message">
+                        <div class="message-detail">
+                            <div>Replying to <a href="#${data.reply}">#${data.reply}</a></div>   
+                            <span>${data.message} </span>
+                            <p><a href="${data.link}" target="_blank">${data.link}</a></p>
+                         
+                        </div>
+                        <div class="message-setting">
+                            <a class="message-reply" href="${data.id.slice(20)}"><i class="fas fa-reply"></i></a>
                         </div>
                     </div>
+                `   
+                }
+                else{
+                    newdiv.innerHTML=`
+                    <div class="details">
+                            <span>${data.username} </span>
+                            <span>Msg. Id : ${data._id.slice(20)}</span>
+                            <div>
+                                <span>${data.date} | </span>
+                                <span>${data.time}  </span>
+                            </div>
+                        </div>
                     <div class="message">
-                        <span>${data.message}</span>
-                        <p><a href="${data.link} target="_blank"><${data.link}></a></p>
+                        <div class="message-detail">                           
+                            <span>${data.message} </span>
+                            <p><a href="${data.link}" target="_blank">${data.link}</a></p> 
+                        </div>
+                        <div class="message-setting">
+                            <a class="message-reply" href="${data.id.slice(20)}"><i class="fas fa-reply"></i></a>
+                        </div>
                     </div>
-            `
+                `   
+                }
             }
+
             $('#message-list-container').append(newdiv);
             console.log(newdiv);
             const messageContainer=document.getElementById('message-list-container');
             messageContainer.scrollTop=messageContainer.scrollHeight;  
+            $('.message-reply').each(function(){
+                console.log(this);
+                let self=this;
+                let reply=new Reply(self);
+            });
      
     });
 }

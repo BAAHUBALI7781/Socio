@@ -19,7 +19,6 @@
     </b>
 
     <div class="like_section">
-        <%console.log("** user",locals.user._id)%>
         <% if(locals.user){ %>
             <% if(post.like.includes(locals.user._id)){%>
                 <a  href="/like/toggle/?but=like&id=<%=post._id%>&type=Post" class="toggle-like-button red" data-like="<%=post.like.length%>"><i class="like far fa-thumbs-up"></i> <%=post.like.length%></a>

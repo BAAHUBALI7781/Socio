@@ -6,35 +6,55 @@
         <div id="message-list-container">
             <% for(data of messages) {%>
                 <% if(data.user_email==locals.user.email){ %>
-                    <div class="seperate-message">
+                    <div class="seperate-message" id="<%=data.id.slice(20)%>">
                         <div class="details"  id="user_detail">
+                            
                             <span> <%= data.username %> </span>
+                            <span>Msg. Id : <%=data.id.slice(20)%></span>
                             <div>
                                 <span> <%= data.date %> | </span>
                                 <span> <%= data.time %> </span>
                             </div>
                         </div>
                         <div class="message">
-                            <span> <%= data.message %> </span>
-                            <% if(data.link){ %>
-                                <p>Goto : <a href="<%=data.link%>" target="_blank"><%=data.link%></a></p>
-                            <%}%>
+                            <div class="message-detail">
+                                <% if(data.reply){ %>
+                                <div>Replying to <a href="#<%=data.reply%>">#<%=data.reply%></a></div>
+                                <%}%>
+                                <span><%= data.message %> </span>
+                                <% if(data.link){ %>
+                                    <p>Goto : <a href="<%=data.link%>" target="_blank"><%=data.link%></a></p>
+                                <%}%>
+                            </div>
+                            <div class="message-setting">
+                                <a class="message-reply" href="<%=data.id.slice(20)%>"><i class="fas fa-reply"></i></a>
+                            </div>
                         </div>
                     </div>
                 <%}else{%>
-                    <div class="seperate-message">
+                    <div class="seperate-message" id="<%=data.id.slice(20)%>">
                         <div class="details">
+
                             <span><%= data.username %> </span>
+                            <span>Msg. Id : <%=data.id.slice(20)%></span>
                             <div>
                                 <span><%= data.date %> | </span>
                                 <span><%= data.time %> </span>
                             </div>
                         </div>
                         <div class="message">
-                            <span><%= data.message %> </span>
-                            <% if(data.link){ %>
-                                <p>Goto : <a href="<%=data.link%>" target="_blank"><%=data.link%></a></p>
-                            <%}%>
+                            <div class="message-detail">
+                                <% if(data.reply){ %>
+                                    <div>Replying to <a href="#<%=data.reply%>">#<%=data.reply%></a></div>
+                                <%}%>                                
+                                <span><%= data.message %> </span>
+                                <% if(data.link){ %>
+                                    <p>Goto : <a href="<%=data.link%>" target="_blank"><%=data.link%></a></p>
+                                <%}%>
+                            </div>
+                            <div class="message-setting">
+                                <a class="message-reply" href="<%=data.id.slice(20)%>"><i class="fas fa-reply"></i></a>
+                            </div>
                         </div>
                     </div>
                 <%}%>
@@ -44,6 +64,7 @@
         <div id="message-form">
             <input id="message-input" name="message" class="clearfix" type="text" placeholder="Type message..." required>
             <input type="url" id="message-link" name="link" class="clearfix" placeholder="Add URL if any..." pattern="https://.*" required>
+            <input type="hidden" id="reply-link" name="reply">
             <button id="send-message" class="clearfix">Send</button>
         </div>
     </div>
@@ -51,8 +72,14 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
 <script src="<%= assetPath('js/chat_engine.js') %>"></script>
+<script src="<%= assetPath('js/chat-settings.js') %>"></script>
+
 <% if (locals.user){ %>
 <script>
     new ChatEngine('user-chat-box', '<%=room%>' , '<%= locals.user.email %>','<%= locals.user.user_name %>');
+    $('.message-reply').each(function(){
+        let self=this;
+        let reply=new Reply(self);
+    });
 </script>
 <% } %>

@@ -28,6 +28,16 @@ module.exports.chatSocket = function(chatServer){
             const obj=await convert(date);
             data.date=obj.rdate;
             data.time=obj.rtime;
+            socket.join(data.room_id);
+            io.in(data.room_id).emit('user_join',data);
+        });
+        socket.on('send',async function(data){
+            var date=new Date();
+            const obj=convert(date);
+            data.date=obj.rdate;
+            data.time=obj.rtime;
+            
+            console.log(data);
             let newMessage;
             if(data.room_id=='Web-Development')
             {
@@ -39,26 +49,7 @@ module.exports.chatSocket = function(chatServer){
             }else if(data.room_id=='Interview-Preparation'){
                 newMessage=await IP.create(data);
             }
-            console.log(newMessage);
-            socket.join(data.room_id);
-            io.in(data.room_id).emit('user_join',data);
-        });
-        socket.on('send',async function(data){
-            var date=new Date();
-            const obj=convert(date);
-            data.date=obj.rdate;
-            data.time=obj.rtime;
-            console.log(data);
-            if(data.room_id=='Web-Development')
-            {
-                const newMessage=await WebD.create(data);
-            }else if(data.room_id=='Machine-Learning'){
-                const newMessage=await ML.create(data);
-            }else if(data.room_id=='Competitive-Programming'){
-                const newMessage=await CP.create(data);
-            }else if(data.room_id=='Interview-Preparation'){
-                const newMessage=await IP.create(data);
-            }
+            data.id=newMessage.id;
             io.in(data.room_id).emit('receive',data);
         })
 
