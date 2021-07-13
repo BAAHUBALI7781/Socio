@@ -20,3 +20,60 @@ module.exports.chat=async function(req,res){
         room:req.params.room
     });
 }
+module.exports.destroy=async function(req,res){
+    console.log(req.params.id);
+    let message=await WebD.findById(req.params.id);
+    if(message!=undefined)
+    {
+        message.remove();
+        if (req.xhr){
+            return res.status(200).json({
+                data: {
+                    message_id: req.params.id
+                },
+                message: "Message deleted"
+            });
+        }
+    }
+    message=await ML.findById(req.params.id);
+    if(message!=undefined)
+    {
+        message.remove();
+        if (req.xhr){
+            return res.status(200).json({
+                data: {
+                    message_id: req.params.id
+                },
+                message: "Message deleted"
+            });
+        }
+    }
+    message=await IP.findById(req.params.id);
+    if(message!=undefined)
+    {
+        message.remove();
+        if (req.xhr){
+            return res.status(200).json({
+                data: {
+                    message_id: req.params.id
+                },
+                message: "Message deleted"
+            });
+        }
+    }
+    message=await CP.findById(req.params.id);
+    if(message!=undefined)
+    {
+        message.remove();
+        if (req.xhr){
+            return res.status(200).json({
+                data: {
+                    message_id: req.params.id
+                },
+                message: "Message deleted"
+            });
+        }
+    }
+    
+    
+}

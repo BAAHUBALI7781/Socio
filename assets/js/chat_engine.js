@@ -6,7 +6,7 @@ class ChatEngine{
         this.chatRoom=room;
         this.userEmail = userEmail;
         this.userName=userName;
-        this.socket = io.connect('http://35.174.176.118:5000',{transports:['websocket', 'polling', 'flashsocket']});
+        this.socket = io.connect('http://localhost:5000',{transports:['websocket', 'polling', 'flashsocket']});
         
         if (this.userEmail){
             this.connectionHandler();
@@ -73,14 +73,39 @@ class ChatEngine{
         });
         self.socket.on('receive',function(data){
             let newdiv=document.createElement('div');
-            newdiv.classList.add('seperate-message');
-            newdiv.setAttribute("id", `${data.id.slice(20)}`);
-            console.log(data);
+            newdiv.setAttribute("id", `${data.id}`);
             if(data.user_email==self.userEmail)
             {
                 if(data.reply!='')  
                 {
                     newdiv.innerHTML=`
+                    <div class="seperate-message" id="${data.id.slice(20)}">
+                        <div class="details" id="user_detail">
+                            <span>${data.username} </span>
+                            <span>Msg. Id : ${data.id.slice(20)}</span>
+                            <div>
+                                <span>${data.date} | </span>
+                                <span>${data.time}  </span>
+                            </div>
+                        </div>
+                        <div class="message" >
+                            <div class="message-detail">
+                                <div>Replying to <a href="#${data.reply}">#${data.reply}</a></div>  
+                                <span>${data.message} </span>
+                                <p><a href="${data.link}" target="_blank">${data.link}</a></p>
+                            
+                            </div>
+                            <div class="message-setting">
+                                <a class="message-reply" href="${data.id.slice(20)}"><i class="fas fa-reply"></i></a>
+                                <a class="message-delete" href="delete/${data.id}"><i class="fas fa-trash-alt"></i></a>                               
+                            </div>
+                        </div>
+                    </div>
+            `   
+            }
+            else{
+                newdiv.innerHTML=`
+                <div class="seperate-message" id="${data.id.slice(20)}">
                     <div class="details" id="user_detail">
                         <span>${data.username} </span>
                         <span>Msg. Id : ${data.id.slice(20)}</span>
@@ -89,9 +114,40 @@ class ChatEngine{
                             <span>${data.time}  </span>
                         </div>
                     </div>
-                    <div class="message" >
+                    <div class="message">
+                        <div class="message-detail">     
+                                            
+                            <span>${data.message} </span>
+                            <p><a href="${data.link}" target="_blank">${data.link}</a></p>
+                        
+                        </div>
+                        <div class="message-setting">
+                            <a class="message-reply" href="${data.id.slice(20)}"><i class="fas fa-reply"></i></a>
+                            <a class="message-delete" href="delete/${data.id}"><i class="fas fa-trash-alt"></i></a>                               
+                        </div>
+                    </div>
+                </div>
+               
+            `   
+            }
+            
+        }
+        else{
+            if(data.reply!='')  
+            {
+                newdiv.innerHTML=`
+                <div class="seperate-message" id="${data.id.slice(20)}">
+                    <div class="details">
+                        <span>${data.username} </span>
+                        <span>Msg. Id : ${data._id.slice(20)}</span>
+                        <div>
+                            <span>${data.date} | </span>
+                            <span>${data.time}  </span>
+                        </div>
+                    </div>
+                    <div class="message">
                         <div class="message-detail">
-                            <div>Replying to <a href="#${data.reply}">#${data.reply}</a></div>  
+                            <div>Replying to <a href="#${data.reply}">#${data.reply}</a></div>   
                             <span>${data.message} </span>
                             <p><a href="${data.link}" target="_blank">${data.link}</a></p>
                         
@@ -100,61 +156,14 @@ class ChatEngine{
                             <a class="message-reply" href="${data.id.slice(20)}"><i class="fas fa-reply"></i></a>
                         </div>
                     </div>
-                `   
-                }
-                else{
-                    newdiv.innerHTML=`
-                    <div class="details" id="user_detail">
-                            <span>${data.username} </span>
-                            <span>Msg. Id : ${data.id.slice(20)}</span>
-                            <div>
-                                <span>${data.date} | </span>
-                                <span>${data.time}  </span>
-                            </div>
-                        </div>
-                    <div class="message">
-                        <div class="message-detail">     
-                                              
-                            <span>${data.message} </span>
-                            <p><a href="${data.link}" target="_blank">${data.link}</a></p>
-                         
-                        </div>
-                        <div class="message-setting">
-                            <a class="message-reply" href="${data.id.slice(20)}"><i class="fas fa-reply"></i></a>
-                        </div>
-                    </div>
-                `   
-                }
+                </div>
                 
-            }
-            else{
-                if(data.reply!='')  
-                {
-                    newdiv.innerHTML=`
-                    <div class="details">
-                            <span>${data.username} </span>
-                            <span>Msg. Id : ${data._id.slice(20)}</span>
-                            <div>
-                                <span>${data.date} | </span>
-                                <span>${data.time}  </span>
-                            </div>
-                        </div>
-                    <div class="message">
-                        <div class="message-detail">
-                            <div>Replying to <a href="#${data.reply}">#${data.reply}</a></div>   
-                            <span>${data.message} </span>
-                            <p><a href="${data.link}" target="_blank">${data.link}</a></p>
-                         
-                        </div>
-                        <div class="message-setting">
-                            <a class="message-reply" href="${data.id.slice(20)}"><i class="fas fa-reply"></i></a>
-                        </div>
-                    </div>
                 `   
                 }
                 else{
                     newdiv.innerHTML=`
-                    <div class="details">
+                    <div class="seperate-message" id="${data.id.slice(20)}">
+                        <div class="details">
                             <span>${data.username} </span>
                             <span>Msg. Id : ${data._id.slice(20)}</span>
                             <div>
@@ -162,15 +171,17 @@ class ChatEngine{
                                 <span>${data.time}  </span>
                             </div>
                         </div>
-                    <div class="message">
-                        <div class="message-detail">                           
-                            <span>${data.message} </span>
-                            <p><a href="${data.link}" target="_blank">${data.link}</a></p> 
-                        </div>
-                        <div class="message-setting">
-                            <a class="message-reply" href="${data.id.slice(20)}"><i class="fas fa-reply"></i></a>
+                        <div class="message">
+                            <div class="message-detail">                           
+                                <span>${data.message} </span>
+                                <p><a href="${data.link}" target="_blank">${data.link}</a></p> 
+                            </div>
+                            <div class="message-setting">
+                                <a class="message-reply" href="${data.id.slice(20)}"><i class="fas fa-reply"></i></a>
+                            </div>
                         </div>
                     </div>
+                    
                 `   
                 }
             }
@@ -180,10 +191,13 @@ class ChatEngine{
             const messageContainer=document.getElementById('message-list-container');
             messageContainer.scrollTop=messageContainer.scrollHeight;  
             $('.message-reply').each(function(){
-                console.log(this);
                 let self=this;
                 let reply=new Reply(self);
             });
+            $('.message-delete').each(function(){
+                let self=this;
+                let delete_message=new Delete(self);
+            })
      
     });
 }

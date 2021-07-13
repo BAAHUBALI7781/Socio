@@ -6,57 +6,63 @@
         <div id="message-list-container">
             <% for(data of messages) {%>
                 <% if(data.user_email==locals.user.email){ %>
-                    <div class="seperate-message" id="<%=data.id.slice(20)%>">
-                        <div class="details"  id="user_detail">
-                            
-                            <span> <%= data.username %> </span>
-                            <span>Msg. Id : <%=data.id.slice(20)%></span>
-                            <div>
-                                <span> <%= data.date %> | </span>
-                                <span> <%= data.time %> </span>
+                    <div id="<%= data.id %>">
+                        <div class="seperate-message" id="<%=data.id.slice(20)%>">
+                            <div class="details"  id="user_detail">
+                                
+                                <span> <%= data.username %> </span>
+                                <span>Msg. Id : <%=data.id.slice(20)%></span>
+                                <div>
+                                    <span> <%= data.date %> | </span>
+                                    <span> <%= data.time %> </span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="message">
-                            <div class="message-detail">
-                                <% if(data.reply){ %>
-                                <div>Replying to <a href="#<%=data.reply%>">#<%=data.reply%></a></div>
-                                <%}%>
-                                <span><%= data.message %> </span>
-                                <% if(data.link){ %>
-                                    <p>Goto : <a href="<%=data.link%>" target="_blank"><%=data.link%></a></p>
-                                <%}%>
-                            </div>
-                            <div class="message-setting">
-                                <a class="message-reply" href="<%=data.id.slice(20)%>"><i class="fas fa-reply"></i></a>
+                            <div class="message">
+                                <div class="message-detail">
+                                    <% if(data.reply){ %>
+                                    <div>Replying to <a href="#<%=data.reply%>">#<%=data.reply%></a></div>
+                                    <%}%>
+                                    <span><%= data.message %> </span>
+                                    <% if(data.link){ %>
+                                        <p>Goto : <a href="<%=data.link%>" target="_blank"><%=data.link%></a></p>
+                                    <%}%>
+                                </div>
+                                <div class="message-setting">
+                                    <a class="message-reply" href="<%=data.id.slice(20)%>"><i class="fas fa-reply"></i></a>
+                                    <a class="message-delete" href="delete/<%=data.id%>"><i class="fas fa-trash-alt"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 <%}else{%>
-                    <div class="seperate-message" id="<%=data.id.slice(20)%>">
-                        <div class="details">
-
-                            <span><%= data.username %> </span>
-                            <span>Msg. Id : <%=data.id.slice(20)%></span>
-                            <div>
-                                <span><%= data.date %> | </span>
-                                <span><%= data.time %> </span>
+                    <div id="<%= data.id %>">
+                        <div class="seperate-message" id="<%=data.id.slice(20)%>">
+                            <div class="details">
+    
+                                <span><%= data.username %> </span>
+                                <span>Msg. Id : <%=data.id.slice(20)%></span>
+                                <div>
+                                    <span><%= data.date %> | </span>
+                                    <span><%= data.time %> </span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="message">
-                            <div class="message-detail">
-                                <% if(data.reply){ %>
-                                    <div>Replying to <a href="#<%=data.reply%>">#<%=data.reply%></a></div>
-                                <%}%>                                
-                                <span><%= data.message %> </span>
-                                <% if(data.link){ %>
-                                    <p>Goto : <a href="<%=data.link%>" target="_blank"><%=data.link%></a></p>
-                                <%}%>
-                            </div>
-                            <div class="message-setting">
-                                <a class="message-reply" href="<%=data.id.slice(20)%>"><i class="fas fa-reply"></i></a>
+                            <div class="message">
+                                <div class="message-detail">
+                                    <% if(data.reply){ %>
+                                        <div>Replying to <a href="#<%=data.reply%>">#<%=data.reply%></a></div>
+                                    <%}%>                                
+                                    <span><%= data.message %> </span>
+                                    <% if(data.link){ %>
+                                        <p>Goto : <a href="<%=data.link%>" target="_blank"><%=data.link%></a></p>
+                                    <%}%>
+                                </div>
+                                <div class="message-setting">
+                                    <a class="message-reply" href="<%=data.id.slice(20)%>"><i class="fas fa-reply"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    
                 <%}%>
                 
             <%}%>
@@ -81,5 +87,10 @@
         let self=this;
         let reply=new Reply(self);
     });
+
+    $('.message-delete').each(function(){
+        let self=this;
+        let delete_message=new Delete(self);
+    })
 </script>
 <% } %>
