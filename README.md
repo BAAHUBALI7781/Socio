@@ -3,8 +3,7 @@
 ### Requirement : 
   1. NodeJS
   2. MongDB
-  3. Gulp
-  4. Redis Server
+  3. Redis Server
 ### Project Setup :
   Install all packages and dependencies
   ```bash
