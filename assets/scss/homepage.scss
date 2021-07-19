@@ -1,0 +1,186 @@
+.beauty{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap ;
+    .logo{
+        img{
+            width:400px;
+            height:400px;
+            border-radius:30%;
+            margin-top:18%;
+        }
+
+    }
+    .typing{
+        display:flex;
+        flex-direction: column;
+        margin-top:10%;
+        .css-typing
+        {   
+            font-family: "Courier";
+            width: 25em;
+            white-space:nowrap;
+            margin-left:10%;
+            overflow:hidden;
+            -webkit-animation: type 2s steps(40, end);
+            animation: type 2s steps(40, end);
+        }
+
+        .css-typing:nth-child(2)
+        {
+            white-space:nowrap;
+            overflow:hidden;    
+            opacity:0;
+            -webkit-animation: type 2s steps(40, end);
+            animation: type2 2s steps(40, end);
+            -webkit-animation-delay: 2s; 
+            animation-delay: 2s;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+        }
+        .css-typing:nth-child(3){
+            white-space:nowrap;
+            overflow:hidden;
+            opacity:0;
+            -webkit-animation: type 2s steps(40, end);
+            animation: type3 2s steps(40, end);
+            -webkit-animation-delay: 4s; 
+            animation-delay: 4s;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+        }.css-typing:nth-child(4){
+            white-space:nowrap;
+            overflow:hidden;
+            opacity:0;
+            -webkit-animation: type 2s steps(40, end);
+            animation: type3 2s steps(40, end);
+            -webkit-animation-delay: 6s; 
+            animation-delay: 6s;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+        }
+        .css-typing:nth-child(5){
+            white-space:nowrap;
+            overflow:hidden;
+            opacity:0;
+            -webkit-animation: type 2s steps(40, end);
+            animation: type3 2s steps(40, end);
+            -webkit-animation-delay: 8s; 
+            animation-delay: 8s;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+        }
+        .css-typing:nth-child(6){
+            white-space:nowrap;
+            overflow:hidden;
+            opacity:0;
+            -webkit-animation: type 2s steps(40, end);
+            animation: type3 2s steps(40, end);
+            -webkit-animation-delay: 10s; 
+            animation-delay: 10s;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+        }
+        .create-account{
+            width:20%;
+            padding:2%;
+            margin:auto;
+            background-color:#111130;
+            color:white;
+            margin-top:4%;
+            a{
+                color:white;
+                font-size:1.1rem;
+                text-decoration: none;
+            }
+        }
+        .create-account:hover{
+            background-color:white;
+            a{
+                color:#111130;
+            }
+        }
+    } 
+}
+
+ @keyframes type{
+    from { width: 0; }
+}
+
+@-webkit-keyframes type{
+    from { width: 0; }
+}
+
+span{
+  animation: blink 1s infinite;
+}
+
+@keyframes type2{
+0%{width: 0;}
+from {opacity:0;}
+1%{opacity:1;}
+to{opacity:1;}
+100%{opacity:1;}
+}
+@-webkit-keyframes type2{
+0%{width: 0;}
+from {opacity:0;}
+1%{opacity:1;}
+to{opacity:1;}
+100%{opacity:1;}
+}  
+@keyframes type3{
+  0%{width: 0;}
+  from {opacity:0;}
+1%{opacity:1;}
+to{opacity:1;}
+100%{opacity:1;}
+
+} 
+@-webkit-keyframes type3{
+  0%{width: 0;}
+  from {opacity:0;}
+1%{opacity:1;}
+to{opacity:1;}
+100%{opacity:1;}
+} 
+
+
+
+@media screen and (max-width:900px){
+    .beauty{
+        .logo{
+            img{
+                width:350px;
+                height:350px;
+            }
+        }
+        .typing{
+            .css-typing{
+                width:18em;
+            }
+        }
+    }
+    
+}
+@media screen and (max-width:600px){
+    .beauty{
+        .logo{
+            img{
+                width:250px;
+                height:250px;
+            }
+        }
+        .typing{
+            .css-typing{
+                width:25em;
+                font-size:12px;
+                margin-left: 0%;
+                
+            }
+            margin-bottom:4%;
+        }
+    }
+    
+}

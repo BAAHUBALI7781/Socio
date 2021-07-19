@@ -13,6 +13,11 @@ let pop=async function(posts)
             }
         }
 }
+module.exports.home_page=function(req,res){
+    return res.render('home_page',{
+        title:'Socio | Home'
+    })
+}
 module.exports.home = async function(req, res){
 
     try{
@@ -36,11 +41,9 @@ module.exports.home = async function(req, res){
             .populate('friends');
         }
         
-        let users=await User.find({});
         return res.render('home', {
-            title: "Socio | Home",
+            title: "Socio | Blogs",
             posts:  posts,
-            users: users,
             currUser:currUser
         });
     }catch(err){
@@ -89,4 +92,18 @@ module.exports.friend=async function(req,res){
         console.log('Error', err);
         return;
     }
+}
+
+module.exports.users=async function(req,res){
+    let users=await User.find({});
+    let currUser;
+    if(req.user){
+        currUser = await User.findById(req.user._id)
+        .populate('friends');
+    }
+    return res.render('users',{
+        title:'Socio | Users',
+        users:users,
+        currUser:currUser
+    });
 }

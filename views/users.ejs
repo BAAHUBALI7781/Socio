@@ -1,0 +1,31 @@
+
+<link rel="stylesheet" href="<%= assetPath('css/user.css') %>">
+
+<section class="user-friends">
+
+    <section class="users">
+        <h2>All Users</h2>
+        <% for(userx of users){%>
+            <p>
+                <a href="user/profile/<%=userx.id%>"><%=userx.user_name%></a>
+            </p>
+    <%}%>
+    </section>
+    <% if(currUser && currUser.friends.length){%>
+    <section class="users">
+        <% if(locals.user){%>
+            <section id="friends">
+                
+                <h2>Following</h2>
+                <% for(friendx of currUser.friends){%>
+                    <p>
+                        <a href="user/profile/<%=friendx.id%>"><%=friendx.user_name%></a>
+                    </p>
+                <%}%>
+            </section>
+        <%}%>
+    </section>
+    <%}%>
+    
+
+</section>

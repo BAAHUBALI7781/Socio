@@ -1,5 +1,6 @@
 nav{
     padding: 0px 7px;
+    box-sizing: border-box;
     a{
         text-decoration: none;
     }
@@ -14,12 +15,14 @@ nav{
             height:70px;
         }
     }
-    #navbarNav{
-        ul{
-            li{
-                padding-left:5px;
-                font-size:1.1rem;
+        #navbarSupportedContent{
+            ul{
+                li{
+                    padding-left:5px;
+                    font-size:1.1rem;
+                }
             }
-        }
+        
     }
+    
 }

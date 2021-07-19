@@ -139,7 +139,7 @@ class ChatEngine{
                 <div class="seperate-message" id="${data.id.slice(20)}">
                     <div class="details">
                         <span>${data.username} </span>
-                        <span>Msg. Id : ${data._id.slice(20)}</span>
+                        <span>Msg. Id : ${data.id.slice(20)}</span>
                         <div>
                             <span>${data.date} | </span>
                             <span>${data.time}  </span>
@@ -165,7 +165,7 @@ class ChatEngine{
                     <div class="seperate-message" id="${data.id.slice(20)}">
                         <div class="details">
                             <span>${data.username} </span>
-                            <span>Msg. Id : ${data._id.slice(20)}</span>
+                            <span>Msg. Id : ${data.id.slice(20)}</span>
                             <div>
                                 <span>${data.date} | </span>
                                 <span>${data.time}  </span>
