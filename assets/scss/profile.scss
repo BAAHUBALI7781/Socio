@@ -10,8 +10,8 @@
         min-height:300px;
         margin:4% 0% 0% 2%;
         .toggle-friend-button{
-            border:1px solid rgb(17, 17, 48);
-            background-color: rgb(17, 17, 48);
+            border:1px solid black;
+            background-color: black;
             color:white;
             text-decoration: none;
             padding:6px;
@@ -31,7 +31,7 @@
             transition: all 0.3s ease 0s;
         }
         p{
-            color:rgb(17, 17, 48);
+            color:black;
             font-size: 1.5rem;
             transition: all 1s ease 0s;
         }
@@ -43,7 +43,7 @@
             margin-top:20px;
             transition: all 0.8s ease 0s;
             .iconify,i{
-                color:rgb(17, 17, 48);
+                color:black;
                 font-size: 1.6rem;
             }
             a{
@@ -53,7 +53,7 @@
     }
     .profile-details:hover{
         .links,.dummy{
-            background-color:rgb(17, 17, 48);
+            background-color:black;
         }
         .iconify,i{
             color:white;
@@ -64,12 +64,12 @@
         img{
             width:150px;
             height:150px;
-            border:3px solid rgb(17, 17, 48);
+            border:3px solid black;
             padding:5px;
 
         }
         .toggle-friend-button{
-            color:rgb(17, 17, 48);
+            color:black;
             background-color: white;
         }
     }
@@ -81,7 +81,7 @@
             flex-direction: column;
             padding:5px;
             h2{
-                color:rgb(17, 17, 48);
+                color:black;
             }
             div{
                 margin:10px;
@@ -90,17 +90,17 @@
                     border:transparent;
                     width:35%;
                     font-size:0.9rem;
-                    color:rgb(17, 17, 48);
+                    color:black;
                 }
                 input:focus{
                     outline:none;
-                    border-bottom: 1px solid rgb(17, 17, 48);
+                    border-bottom: 1px solid black;
                 }
                 input[type="file"]{
                     border:transparent;
                 }
                 .iconify,label{
-                    color:rgb(17, 17, 48);
+                    color:black;
                     font-size: 1.1rem;
                 }
             }
@@ -111,14 +111,14 @@
                 margin-left: 20%;
                 margin-bottom:2%;
                 background-color:white;
-                color:rgb(17, 17, 48);
-                border:1px solid rgb(17, 17, 48);
+                color:black;
+                border:1px solid black;
                 border-radius: 3px;
 
             }
             button:hover{
                 color:white;
-                background-color: rgb(17, 17, 48);
+                background-color: black;
             }
             ::placeholder{
                 font-size: 0.9rem;

@@ -22,7 +22,7 @@
             .details{
                 display: flex;
                 justify-content: space-between;
-                background-color:#1e1e3a ;
+                background-color:red ;
                 color:white;
                 padding:3px;
                 border-radius: 5px 5px 0px 0px;
@@ -33,7 +33,7 @@
             .message{
                 display:flex;
                 justify-content: space-between;
-                background-color:#292953;
+                background-color:black;
                 color:white;
                 padding:5px;
                 text-align: justify;
@@ -80,10 +80,10 @@
             font-size: 1rem;
             color: white;
             border: none;
-            background-color: rgb(17, 17, 48);
+            background-color: black;
         }
         #send-message:hover{
-            background-color: rgb(32, 32, 68);
+            background-color:green;
         }
     }
 }

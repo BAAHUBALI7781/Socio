@@ -2,11 +2,6 @@
     display:flex;
     justify-content: space-between;
     min-height:100vh;
-    #links{
-        width:20%;
-        padding:10px;
-        background-color: #111130;
-    }
     #feed{
         width:60%;
         padding:10px;
@@ -73,9 +68,10 @@
                     cursor: pointer;
                     font-size: 1.1rem;
                     padding-top:8px;
+                    color:black;
                 }
                 label:hover{
-                    background-color: #202044;
+                    background-color: green;
 	                color: #fff;
                 }
                 input[type="file"] {
@@ -85,14 +81,13 @@
                     color: #fff;
                     width: 50%;
                     height: 40px;
-                    background-color: #111130;
-                    border-color: #111130;
+                    background-color: black;
+                    border-color: black;
                     border-end-end-radius: 7px;
                     font-size: 1.1rem;
                 }
                 #form-submit:hover{
-                    color: white;
-	                background-color: #202044;
+	                background-color: green;
                 }
             }
 
@@ -110,7 +105,7 @@
             }
             a{
                 text-decoration: none;
-                color:rgb(17, 17, 48);
+                color:black;
                 font-size: 0.95rem;
                 i:hover{
                     color:red;
@@ -143,13 +138,13 @@
             button{
                 width:10%;
                 color: #fff;
-                background-color: rgb(17, 17, 48);
-                border-color: rgb(17, 17, 48);
+                background-color: black;
+                border-color: black;
                 border-start-end-radius: 7px;
                 border-end-end-radius: 7px;
             }
             button:hover{
-                background-color: rgb(32, 32, 68);
+                background-color: green;
             }
         }
         .post-comment{
@@ -170,7 +165,7 @@
             
             #comment-creator{
                 font-size: 1.1rem;
-                color: rgb(17, 17, 48);
+                color: black;
             }
             p{
                 margin: 0;
@@ -182,32 +177,7 @@
             }
         }
         
-    }
-    .user-friends{
-        display: flex;
-        flex-direction: column;
-        width:20%;
-        padding:10px;
-        padding-top:30px;
-        background-color: #111130;
-        
-        h4{
-            font-size:1.2rem;
-            text-align: center;
-            color:white;
-        }
-        p{
-            font-size:1.1rem;
-            text-align: center;
-            a{
-                text-decoration: none;
-                color:white;
-            }
-            a:hover{
-                color:red;
-            }
-        }
-    }    
+    } 
 
 }
 

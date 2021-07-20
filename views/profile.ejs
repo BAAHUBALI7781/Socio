@@ -6,7 +6,7 @@
         <% if(profile_user.avatar){%>
             <img src="<%=profile_user.avatar%>" alt="No profile pic" class="my_img">
         <%}else{%>
-            <img src="<%=assetPath('images/profile.png')%>" alt="No profile pic" class="my_img">        
+            <img src="<%=assetPath('images/profile.jpg')%>" alt="No profile pic" class="my_img">        
         <%}%>
         <p><%=profile_user.user_name%></p>
         <% if(locals.user && profile_user.id!=user.id){%>
