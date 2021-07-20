@@ -54,15 +54,17 @@ module.exports.add_comment=async function(req,res){
   
 module.exports.destroy=async function(req,res){
     try{
+        console.log("Inside comment controller");
         let comment=await Comment.findById(req.params.id);
         let post=await Post.findById(comment.post);
-        if(comment.user.id==req.user.id || post.user==req.user.id){
+        if(comment.user==req.user.id){
             let postId=comment.post;
             await Like.deleteMany({likeable:comment._id,onModel:'Comment'});
-            
             comment.remove();
             await Post.findByIdAndUpdate(postId,{$pull:{comments:req.params.id}});
+            console.log("Hello Comments!");
             if (req.xhr){
+                console.log("Inside comment xhr");
                 return res.status(200).json({
                     data: {
                         comment_id: req.params.id

@@ -77,12 +77,10 @@ class PostComments{
     deleteComment(deleteLink){
         $(deleteLink).click(function(e){
             e.preventDefault();
-
             $.ajax({
                 type: 'get',
                 url: $(deleteLink).prop('href'),
                 success: function(data){
-                    
                     $(`#comment-${data.data.comment_id}`).remove();
 
                     new Noty({

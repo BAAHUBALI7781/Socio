@@ -94,29 +94,33 @@
     min-height:80vh;
     justify-content: space-around;
     align-items: center;
+    
     .chat-seperate{
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
         display: flex;
         flex-direction: column;
         margin:10px;
-        img{
-            width:300px;
-            height:300px;
-
+        transition: transform .2s;
+        a{
+            img{
+                width:300px;
+                height:300px;
+    
+            }
         }
+        
         .category{
             padding:6px;
             text-align: center;
             a{
-                color:rgb(17, 17, 48);
+                color:black;
                 font-size:1.5rem;
                 text-decoration: none;
             }
-            a:hover{
-                color:red;
-                text-decoration: underline;
-            }
         }
+    }
+    .chat-seperate:hover{
+        transform: scale(1.1);
     }
 }
 @media screen and (max-width:800px) {
