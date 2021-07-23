@@ -90,7 +90,7 @@
                         <i class="like far fa-heart"></i> 0
                     </a>
                     <a href="/like/toggle/?but=laugh&id=${post._id}&type=Post" class="toggle-like-button" data-laugh="0">
-                        <i class="far fa-laugh-squint"></i> 0
+                     <i class="far fa-thumbs-down"></i> </i> 0
                     </a>  
 
                 </div>

@@ -7,7 +7,7 @@ const uglify=require('gulp-uglify-es').default;
 const imagemin=require('gulp-imagemin');
 const del=require('del');
 
-gulp.task('css',function(done){
+gulp.task('css',async function(done){
     console.log("Minifying CSS");
     gulp.src('./assets/scss/*.scss')
     .pipe(sass())
@@ -25,7 +25,7 @@ gulp.task('css',function(done){
     done();
 });
 
-gulp.task('js',function(done){
+gulp.task('js',async function(done){
     console.log("Minifying JS");
     gulp.src('./assets/**/*.js')
     .pipe(uglify())
@@ -39,7 +39,7 @@ gulp.task('js',function(done){
     done();
 });
 
-gulp.task('img',function(done){
+gulp.task('images',async function(done){
     gulp.src('./assets/**/*.+(png|jpg|svg|jpeg)')
     .pipe(imagemin())
     .pipe(rev())
@@ -52,11 +52,11 @@ gulp.task('img',function(done){
     done();    
 })
 
-gulp.task('clearAssets',function(done){
+gulp.task('clearAssets',async function(done){
     del.sync('./public/assets');
     done();
 })
-gulp.task('build',gulp.series('clearAssets','css','js','img'),function(done){
+gulp.task('build',gulp.series('clearAssets','css','js','images'),async function(done){
     done();
 })
 

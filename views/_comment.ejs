@@ -35,13 +35,13 @@
         <% } %>
         <% if(locals.user){ %>
             <% if(comment.laugh.includes(locals.user._id)){%>
-                <a href="/like/toggle/?but=laugh&id=<%=comment._id%>&type=Comment" class="toggle-like-button red" data-laugh="<%=comment.laugh.length%>"><i class="like far fa-laugh-squint"></i> <%=comment.laugh.length%></a>
+                <a href="/like/toggle/?but=laugh&id=<%=comment._id%>&type=Comment" class="toggle-like-button red" data-laugh="<%=comment.laugh.length%>"><i class="far fa-thumbs-down"></i> <%=comment.laugh.length%></a>
             <%}else{%>
-                <a href="/like/toggle/?but=laugh&id=<%=comment._id%>&type=Comment" class="toggle-like-button" data-laugh="<%=comment.laugh.length%>"><i class="like far fa-laugh-squint"></i> <%=comment.laugh.length%></a>
+                <a href="/like/toggle/?but=laugh&id=<%=comment._id%>&type=Comment" class="toggle-like-button" data-laugh="<%=comment.laugh.length%>"> <i class="far fa-thumbs-down"></i><%=comment.laugh.length%></a>
             <%}%>
 
         <%}else{%>
-            <a><i class="like like far fa-laugh-squint"></i> <%=comment.laugh.length%></a>
+            <a><i class="far fa-thumbs-down"></i><%=comment.laugh.length%></a>
         <% } %>
     </div>
 </li>    

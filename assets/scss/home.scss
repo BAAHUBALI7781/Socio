@@ -149,6 +149,8 @@
         }
         .post-comment{
             padding:2%;
+            max-height:400px;
+            overflow:scroll;
             li{
                 list-style: none;
                 margin-top:30px;
@@ -208,6 +210,14 @@
                         height:280px;
                         object-fit:contain;
                     }
+                }
+            }
+            .comment_form{
+                input{
+                    width:83%;
+                }
+                button{
+                    width:17%;
                 }
             }
         }

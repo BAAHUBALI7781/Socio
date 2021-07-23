@@ -33,7 +33,7 @@ class ToggleLike{
                 if(data.data.cat=='heart')
                     $(self).html(`<i class="like far fa-heart"></i> ${likes}`);
                 if(data.data.cat=='laugh')
-                    $(self).html(`<i class="far fa-laugh-squint"></i> ${likes}`);
+                    $(self).html(`<i class="far fa-thumbs-down"></i>  ${likes}`);
             })
             .fail(function(err){
                 console.log("Error in liking post/comment");

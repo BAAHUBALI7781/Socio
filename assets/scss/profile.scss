@@ -143,13 +143,48 @@
         .profile-details{
             width:60%;
             margin-top:4%;
+            margin-left:0%;
         }
         .edit-details{
-            width: 80%;
-            margin:6% 0% 0% 35%;
-            input{
-                width:50%;
+            width: 90%;
+            margin:6% 0% 0% 0%;
+            form{
+                div{
+                    input{
+                        width:50%;
+                    }
+                    span,label{
+                        font-size:0.8rem;
+                    }
+                }
+                button{
+                    width:30%;
+                    margin:auto;
+                    margin-bottom: 10px;
+                }
+
             }
+        }
+    }
+}
+@media screen and (max-width:500px){
+    .profile-page{
+        .profile-details{
+            width:70%;
+            margin-top:4%;
+            margin-left:0%;
+        }
+        .edit-details{
+            width: 90%;
+            margin:6% 0% 0% 0%;
+            input{
+                width:60%;
+            }
+            div{
+                span,label{
+                font-size:1.5rem;
+            }
+        }
         }
     }
 }

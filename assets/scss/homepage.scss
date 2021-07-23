@@ -10,7 +10,6 @@
             border-radius:30%;
             margin-top:18%;
         }
-
     }
     .typing{
         display:flex;
@@ -82,25 +81,34 @@
             -webkit-animation-fill-mode: forwards;
             animation-fill-mode: forwards;
         }
-        .create-account{
-            width:20%;
-            padding:2%;
-            margin:auto;
-            background-color:black;
-            color:white;
-            margin-top:4%;
-            a{
+        .accounts,.features{
+            display:flex;
+            justify-content:center;
+            
+            .create-account,.feature{
+                width:20%;
+                padding:2%;
+                margin-left:3%;
+                background-color:black;
                 color:white;
-                font-size:1.1rem;
-                text-decoration: none;
+                margin-top:4%;
+                a{
+                    color:white;
+                    font-size:1.1rem;
+                    text-decoration: none;
+                }
+            }
+            .create-account:hover,.feature:hover{
+                background-color:white;
+                a{
+                    color:black;
+                }
             }
         }
-        .create-account:hover{
-            background-color:white;
-            a{
-                color:black;
-            }
+        .features{
+            display:none;
         }
+        
     } 
 }
 
@@ -159,6 +167,18 @@ to{opacity:1;}
         .typing{
             .css-typing{
                 width:18em;
+                font-size:12px;
+                margin-left: 0%;
+                font-weight:700;
+            }
+            margin-bottom:4%;
+            .accounts,.features{
+                .create-account,.feature{
+                    width:33%;
+                }
+            }
+            .features{
+                display:flex;
             }
         }
     }
@@ -177,10 +197,21 @@ to{opacity:1;}
                 width:25em;
                 font-size:12px;
                 margin-left: 0%;
+                font-weight:700;
                 
             }
             margin-bottom:4%;
+            .accounts,.features{
+                .create-account,.feature{
+                    width:34%;
+                }
+            }
+            .features{
+                display:flex;
+            }
         }
+        
     }
     
 }
+

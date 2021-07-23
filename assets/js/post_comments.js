@@ -67,7 +67,7 @@ class PostComments{
                 <div id="comment_likes" class="like_section">
                     <a href="/like/toggle/?but=like&id=${comment._id}&type=Comment" class="toggle-like-button" data-like="0" href><i class="like far fa-thumbs-up"></i> 0</a>
                     <a href="/like/toggle/?but=heart&id=${comment._id}&type=Comment" class="toggle-like-button" data-heart="0" href><i class="like far fa-heart"></i> 0</a>
-                    <a href="/like/toggle/?but=laugh&id=${comment._id}&type=Comment" class="toggle-like-button" data-laugh="0" href><i class="like far fa-laugh-squint"></i> 0<heart
+                    <a href="/like/toggle/?but=laugh&id=${comment._id}&type=Comment" class="toggle-like-button" data-laugh="0" href><i class="far fa-thumbs-down"></i>  0</a>
                 </div>
             </li> 
         `);

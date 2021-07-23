@@ -48,41 +48,41 @@
             <form class="update-form" action="/user/update-profile/<%=profile_user.id%>" method="POST" enctype="multipart/form-data">
                 <h2>Edit details</h2>
                 <div>
-                    <label for="user_name"><i class="fas fa-signature"></i></label>
+                    <label for="user_name"><i class="fas fa-signature"></i>&ensp; </label>
                     <input type="text" id="user_name" name="user_name" placeholder="Type new name" value="<%=profile_user.user_name%>" required>    
                 </div>
                 <div>
-                    <label for="email"><i class="fas fa-envelope"></i></label>
+                    <label for="email"><i class="fas fa-envelope"></i>&ensp; </label>
                     <input type="email" id="email" name="email" placeholder="Type new email" value="<%=profile_user.email%>" required> 
                 </div>
                 <div>
-                    <label for="image"><i class="fas fa-user"></i></label>
+                    <label for="image"><i class="fas fa-user"></i> &ensp;</label>
                     <input class="file-input" id="image" type="file" name="avatar" placeholder="Profile Picture">    
                 </div>
                 <h2>Links</h2>
                 <div>
-                    <span class="iconify" data-icon="bytesize:portfolio" data-inline="false"></span>
+                    <span class="iconify" data-icon="bytesize:portfolio" data-inline="false"></span>&ensp;
                     <input type="url" id="pf" name="portfolio" placeholder="Portfolio Website" value="<%=profile_user.portfolio%>">
                 </div>
                 <div>
-                    <label for="li"><i class="fab fa-linkedin"></i> linkedin.com/in/</label>
+                    <label for="li"><i class="fab fa-linkedin"></i>&ensp; linkedin.com/in/</label>
                     <input type="text" id="li" name="linked" placeholder="Linked In Handle" value="<%=profile_user.linked%>">
                 </div>
                 
                 <div>
-                    <label for="git"><i class="fab fa-github"></i> github.com/</label>
+                    <label for="git"><i class="fab fa-github"></i> &ensp; github.com/</label>
                     <input type="string" id="git" name="github" placeholder="Github Handle" value="<%=profile_user.github%>">
                 </div>
                 <div>
-                    <span class="iconify" data-icon="simple-icons:leetcode" data-inline="false"></span><label> leetcode.com/</label>
+                    <span class="iconify" data-icon="simple-icons:leetcode" data-inline="false"></span><label> &ensp; leetcode.com/</label>
                     <input type="string" id="leet" name="leetcode" placeholder="Leetcode Handle" value="<%=profile_user.leetcode%>">
                 </div>
                 <div>
-                    <span class="iconify" data-icon="simple-icons:codeforces" data-inline="false"></span><label> codeforces.com/profile/</label>
+                    <span class="iconify" data-icon="simple-icons:codeforces" data-inline="false"></span><label> &ensp;codeforces.com/profile/</label>
                     <input type="string" name="codeforces" placeholder="Codeforces Handle" value="<%=profile_user.codeforces%>">
                 </div>
                 <div>
-                    <span class="iconify" data-icon="simple-icons:codechef" data-inline="false"></span><label> codechef.com/users/</label>
+                    <span class="iconify" data-icon="simple-icons:codechef" data-inline="false"></span><label> &ensp;codechef.com/users/</label>
                     <input type="string" name="codechef" placeholder="Codechef Handle" value="<%=profile_user.codechef%>">
                 </div>
                 
