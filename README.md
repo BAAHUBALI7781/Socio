@@ -1,5 +1,5 @@
 # Socio
-## A social networking site (Check this out: http://www.socio.codes/)
+## A technical blogging site (Check this out: http://35.174.176.118/)
 ### Requirement : 
   1. NodeJS
   2. MongDB
