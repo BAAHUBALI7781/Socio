@@ -12,7 +12,9 @@ module.exports.togg_friend=async function(req,res){
             let index=req.user.friends.indexOf(req.query.id);
             req.user.friends.splice(index,1);
             req.user.save();
-            Friendship.findByIdAndDelete(friendship._id);
+            console.log(friendship._id);
+            await Friendship.deleteOne( {"_id": friendship._id});
+
         }
         else{
             toggle=1;
