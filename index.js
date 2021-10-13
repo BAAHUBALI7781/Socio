@@ -6,15 +6,6 @@ const port=8080;
 const app=express();
 
 const path=require('path');
-const fs=require('fs');
-const rfs=require('rotating-file-stream');
-const log_directory=path.join(__dirname,'../production_logs');
-
-fs.existsSync(log_directory) || fs.mkdirSync(log_directory);
-const accessLogStream=rfs.createStream('access.log',{
-    interval:'1d',
-    path:log_directory
-});
 
 // To create layouts
 const expressLayouts=require('express-ejs-layouts');
@@ -58,8 +49,6 @@ app.use(express.urlencoded({extended:false}));
 
 app.use(cookieParser());
 
-// Using morgan
-app.use(logger(process.env.SOCIO_MORGAN_MODE,{stream:accessLogStream}));
 
 // Use the assets 
 console.log(process.env.SOCIO_ASSET_PATH);
