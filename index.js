@@ -28,7 +28,7 @@ const customFlash=require('./config/middleware');
 // Socket.io
 const chatServer=require('http').Server(app);
 const chatSockets=require('./config/chat_socket').chatSocket(chatServer);
-chatServer.listen(port);
+chatServer.listen(5000);
 console.log("Chat server is listening on port 5000");
 
 // Setting up SCSS
