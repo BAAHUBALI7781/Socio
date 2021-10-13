@@ -3,6 +3,7 @@ const nodemailer=require('nodemailer');
 const ejs=require('ejs');
 const path=require('path');
 
+console.log(process.env.SOCIO_GOOGLE_USER, " ", process.env.SOCIO_GOOGLE_PASS);
 let transporter=nodemailer.createTransport({
     service: 'gmail',
     host: 'smtp.gmail.com',
