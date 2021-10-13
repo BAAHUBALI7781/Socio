@@ -4,10 +4,22 @@ const env=require('./config/environment');
 const logger=require('morgan');
 const port=8080;
 const app=express();
-require('./config/view-helpers')(app);
+
+const path=require('path');
+const fs=require('fs');
+const rfs=require('rotating-file-stream');
+const log_directory=path.join(__dirname,'../production_logs');
+
+fs.existsSync(log_directory) || fs.mkdirSync(log_directory);
+const accessLogStream=rfs.createStream('access.log',{
+    interval:'1d',
+    path:log_directory
+});
+
 // To create layouts
 const expressLayouts=require('express-ejs-layouts');
-const db=require('./config/mongoose');
+const connectDb=require('./config/mongoose');
+connectDb();
 //Create a session cookie
 const session=require('express-session');
 
@@ -29,10 +41,9 @@ const chatSockets=require('./config/chat_socket').chatSocket(chatServer);
 chatServer.listen(5000);
 console.log("Chat server is listening on port 5000");
 
-const path=require('path');
 // Setting up SCSS
 
-if(env.name=='development'){
+if(!process.env.SOCIO_ENVIRONMENT=='production'){
     app.use(sassMiddleware({
         src:path.join(__dirname,env.asset_path,'scss'),
         dest:path.join(__dirname,env.asset_path,'css'),
@@ -48,16 +59,15 @@ app.use(express.urlencoded({extended:false}));
 app.use(cookieParser());
 
 // Using morgan
-app.use(logger(env.morgan.mode,env.morgan.options));
+app.use(logger(process.env.SOCIO_MORGAN_MODE,{stream:accessLogStream}));
 
 // Use the assets 
-app.use(express.static(env.asset_path));
+console.log(process.env.SOCIO_ASSET_PATH);
+app.use(express.static(process.env.SOCIO_ASSET_PATH));
 // Make the uploads path available to the browser
 app.use('/uploads',express.static(__dirname+'/uploads'));
 app.use(expressLayouts);
 
-app.set('layout extractStyles',true);
-app.set('layout extractScripts',true);
 
 // Set view engine and views
 app.set('view engine','ejs');
@@ -66,7 +76,7 @@ app.set('views','./views');
 
 app.use(session({
     name:'socio',
-    secret:env.session_cookie,
+    secret:process.env.SOCIO_SESSION_COOKIE,
     saveUninitialized:false,
     resave:false,
     cookie:{
@@ -74,7 +84,7 @@ app.use(session({
     },
     store:MongoStore.create({
         
-        mongoUrl: `mongodb://localhost/${env.db}`,
+        mongoUrl: process.env.SOCIO_DATABASE,
         autoRemove:'disabled',
     },function(err){
         console.log(err || 'connect-mongdb setup');

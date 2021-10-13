@@ -1,0 +1,20 @@
+.user-friends {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px; }
+  .user-friends .users {
+    margin: 2%;
+    text-align: center;
+    border: 2px solid black;
+    min-width: 300px;
+    padding: 2%; }
+    .user-friends .users h2 {
+      text-decoration: underline;
+      margin-bottom: 15px; }
+    .user-friends .users p a {
+      font-size: 1.15rem;
+      color: black;
+      text-decoration: none; }
+    .user-friends .users p a:hover {
+      color: red; }

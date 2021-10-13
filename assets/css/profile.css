@@ -1,0 +1,135 @@
+.profile-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap; }
+  .profile-page .profile-details {
+    width: 30%;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    min-height: 300px;
+    margin: 4% 0% 0% 2%; }
+    .profile-page .profile-details .toggle-friend-button {
+      border: 1px solid black;
+      background-color: black;
+      color: white;
+      text-decoration: none;
+      padding: 6px;
+      margin-top: 0; }
+    .profile-page .profile-details .dummy {
+      height: 30px;
+      transition: all 0.8s ease 0s; }
+    .profile-page .profile-details img {
+      margin-top: 20px;
+      border-radius: 50%;
+      width: 180px;
+      height: 180px;
+      box-sizing: border-box;
+      transition: all 0.3s ease 0s; }
+    .profile-page .profile-details p {
+      color: black;
+      font-size: 1.5rem;
+      transition: all 1s ease 0s; }
+    .profile-page .profile-details .links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 10px;
+      margin-top: 20px;
+      transition: all 0.8s ease 0s; }
+      .profile-page .profile-details .links .iconify, .profile-page .profile-details .links i {
+        color: black;
+        font-size: 1.6rem; }
+      .profile-page .profile-details .links a {
+        margin-left: 15px; }
+  .profile-page .profile-details:hover .links, .profile-page .profile-details:hover .dummy {
+    background-color: black; }
+  .profile-page .profile-details:hover .iconify, .profile-page .profile-details:hover i {
+    color: white; }
+  .profile-page .profile-details:hover p {
+    text-decoration: underline; }
+  .profile-page .profile-details:hover img {
+    width: 150px;
+    height: 150px;
+    border: 3px solid black;
+    padding: 5px; }
+  .profile-page .profile-details:hover .toggle-friend-button {
+    color: black;
+    background-color: white; }
+  .profile-page .edit-details {
+    width: 40%;
+    margin: 1.5% 0% 0% 5%; }
+    .profile-page .edit-details form {
+      display: flex;
+      flex-direction: column;
+      padding: 5px; }
+      .profile-page .edit-details form h2 {
+        color: black; }
+      .profile-page .edit-details form div {
+        margin: 10px; }
+        .profile-page .edit-details form div input {
+          margin-left: 5px;
+          border: transparent;
+          width: 35%;
+          font-size: 0.9rem;
+          color: black; }
+        .profile-page .edit-details form div input:focus {
+          outline: none;
+          border-bottom: 1px solid black; }
+        .profile-page .edit-details form div input[type="file"] {
+          border: transparent; }
+        .profile-page .edit-details form div .iconify, .profile-page .edit-details form div label {
+          color: black;
+          font-size: 1.1rem; }
+      .profile-page .edit-details form button {
+        width: 15%;
+        padding: 3px;
+        font-size: 1.1rem;
+        margin-left: 20%;
+        margin-bottom: 2%;
+        background-color: white;
+        color: black;
+        border: 1px solid black;
+        border-radius: 3px; }
+      .profile-page .edit-details form button:hover {
+        color: white;
+        background-color: black; }
+      .profile-page .edit-details form ::placeholder {
+        font-size: 0.9rem; }
+
+@media screen and (max-width: 1170px) {
+  .profile-page .profile-details {
+    width: 40%;
+    margin-top: 4%; }
+  .profile-page .edit-details {
+    width: 55%; } }
+
+@media screen and (max-width: 850px) {
+  .profile-page .profile-details {
+    width: 60%;
+    margin-top: 4%;
+    margin-left: 0%; }
+  .profile-page .edit-details {
+    width: 90%;
+    margin: 6% 0% 0% 0%; }
+    .profile-page .edit-details form div input {
+      width: 50%; }
+    .profile-page .edit-details form div span, .profile-page .edit-details form div label {
+      font-size: 0.8rem; }
+    .profile-page .edit-details form button {
+      width: 30%;
+      margin: auto;
+      margin-bottom: 10px; } }
+
+@media screen and (max-width: 500px) {
+  .profile-page .profile-details {
+    width: 70%;
+    margin-top: 4%;
+    margin-left: 0%; }
+  .profile-page .edit-details {
+    width: 90%;
+    margin: 6% 0% 0% 0%; }
+    .profile-page .edit-details input {
+      width: 60%; }
+    .profile-page .edit-details div span, .profile-page .edit-details div label {
+      font-size: 1.5rem; } }

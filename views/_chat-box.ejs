@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<%= assetPath('css/chat-box.css') %>">
+<link rel="stylesheet" href="/css/chat-box.css">
 
 <h3 style="color:black;text-align: center; margin-top:10px;">This is a <%= room %> chat box. You can share any query or interesting facts about the domain.</h3>
 <% if(locals.user){ %>
@@ -77,8 +77,8 @@
 <%}%>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
-<script src="<%= assetPath('js/chat_engine.js') %>"></script>
-<script src="<%= assetPath('js/chat-settings.js') %>"></script>
+<script src="/js/chat_engine.js"></script>
+<script src="/js/chat-settings.js"></script>
 
 <% if (locals.user){ %>
 <script>

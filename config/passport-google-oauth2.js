@@ -2,11 +2,15 @@ const passport=require('passport');
 const googleStrategy=require('passport-google-oauth').OAuth2Strategy;
 const crypto=require('crypto');
 const User=require('../models/user');
-const env=require('./environment')
+const env=require('./environment');
+console.log(process.env.SOCIO_GOOGLE_CALLBACK);
+console.log(process.env.SOCIO_GOOGLE_CLIENTID);
+console.log(process.env.SOCIO_GOOGLE_CLIENTSECRET);
+
 passport.use(new googleStrategy({
-            clientID:env.google_clientID,
-            clientSecret:env.google_clientSecret,
-            callbackURL:env.google_callbackURL
+            clientID:process.env.SOCIO_GOOGLE_CLIENTID,
+            clientSecret:process.env.SOCIO_GOOGLE_CLIENTSECRET,
+            callbackURL:process.env.SOCIO_GOOGLE_CALLBACK
         },function(accessToken,refreshToken,profile,done){
             console.log(profile);
             User.findOne({email:profile.emails[0].value}).exec(function(err,user){

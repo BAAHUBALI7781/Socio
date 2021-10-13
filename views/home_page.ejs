@@ -1,8 +1,8 @@
-<script src="<%= assetPath('js/homepage.js') %>"></script>
-<link rel="stylesheet" href="<%= assetPath('css/homepage.css') %>">
+<script src="/js/homepage.js"></script>
+<link rel="stylesheet" href="/css/homepage.css">
 <div class="beauty">
     <div class="logo">
-        <img src="<%= assetPath('images/SOCIO.CODES.png')%>" alt="">
+        <img src="/images/SOCIO.CODES.png" alt="">
     </div>
     <%if(!locals.user){%>
         <div class="typing">
@@ -12,7 +12,7 @@
             <h2 class="css-typing">right platform for you...</h2>
             <div class="accounts">
                 <button class="create-account">
-                    <a href="/user/sign-up-page">Create Account</a>
+                    <a href="user/sign-up-page">Create Account</a>
                  </button>
                  <button class="create-account">
                      <a href="/user/sign-in-page">Sign In</a>

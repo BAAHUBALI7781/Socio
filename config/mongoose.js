@@ -1,14 +1,16 @@
 const mongoose=require('mongoose');
-const env=require('../config/environment');
-console.log(env.db);
-mongoose.connect(`mongodb://localhost/${env.db}`);
+require('dotenv').config();
+console.log(process.env.SOCIO_DATABASE);
 
-const db=mongoose.connection;
-
-db.on('error',console.error.bind(console,"Error connecting to MongoDB"));
-
-db.once('open',function(){
-    console.log('Connected to database');
-});
-
-module.exports=mongoose;
+function connectDb(){
+    mongoose.connect(process.env.SOCIO_DATABASE);
+    const connection=mongoose.connection;
+    connection.once('open',(err)=>{
+        if(err){
+            console.log("Not connected to database!");
+            return;
+        }
+        console.log('Database connected!');
+    })
+}
+module.exports=connectDb;

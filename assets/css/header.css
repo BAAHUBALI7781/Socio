@@ -1,0 +1,16 @@
+nav {
+  padding: 0px 7px;
+  box-sizing: border-box; }
+  nav a {
+    text-decoration: none; }
+  nav a:hover {
+    color: red !important; }
+  nav h2 {
+    margin-bottom: 0;
+    margin-top: 0; }
+    nav h2 img {
+      width: 70px;
+      height: 70px; }
+  nav #navbarSupportedContent ul li {
+    padding-left: 5px;
+    font-size: 1.1rem; }

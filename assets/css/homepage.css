@@ -1,0 +1,183 @@
+.beauty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; }
+  .beauty .logo img {
+    width: 400px;
+    height: 400px;
+    border-radius: 30%;
+    margin-top: 18%; }
+  .beauty .typing {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%; }
+    .beauty .typing .css-typing {
+      font-family: "Courier";
+      width: 25em;
+      white-space: nowrap;
+      margin-left: 10%;
+      overflow: hidden;
+      -webkit-animation: type 2s steps(40, end);
+      animation: type 2s steps(40, end); }
+    .beauty .typing .css-typing:nth-child(2) {
+      white-space: nowrap;
+      overflow: hidden;
+      opacity: 0;
+      -webkit-animation: type 2s steps(40, end);
+      animation: type2 2s steps(40, end);
+      -webkit-animation-delay: 2s;
+      animation-delay: 2s;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards; }
+    .beauty .typing .css-typing:nth-child(3) {
+      white-space: nowrap;
+      overflow: hidden;
+      opacity: 0;
+      -webkit-animation: type 2s steps(40, end);
+      animation: type3 2s steps(40, end);
+      -webkit-animation-delay: 4s;
+      animation-delay: 4s;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards; }
+    .beauty .typing .css-typing:nth-child(4) {
+      white-space: nowrap;
+      overflow: hidden;
+      opacity: 0;
+      -webkit-animation: type 2s steps(40, end);
+      animation: type3 2s steps(40, end);
+      -webkit-animation-delay: 6s;
+      animation-delay: 6s;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards; }
+    .beauty .typing .css-typing:nth-child(5) {
+      white-space: nowrap;
+      overflow: hidden;
+      opacity: 0;
+      -webkit-animation: type 2s steps(40, end);
+      animation: type3 2s steps(40, end);
+      -webkit-animation-delay: 8s;
+      animation-delay: 8s;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards; }
+    .beauty .typing .css-typing:nth-child(6) {
+      white-space: nowrap;
+      overflow: hidden;
+      opacity: 0;
+      -webkit-animation: type 2s steps(40, end);
+      animation: type3 2s steps(40, end);
+      -webkit-animation-delay: 10s;
+      animation-delay: 10s;
+      -webkit-animation-fill-mode: forwards;
+      animation-fill-mode: forwards; }
+    .beauty .typing .accounts, .beauty .typing .features {
+      display: flex;
+      justify-content: center; }
+      .beauty .typing .accounts .create-account, .beauty .typing .accounts .feature, .beauty .typing .features .create-account, .beauty .typing .features .feature {
+        width: 20%;
+        padding: 2%;
+        margin-left: 3%;
+        background-color: black;
+        color: white;
+        margin-top: 4%; }
+        .beauty .typing .accounts .create-account a, .beauty .typing .accounts .feature a, .beauty .typing .features .create-account a, .beauty .typing .features .feature a {
+          color: white;
+          font-size: 1.1rem;
+          text-decoration: none; }
+      .beauty .typing .accounts .create-account:hover, .beauty .typing .accounts .feature:hover, .beauty .typing .features .create-account:hover, .beauty .typing .features .feature:hover {
+        background-color: white; }
+        .beauty .typing .accounts .create-account:hover a, .beauty .typing .accounts .feature:hover a, .beauty .typing .features .create-account:hover a, .beauty .typing .features .feature:hover a {
+          color: black; }
+    .beauty .typing .features {
+      display: none; }
+
+@keyframes type {
+  from {
+    width: 0; } }
+
+@-webkit-keyframes type {
+  from {
+    width: 0; } }
+
+span {
+  animation: blink 1s infinite; }
+
+@keyframes type2 {
+  0% {
+    width: 0; }
+  from {
+    opacity: 0; }
+  1% {
+    opacity: 1; }
+  to {
+    opacity: 1; }
+  100% {
+    opacity: 1; } }
+
+@-webkit-keyframes type2 {
+  0% {
+    width: 0; }
+  from {
+    opacity: 0; }
+  1% {
+    opacity: 1; }
+  to {
+    opacity: 1; }
+  100% {
+    opacity: 1; } }
+
+@keyframes type3 {
+  0% {
+    width: 0; }
+  from {
+    opacity: 0; }
+  1% {
+    opacity: 1; }
+  to {
+    opacity: 1; }
+  100% {
+    opacity: 1; } }
+
+@-webkit-keyframes type3 {
+  0% {
+    width: 0; }
+  from {
+    opacity: 0; }
+  1% {
+    opacity: 1; }
+  to {
+    opacity: 1; }
+  100% {
+    opacity: 1; } }
+
+@media screen and (max-width: 900px) {
+  .beauty .logo img {
+    width: 350px;
+    height: 350px; }
+  .beauty .typing {
+    margin-bottom: 4%; }
+    .beauty .typing .css-typing {
+      width: 18em;
+      font-size: 12px;
+      margin-left: 0%;
+      font-weight: 700; }
+    .beauty .typing .accounts .create-account, .beauty .typing .accounts .feature, .beauty .typing .features .create-account, .beauty .typing .features .feature {
+      width: 33%; }
+    .beauty .typing .features {
+      display: flex; } }
+
+@media screen and (max-width: 600px) {
+  .beauty .logo img {
+    width: 250px;
+    height: 250px; }
+  .beauty .typing {
+    margin-bottom: 4%; }
+    .beauty .typing .css-typing {
+      width: 25em;
+      font-size: 12px;
+      margin-left: 0%;
+      font-weight: 700; }
+    .beauty .typing .accounts .create-account, .beauty .typing .accounts .feature, .beauty .typing .features .create-account, .beauty .typing .features .feature {
+      width: 34%; }
+    .beauty .typing .features {
+      display: flex; } }

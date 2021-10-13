@@ -5,7 +5,7 @@ const User=require('../models/user');
 const env=require('./environment');
 let opts={
     jwtFromRequest : ExtractJWT.fromAuthHeaderAsBearerToken(),
-    secretOrKey : env.jwt_secret
+    secretOrKey : process.env.SOCIO_JWT_SECRET
 }
 passport.use(new JWTStrategy(opts,function(jwtPayload,done){
     User.findById(jwtPayload._id,function(err,user){
