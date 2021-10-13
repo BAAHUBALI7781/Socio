@@ -2,7 +2,7 @@ const passport=require('passport');
 const JWTStrategy=require('passport-jwt').Strategy;
 const ExtractJWT=require('passport-jwt').ExtractJwt;
 const User=require('../models/user');
-const env=require('./environment');
+
 let opts={
     jwtFromRequest : ExtractJWT.fromAuthHeaderAsBearerToken(),
     secretOrKey : process.env.SOCIO_JWT_SECRET

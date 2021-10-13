@@ -1,6 +1,5 @@
 const express=require('express');
 const cookieParser=require('cookie-parser');
-const env=require('./config/environment');
 const logger=require('morgan');
 const port=8080;
 const app=express();
