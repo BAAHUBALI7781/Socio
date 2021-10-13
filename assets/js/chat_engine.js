@@ -6,7 +6,7 @@ class ChatEngine{
         this.chatRoom=room;
         this.userEmail = userEmail;
         this.userName=userName;
-        this.socket = io.connect('http://socio-codes.herokuapp.com:5000',{transports:['websocket', 'polling', 'flashsocket']});
+        this.socket = io.connect('https://socio-codes.herokuapp.com:5000',{transports:['websocket', 'polling', 'flashsocket']});
         
         if (this.userEmail){
             this.connectionHandler();
