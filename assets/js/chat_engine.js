@@ -1,9 +1,4 @@
-var connectionOptions = {
-    "force new connection": true,
-    reconnectionAttempts: "Infinity",
-    timeout: 10000,
-    transports: ["websocket"],
-  };
+
 class ChatEngine{
     constructor(chatBoxId, room, userEmail, userName){
         console.log(userName);
@@ -11,7 +6,7 @@ class ChatEngine{
         this.chatRoom=room;
         this.userEmail = userEmail;
         this.userName=userName;
-        this.socket = io.connect("https://socio-codes.herokuapp.com",connectionOptions);
+        this.socket = io.connect("https://socio-codes.herokuapp.com",{transports:['websocket', 'polling', 'flashsocket']});
         
         if (this.userEmail){
             this.connectionHandler();
