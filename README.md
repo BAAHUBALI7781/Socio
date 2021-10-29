@@ -1,5 +1,5 @@
 # Socio
-## A technical blogging site (Check this out: http://35.174.176.118/)
+## A technical blogging site 
 ### Requirement : 
   1. NodeJS
   2. MongDB
